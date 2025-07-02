@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://bj3l437121rlo" path="res://src/camera.gd" id="1_ykrsh"]
-[ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://src/character_body_2d.gd" id="2_6uqi0"]
+[ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://src/playerCharacter.gd" id="2_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://b6g6pva8p8obn" path="res://assets/characters/basic/Idle.png" id="2_8uh7m"]
 [ext_resource type="Texture2D" uid="uid://dprk3es3rdra4" path="res://assets/characters/basic/Walk.png" id="4_ppyta"]
 
@@ -1735,3 +1735,5 @@ autoplay = "idleRightDown"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-0.42, 0.475)
 shape = SubResource("CircleShape2D_ppyta")
+
+[connection signal="moved_to_new_map_cell" from="CharacterBody2D" to="Camera2D" method="move_camera_to_cell"]
