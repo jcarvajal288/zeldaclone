@@ -1,6 +1,6 @@
 [gd_scene load_steps=93 format=4 uid="uid://de2r1jwa6j27j"]
 
-[ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://assets/tilesets/MiniFantasy_Grassland/Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://bj3l437121rlo" path="res://src/camera.gd" id="1_ykrsh"]
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://src/playerCharacter.gd" id="2_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://b6g6pva8p8obn" path="res://assets/characters/basic/Idle.png" id="2_8uh7m"]
