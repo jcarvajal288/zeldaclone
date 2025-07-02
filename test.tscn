@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://de2r1jwa6j27j"]
+[gd_scene load_steps=25 format=4 uid="uid://de2r1jwa6j27j"]
 
 [ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://character_body_2d.gd" id="2_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://b6g6pva8p8obn" path="res://assets/characters/basic/Idle.png" id="2_8uh7m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6uqi0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8uh7m"]
 texture = ExtResource("1_37kl0")
@@ -1072,6 +1074,8 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_mf4mk"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_6uqi0")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -1214,6 +1218,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uqi0"]
+size = Vector2(7, 7)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1230,10 +1237,11 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAmAAwAAAABAAAAAAAnAAwAAAACAAAAAAAjAAw
 tile_set = SubResource("TileSet_mf4mk")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(154, 129)
+collision_layer = 2
 script = ExtResource("2_6uqi0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(155, 131)
 sprite_frames = SubResource("SpriteFrames_4uo0j")
 animation = &"idleRightDown"
 autoplay = "idleRightDown"
@@ -1241,3 +1249,5 @@ frame = 15
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_6uqi0")
