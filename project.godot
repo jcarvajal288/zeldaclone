@@ -33,7 +33,7 @@ project/assembly_name="zeldaclone"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/godot-vim/plugin.cfg")
 
 [layer_names]
 
