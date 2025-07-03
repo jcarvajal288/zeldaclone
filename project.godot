@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="zeldaclone"
-run/main_scene="uid://de2r1jwa6j27j"
+run/main_scene="uid://cctjt2l6i380l"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
-GlobalConstants="*res://global_constants.gd"
+GlobalConstants="*res://src/global_constants.gd"
+Global="*res://src/global.gd"
 
 [display]
 
