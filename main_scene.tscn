@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cctjt2l6i380l"]
+[gd_scene load_steps=91 format=3 uid="uid://cctjt2l6i380l"]
 
 [ext_resource type="Script" uid="uid://bj3l437121rlo" path="res://src/camera.gd" id="1_d5x1h"]
 [ext_resource type="Script" uid="uid://dinmjrryiyo0g" path="res://src/gameController.gd" id="1_nfk4m"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b6g6pva8p8obn" path="res://assets/characters/basic/Idle.png" id="3_hq1ik"]
 [ext_resource type="Texture2D" uid="uid://dprk3es3rdra4" path="res://assets/characters/basic/Walk.png" id="4_nfk4m"]
 [ext_resource type="Script" uid="uid://bnrjmt5osw1jw" path="res://src/level_manager.gd" id="7_7ycvg"]
+[ext_resource type="PackedScene" uid="uid://de2r1jwa6j27j" path="res://test_grassland.tscn" id="7_66tet"]
+[ext_resource type="PackedScene" uid="uid://cknydywmvj1od" path="res://test_dungeon.tscn" id="8_7ycvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4uo0j"]
 atlas = ExtResource("3_hq1ik")
@@ -641,5 +643,7 @@ shape = SubResource("CircleShape2D_7ycvg")
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("7_7ycvg")
+grasslands = ExtResource("7_66tet")
+dungeon = ExtResource("8_7ycvg")
 
 [connection signal="moved_to_new_map_cell" from="PlayerCharacter" to="Camera2D" method="move_camera_to_cell"]
