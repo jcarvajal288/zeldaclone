@@ -1454,7 +1454,7 @@ metadata/_better_terrain = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amg52"]
-size = Vector2(8, 8)
+size = Vector2(8, 2)
 
 [node name="TestGrassland" type="Node2D"]
 
@@ -1474,7 +1474,7 @@ collision_mask = 2
 script = ExtResource("7_6tck0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonEntrance"]
-position = Vector2(5, 4)
+position = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_amg52")
 debug_color = Color(0.857193, 0.000730432, 0.882629, 0.42)
 
