@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://de2r1jwa6j27j"]
 
-[ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://assets/tilesets/MiniFantasy_Grassland/Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
-[ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://assets/tilesets/MiniFantasy_Dungeon/DungeonTileset.png" id="3_g14j6"]
-[ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://src/dungeonEntrance.gd" id="7_6tck0"]
+[ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Levels/Grasslands/tileset/Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="3_g14j6"]
+[ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://Levels/Grasslands/dungeonEntrance.gd" id="7_6tck0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6uqi0"]
 

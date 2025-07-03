@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5qgcfwbcs0tg"
-path="res://.godot/imported/DungeonTileset.png-3dfda4d95de0ed4eae18fdafadebb044.ctex"
+uid="uid://bm1uscet8n4vp"
+path="res://.godot/imported/Minifantasy_ForgottenPlainsTiles.png-19111ff60a8a7d6f2adfd2a590f5cc73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/MiniFantasy_Dungeon/DungeonTileset.png"
-dest_files=["res://.godot/imported/DungeonTileset.png-3dfda4d95de0ed4eae18fdafadebb044.ctex"]
+source_file="res://Levels/Grasslands/tileset/Minifantasy_ForgottenPlainsTiles.png"
+dest_files=["res://.godot/imported/Minifantasy_ForgottenPlainsTiles.png-19111ff60a8a7d6f2adfd2a590f5cc73.ctex"]
 
 [params]
 

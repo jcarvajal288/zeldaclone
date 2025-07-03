@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://cknydywmvj1od"]
 
-[ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://assets/tilesets/MiniFantasy_Dungeon/DungeonTileset.png" id="1_7y2ak"]
-[ext_resource type="Script" uid="uid://cc817mpq7ms0v" path="res://src/dungeon_exit.gd" id="2_nsxo0"]
+[ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="1_7y2ak"]
+[ext_resource type="Script" uid="uid://cc817mpq7ms0v" path="res://Levels/Dungeon/dungeon_exit.gd" id="2_nsxo0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsxo0"]
 texture = ExtResource("1_7y2ak")
