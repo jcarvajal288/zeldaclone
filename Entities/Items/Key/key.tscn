@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c76h4b51u0g0p"]
+[gd_scene load_steps=4 format=3 uid="uid://c76h4b51u0g0p"]
 
 [ext_resource type="Texture2D" uid="uid://b5x50hlo88kul" path="res://Entities/Items/Key/art/key8x8.png" id="1_woq6y"]
+[ext_resource type="Script" uid="uid://cptdf3hkkonjm" path="res://Entities/Items/Key/key.gd" id="2_dxrid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxrid"]
 size = Vector2(8, 8)
@@ -11,6 +12,11 @@ size = Vector2(8, 8)
 texture = ExtResource("1_woq6y")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_dxrid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_dxrid")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
