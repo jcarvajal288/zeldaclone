@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 50
+@export var inventory: Inventory
 
 signal moved_to_new_map_cell(cell)
 
@@ -46,12 +47,12 @@ func _set_camera_position():
 	var position_x = self.position.x
 	var position_y = self.position.y
 	if position_x < 0:
-		position_x -= GlobalConstants.MAP_CELL_SIZE.x
+		position_x -= Global.MAP_CELL_SIZE.x
 	if position_y < 0:
-		position_y -= GlobalConstants.MAP_CELL_SIZE.y
+		position_y -= Global.MAP_CELL_SIZE.y
 	var new_map_cell = Vector2i(
-		position_x / GlobalConstants.MAP_CELL_SIZE.x,
-		position_y / GlobalConstants.MAP_CELL_SIZE.y,
+		position_x / Global.MAP_CELL_SIZE.x,
+		position_y / Global.MAP_CELL_SIZE.y,
 	)
 	if new_map_cell != current_map_cell:
 		moved_to_new_map_cell.emit(new_map_cell)
