@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://chqrw1r4mxsk7"]
+[gd_scene load_steps=5 format=3 uid="uid://chqrw1r4mxsk7"]
 
 [ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="1_hx6wb"]
+[ext_resource type="Script" uid="uid://dv5vb8vs0us83" path="res://Levels/Dungeon/door.gd" id="1_mc123"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx6wb"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc123"]
+size = Vector2(10, 10)
+
 [node name="Door" type="Node2D"]
+script = ExtResource("1_mc123")
 
 [node name="OpenSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_hx6wb")
@@ -22,3 +27,13 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosedSprite/StaticBody2D"]
 shape = SubResource("RectangleShape2D_hx6wb")
+
+[node name="PlayerDetectorArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorArea"]
+shape = SubResource("RectangleShape2D_mc123")
+debug_color = Color(0.857193, 0.000730432, 0.882629, 0.42)
+
+[connection signal="body_entered" from="PlayerDetectorArea" to="." method="_on_player_detector_area_body_entered"]
