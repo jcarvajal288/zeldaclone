@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76h4b51u0g0p"]
+
+[ext_resource type="Texture2D" uid="uid://b5x50hlo88kul" path="res://Entities/Items/Key/art/key8x8.png" id="1_woq6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxrid"]
+size = Vector2(8, 8)
+
+[node name="Key" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_woq6y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dxrid")

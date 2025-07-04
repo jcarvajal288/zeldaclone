@@ -7,7 +7,6 @@ var current_level
 
 func _ready():
 	Global.level_manager = self
-	_change_level(grasslands)
 	
 func _change_level(packed_new_level: PackedScene, delete: bool = true, keep_running: bool = false):
 	if current_level != null:
