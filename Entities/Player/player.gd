@@ -7,35 +7,35 @@ signal moved_to_new_map_cell(cell)
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
-var facing = "RightDown"
+var facing = "DownRight"
 
 var current_map_cell = Vector2i(0, 0)
 
 func _play_animation():
 	if Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_up"):
-			_animated_sprite.play("walkRightUp")
-			facing = "RightUp"
+			_animated_sprite.play("walkUpRight")
+			facing = "UpRight"
 		else:
-			_animated_sprite.play("walkRightDown")
-			facing = "RightDown"
+			_animated_sprite.play("walkDownRight")
+			facing = "DownRight"
 	elif Input.is_action_pressed("ui_left"):
 		if Input.is_action_pressed("ui_up"):
-			_animated_sprite.play("walkLeftUp")
-			facing = "LeftUp"
+			_animated_sprite.play("walkUpLeft")
+			facing = "UpLeft"
 		else:
-			_animated_sprite.play("walkLeftDown")
-			facing = "LeftDown"
+			_animated_sprite.play("walkDownLeft")
+			facing = "DownLeft"
 	elif Input.is_action_pressed("ui_up"):
 		if Input.is_action_pressed("ui_left"):
-			_animated_sprite.play("walkLeftUp")
-			facing = "LeftUp"
+			_animated_sprite.play("walkUpLeft")
+			facing = "UpLeft"
 		else:
 			_animated_sprite.play("walk" + facing)
 	elif Input.is_action_pressed("ui_down"):
 		if Input.is_action_pressed("ui_left"):
-			_animated_sprite.play("walkLeftDown")
-			facing = "LeftDown"
+			_animated_sprite.play("walkDownLeft")
+			facing = "DownLeft"
 		else:
 			_animated_sprite.play("walk" + facing)
 	else:
