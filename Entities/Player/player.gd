@@ -41,7 +41,6 @@ func _play_walking_animation():
 			_animated_sprite.play("walk" + facing)
 		
 func _play_attack_animation(input_direction: Vector2):
-	print(input_direction)
 	if facing == "DownRight":
 		if input_direction.y > 0.5:
 			_animated_sprite.play("attackDownRight")

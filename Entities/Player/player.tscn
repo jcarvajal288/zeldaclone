@@ -1,10 +1,11 @@
-[gd_scene load_steps=120 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=122 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://ckfguv4i4a186" path="res://Entities/Player/art/Attack_8way.png" id="2_5c2io"]
 [ext_resource type="Texture2D" uid="uid://b6g6pva8p8obn" path="res://Entities/Player/art/Idle.png" id="2_tekja"]
 [ext_resource type="Texture2D" uid="uid://x6a5ojhyyi1w" path="res://Entities/Player/art/Walk.png" id="3_5c2io"]
 [ext_resource type="Script" uid="uid://cmqg0vw2vlqnq" path="res://Entities/Player/inventory.gd" id="4_tekja"]
+[ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Utilities/Hitbox.tscn" id="6_4wf4l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgkqn"]
 atlas = ExtResource("2_5c2io")
@@ -876,6 +877,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ycvg"]
 radius = 3.75
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01a4e"]
+size = Vector2(8, 7)
+
 [node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("inventory")]
 z_index = 5
 z_as_relative = false
@@ -897,4 +901,13 @@ shape = SubResource("CircleShape2D_7ycvg")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("4_tekja")
 
+[node name="Hitbox" parent="." instance=ExtResource("6_4wf4l")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_01a4e")
+debug_color = Color(1, 0, 0, 0.419608)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+
+[editable path="Hitbox"]
