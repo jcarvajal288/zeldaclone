@@ -24,6 +24,9 @@ func change_to_dungeon():
 	_change_level(dungeon)
 	Global.game_controller.move_player_to_position(Vector2(80, 20))
 
-func change_to_grasslands():
+func change_to_grasslands(location: String = "start"):
 	_change_level(grasslands)
-	Global.game_controller.move_player_to_position(Vector2(231, -56))
+	if location == "dungeon_entrance":
+		Global.game_controller.move_player_to_position(Vector2(231, -56))
+	else:
+		Global.game_controller.move_player_to_position(Vector2(80, 60))
