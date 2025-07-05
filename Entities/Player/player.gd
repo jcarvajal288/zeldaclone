@@ -11,7 +11,7 @@ var facing = "DownRight"
 
 var current_map_cell = Vector2i(0, 0)
 
-func _play_animation():
+func _play_walking_animation():
 	if Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_up"):
 			_animated_sprite.play("walkUpRight")
@@ -38,8 +38,6 @@ func _play_animation():
 			facing = "DownLeft"
 		else:
 			_animated_sprite.play("walk" + facing)
-	else:
-		_animated_sprite.play("idle" + facing)
 		
 func _set_camera_position():
 	var position_x = self.position.x
@@ -61,7 +59,10 @@ func _set_camera_position():
 func get_input():
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * speed
-	_play_animation()
+	if velocity != Vector2(0,0):
+		_play_walking_animation()
+	else:
+		_animated_sprite.play("idle" + facing)
 	_set_camera_position()
 	
 func _physics_process(delta):
