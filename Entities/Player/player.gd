@@ -8,6 +8,7 @@ signal moved_to_new_map_cell(cell)
 @onready var _animated_sprite = $AnimatedSprite2D
 
 var facing = "DownRight"
+var animation_locked = false
 
 var current_map_cell = Vector2i(0, 0)
 
@@ -49,6 +50,11 @@ func _play_attack_animation():
 	else:
 		_animated_sprite.play("attackUpRight")
 		
+func _is_attacking():
+	return _animated_sprite.animation == "attackDownRight" \
+		or _animated_sprite.animation == "attackDownLeft" \
+		or _animated_sprite.animation == "attackUpRight" \
+		or _animated_sprite.animation == "attackUpLeft" 
 		
 func _set_camera_position():
 	var position_x = self.position.x
@@ -70,11 +76,14 @@ func _set_camera_position():
 
 func get_input():
 	var is_attacking = Input.is_action_pressed("action_left")
-	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if is_attacking:
 		velocity = Vector2(0,0)
 		_play_attack_animation()
-	elif input_direction != Vector2(0,0):
+		animation_locked = true
+		return
+		
+	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if input_direction != Vector2(0,0):
 		velocity = input_direction * speed
 		_play_walking_animation()
 	else:
@@ -82,6 +91,11 @@ func get_input():
 		_animated_sprite.play("idle" + facing)
 	_set_camera_position()
 	
-func _physics_process(delta):
-	get_input()
-	move_and_slide()
+func _physics_process(_delta):
+	if not animation_locked:
+		get_input()
+		move_and_slide()
+
+
+func _on_animation_finished() -> void:
+	animation_locked = false

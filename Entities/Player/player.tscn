@@ -405,9 +405,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_scpbq")
 }],
-"loop": true,
+"loop": false,
 "name": &"attackDownLeft",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -422,9 +422,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vp3d1")
 }],
-"loop": true,
+"loop": false,
 "name": &"attackDownRight",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -439,9 +439,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r2w0g")
 }],
-"loop": true,
+"loop": false,
 "name": &"attackUpLeft",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -456,9 +456,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1uqw7")
 }],
-"loop": true,
+"loop": false,
 "name": &"attackUpRight",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -754,7 +754,7 @@ inventory = NodePath("Inventory")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_66tet")
-animation = &"attackUpLeft"
+animation = &"attackUpRight"
 autoplay = "idleDownRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -764,3 +764,5 @@ shape = SubResource("CircleShape2D_7ycvg")
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("4_tekja")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
