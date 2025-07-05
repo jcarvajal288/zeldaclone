@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
-GlobalConstants="*res://src/global_constants.gd"
 Global="*res://src/global.gd"
 
 [display]

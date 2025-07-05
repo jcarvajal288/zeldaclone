@@ -31,15 +31,13 @@ func _play_animation():
 			_animated_sprite.play("walkLeftUp")
 			facing = "LeftUp"
 		else:
-			_animated_sprite.play("walkLeftDown")
-			facing = "LeftDown"
+			_animated_sprite.play("walk" + facing)
 	elif Input.is_action_pressed("ui_down"):
 		if Input.is_action_pressed("ui_left"):
 			_animated_sprite.play("walkLeftDown")
 			facing = "LeftDown"
 		else:
-			_animated_sprite.play("walkRightDown")
-			facing = "RightDown"
+			_animated_sprite.play("walk" + facing)
 	else:
 		_animated_sprite.play("idle" + facing)
 		
