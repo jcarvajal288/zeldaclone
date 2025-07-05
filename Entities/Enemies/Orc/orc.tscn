@@ -613,7 +613,8 @@ radius = 3.75
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n1306")
-animation = &"walkUpLeft"
+animation = &"idleDownRight"
+autoplay = "idleDownRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.34, 0.3)
