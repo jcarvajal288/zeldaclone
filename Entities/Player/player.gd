@@ -39,6 +39,17 @@ func _play_walking_animation():
 		else:
 			_animated_sprite.play("walk" + facing)
 		
+func _play_attack_animation():
+	if facing == "DownRight":
+		_animated_sprite.play("attackDownRight")
+	elif facing == "DownLeft":
+		_animated_sprite.play("attackDownLeft")
+	elif facing == "UpLeft":
+		_animated_sprite.play("attackUpLeft")
+	else:
+		_animated_sprite.play("attackUpRight")
+		
+		
 func _set_camera_position():
 	var position_x = self.position.x
 	var position_y = self.position.y
@@ -54,14 +65,20 @@ func _set_camera_position():
 		moved_to_new_map_cell.emit(new_map_cell)
 		current_map_cell = new_map_cell
 		
+		
 	
 
 func get_input():
+	var is_attacking = Input.is_action_pressed("action_left")
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = input_direction * speed
-	if velocity != Vector2(0,0):
+	if is_attacking:
+		velocity = Vector2(0,0)
+		_play_attack_animation()
+	elif input_direction != Vector2(0,0):
+		velocity = input_direction * speed
 		_play_walking_animation()
 	else:
+		velocity = Vector2(0,0)
 		_animated_sprite.play("idle" + facing)
 	_set_camera_position()
 	
