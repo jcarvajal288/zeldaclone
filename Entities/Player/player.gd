@@ -111,6 +111,5 @@ func _physics_process(_delta):
 		move_and_slide()
 
 
-func _on_animation_finished() -> void:
-	print('finished')
+func _on_animation_finished(anim_name) -> void:
 	animation_locked = false
