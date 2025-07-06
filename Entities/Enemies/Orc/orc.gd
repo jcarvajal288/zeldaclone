@@ -14,4 +14,9 @@ func _ready():
 	$AnimationPlayer.seek(random_time)
 
 func _on_hurtbox_area_entered(area: Hitbox) -> void:
-	queue_free()
+	$AnimationPlayer.play("Death")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Death":
+		queue_free()
