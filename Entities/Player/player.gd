@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 signal moved_to_new_map_cell(cell)
 
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 
 var facing = "DownRight"
 var animation_locked = false
@@ -15,59 +15,59 @@ var current_map_cell = Vector2i(0, 0)
 func _play_walking_animation():
 	if Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_up"):
-			_animated_sprite.play("walkUpRight")
+			animation_player.play("walkUpRight")
 			facing = "UpRight"
 		else:
-			_animated_sprite.play("walkDownRight")
+			animation_player.play("walkDownRight")
 			facing = "DownRight"
 	elif Input.is_action_pressed("ui_left"):
 		if Input.is_action_pressed("ui_up"):
-			_animated_sprite.play("walkUpLeft")
+			animation_player.play("walkUpLeft")
 			facing = "UpLeft"
 		else:
-			_animated_sprite.play("walkDownLeft")
+			animation_player.play("walkDownLeft")
 			facing = "DownLeft"
 	elif Input.is_action_pressed("ui_up"):
 		if Input.is_action_pressed("ui_left"):
-			_animated_sprite.play("walkUpLeft")
+			animation_player.play("walkUpLeft")
 			facing = "UpLeft"
 		else:
-			_animated_sprite.play("walk" + facing)
+			animation_player.play("walk" + facing)
 	elif Input.is_action_pressed("ui_down"):
 		if Input.is_action_pressed("ui_left"):
-			_animated_sprite.play("walkDownLeft")
+			animation_player.play("walkDownLeft")
 			facing = "DownLeft"
 		else:
-			_animated_sprite.play("walk" + facing)
+			animation_player.play("walk" + facing)
 		
 func _play_attack_animation(input_direction: Vector2):
 	if facing == "DownRight":
 		if input_direction.y > 0.5:
-			_animated_sprite.play("attackDownRight")
+			animation_player.play("attackDownRight")
 			$HitboxPivot.rotation = PI
 		else:
-			_animated_sprite.play("attackRightDown")
+			animation_player.play("attackRightDown")
 			$HitboxPivot.rotation = PI / 2
 	elif facing == "DownLeft":
 		if input_direction.y > 0.5:
-			_animated_sprite.play("attackDownLeft")
+			animation_player.play("attackDownLeft")
 			$HitboxPivot.rotation = PI
 		else:
-			_animated_sprite.play("attackLeftDown")
+			animation_player.play("attackLeftDown")
 			$HitboxPivot.rotation = -PI / 2
 	elif facing == "UpLeft":
 		if input_direction.y < -0.5:
-			_animated_sprite.play("attackUpLeft")
+			animation_player.play("attackUpLeft")
 			$HitboxPivot.rotation = 0.0
 		else:
-			_animated_sprite.play("attackLeftUp")
+			animation_player.play("attackLeftUp")
 			$HitboxPivot.rotation = -PI / 2
 	else:
 		if input_direction.y < -0.5:
-			_animated_sprite.play("attackUpRight")
+			animation_player.play("attackUpRight")
 			$HitboxPivot.rotation = 0.0
 		else:
-			_animated_sprite.play("attackRightUp")
+			animation_player.play("attackRightUp")
 			$HitboxPivot.rotation = PI / 2
 		
 		
@@ -92,17 +92,17 @@ func get_input():
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var is_attacking = Input.is_action_just_pressed("action_left")
 	if is_attacking:
-		velocity = Vector2(0,0)
+		velocity = Vector2.ZERO
 		_play_attack_animation(input_direction)
 		animation_locked = true
 		return
 		
-	if input_direction != Vector2(0,0):
+	if input_direction != Vector2.ZERO:
 		velocity = input_direction * speed
 		_play_walking_animation()
 	else:
-		velocity = Vector2(0,0)
-		_animated_sprite.play("idle" + facing)
+		velocity = Vector2.ZERO
+		animation_player.play("idle" + facing)
 	_set_camera_position()
 	
 func _physics_process(_delta):
@@ -112,4 +112,5 @@ func _physics_process(_delta):
 
 
 func _on_animation_finished() -> void:
+	print('finished')
 	animation_locked = false
