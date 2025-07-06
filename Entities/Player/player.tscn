@@ -1224,6 +1224,7 @@ script = ExtResource("4_tekja")
 [node name="HitboxPivot" type="Marker2D" parent="."]
 
 [node name="Hitbox" parent="HitboxPivot" instance=ExtResource("6_4wf4l")]
+damage = 1
 
 [node name="CollisionShape2D" parent="HitboxPivot/Hitbox" index="0"]
 position = Vector2(0.25, -7)
