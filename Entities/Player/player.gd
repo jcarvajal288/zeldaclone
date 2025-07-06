@@ -44,23 +44,31 @@ func _play_attack_animation(input_direction: Vector2):
 	if facing == "DownRight":
 		if input_direction.y > 0.5:
 			_animated_sprite.play("attackDownRight")
+			$HitboxPivot.rotation = PI
 		else:
 			_animated_sprite.play("attackRightDown")
+			$HitboxPivot.rotation = PI / 2
 	elif facing == "DownLeft":
 		if input_direction.y > 0.5:
 			_animated_sprite.play("attackDownLeft")
+			$HitboxPivot.rotation = PI
 		else:
 			_animated_sprite.play("attackLeftDown")
+			$HitboxPivot.rotation = -PI / 2
 	elif facing == "UpLeft":
 		if input_direction.y < -0.5:
 			_animated_sprite.play("attackUpLeft")
+			$HitboxPivot.rotation = 0.0
 		else:
 			_animated_sprite.play("attackLeftUp")
+			$HitboxPivot.rotation = -PI / 2
 	else:
 		if input_direction.y < -0.5:
 			_animated_sprite.play("attackUpRight")
+			$HitboxPivot.rotation = 0.0
 		else:
 			_animated_sprite.play("attackRightUp")
+			$HitboxPivot.rotation = PI / 2
 		
 		
 func _set_camera_position():
