@@ -3,6 +3,7 @@ extends CharacterBody2D
 var facing = "DownRight"
 var max_health = 3
 var current_health = max_health
+var speed = 30
 
 func _ready():
 	var random_idle = Global.rng.randi_range(1, 4)

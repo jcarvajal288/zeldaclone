@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ai72wsdhn23"]
+
+[ext_resource type="Script" uid="uid://p4isidcyl8ij" path="res://Entities/Enemies/AI/random_walk.gd" id="1_s1xy7"]
+
+[node name="RandomWalk" type="Node"]
+script = ExtResource("1_s1xy7")
+
+[node name="WalkTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WalkTimer" to="." method="_on_walk_timer_timeout"]
