@@ -7,6 +7,7 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	subject.move_and_slide()
+	subject.play_move_animation()
 	
 func _on_walk_timer_timeout() -> void:
 	change_direction()
@@ -14,7 +15,6 @@ func _on_walk_timer_timeout() -> void:
 func change_direction():
 	var random_x = Global.rng.randf_range(-1, 1)
 	var random_y = Global.rng.randf_range(-1, 1)
-	var random_direction = Vector2(random_x, random_y)
+	var random_direction = Vector2(random_x, random_y).normalized()
 	subject.velocity = subject.speed * random_direction
-	print(subject.velocity)
 	$WalkTimer.start()

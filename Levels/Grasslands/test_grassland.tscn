@@ -1482,10 +1482,4 @@ debug_color = Color(0.857193, 0.000730432, 0.882629, 0.42)
 [node name="Orc" parent="." instance=ExtResource("4_qq7l6")]
 position = Vector2(80, 26)
 
-[node name="Orc2" parent="." instance=ExtResource("4_qq7l6")]
-position = Vector2(109, 36)
-
-[node name="Orc3" parent="." instance=ExtResource("4_qq7l6")]
-position = Vector2(59, 39)
-
 [connection signal="body_entered" from="DungeonEntrance" to="DungeonEntrance" method="_on_dungeon_entrance_area_entered"]
