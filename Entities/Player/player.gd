@@ -44,13 +44,27 @@ func _play_walking_animation():
 		
 func _play_attack_animation(input_direction: Vector2):
 	if input_direction == Vector2(0, -1):
-		animation_player.play("attackUp")
+		if facing.contains("Left"):
+			animation_player.play("attackUpSlashLeft")
+		else:
+			animation_player.play("attackUpSlashRight")
 	elif input_direction == Vector2(0, 1):
-		animation_player.play("attackDown")
+		if facing.contains("Left"):
+			animation_player.play("attackDownSlashLeft")
+		else:
+			animation_player.play("attackDownSlashRight")
 	elif input_direction == Vector2(-1, 0):
-		animation_player.play("attackLeft")
-	else: #input_direction == Vector2(1, 0):
-		animation_player.play("attackRight")
+		if facing.contains("Up"):
+			animation_player.play("attackUpSlashLeft")
+		else:
+			animation_player.play("attackDownLeft")
+	elif input_direction == Vector2(1, 0):
+		if facing.contains("Up"):
+			animation_player.play("attackUpRight")
+		else:
+			animation_player.play("attackDownRight")
+	else: 
+		animation_player.play("attack" + facing)
 		
 		
 func _set_camera_position():
