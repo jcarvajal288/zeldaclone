@@ -9,6 +9,7 @@ func _init(hp, spd):
 	max_health = hp
 	current_health = max_health
 	speed = spd
+	set_collision_mask_value(5, true)
 
 func _ready():
 	play_random_idle_animation()

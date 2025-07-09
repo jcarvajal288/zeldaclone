@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://de2r1jwa6j27j"]
+[gd_scene load_steps=13 format=4 uid="uid://de2r1jwa6j27j"]
 
 [ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Levels/Grasslands/tileset/Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
 [ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="3_g14j6"]
 [ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Enemies/Orc/orc.tscn" id="4_qq7l6"]
 [ext_resource type="PackedScene" uid="uid://chc6v32x7m2yv" path="res://Entities/Enemies/Bat/bat.tscn" id="5_5gwyr"]
+[ext_resource type="PackedScene" uid="uid://b2fm5hsiicw8s" path="res://Utilities/enemy_boundary.tscn" id="6_vyboh"]
 [ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://Levels/Grasslands/dungeon_entrance.gd" id="7_6tck0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6uqi0"]
@@ -1458,6 +1459,9 @@ metadata/_better_terrain = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amg52"]
 size = Vector2(8, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8akqq"]
+size = Vector2(41, 4)
+
 [node name="TestGrassland" type="Node2D"]
 
 [node name="TileMapGround" type="TileMapLayer" parent="."]
@@ -1484,8 +1488,30 @@ debug_color = Color(0.857193, 0.000730432, 0.882629, 0.42)
 z_index = 1
 position = Vector2(80, 26)
 
+[node name="Orc2" parent="." instance=ExtResource("4_qq7l6")]
+z_index = 1
+position = Vector2(66, 26)
+
+[node name="Orc3" parent="." instance=ExtResource("4_qq7l6")]
+z_index = 1
+position = Vector2(93, 26)
+
 [node name="Bat" parent="." instance=ExtResource("5_5gwyr")]
 z_index = 1
 position = Vector2(71, 47)
 
+[node name="EnemyBoundary" parent="." instance=ExtResource("6_vyboh")]
+
+[node name="CollisionShape2D" parent="EnemyBoundary" index="0"]
+shape = SubResource("RectangleShape2D_8akqq")
+
+[node name="EnemyBoundary2" parent="." instance=ExtResource("6_vyboh")]
+position = Vector2(79, -59)
+
+[node name="CollisionShape2D" parent="EnemyBoundary2" index="0"]
+position = Vector2(81.5, -1)
+
 [connection signal="body_entered" from="DungeonEntrance" to="DungeonEntrance" method="_on_dungeon_entrance_area_entered"]
+
+[editable path="EnemyBoundary"]
+[editable path="EnemyBoundary2"]
