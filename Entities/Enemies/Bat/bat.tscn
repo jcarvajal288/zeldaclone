@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://chc6v32x7m2yv"]
+[gd_scene load_steps=15 format=3 uid="uid://chc6v32x7m2yv"]
 
 [ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
+[ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Enemies/Bat/bat.gd" id="1_k4bj0"]
+[ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Enemies/AI/RandomWalk.tscn" id="2_sjrea"]
 
 [sub_resource type="Animation" id="Animation_sjrea"]
 length = 0.001
@@ -53,8 +55,79 @@ tracks/0/keys = {
 "values": [19, 18]
 }
 
+[sub_resource type="Animation" id="Animation_l6sv7"]
+resource_name = "moveUpRight"
+length = 0.40002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [23, 22]
+}
+
+[sub_resource type="Animation" id="Animation_iq6r8"]
+resource_name = "death"
+length = 1.00001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54, 55, 56, 57, 58, 76]
+}
+
+[sub_resource type="Animation" id="Animation_rnbdc"]
+resource_name = "idleDownLeft"
+length = 0.40002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [21, 20]
+}
+
+[sub_resource type="Animation" id="Animation_all5f"]
+resource_name = "idleDownRight"
+length = 0.40002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [19, 18]
+}
+
 [sub_resource type="Animation" id="Animation_cmtkr"]
-resource_name = "moveUpLeft"
+resource_name = "idleUpLeft"
 length = 0.40002
 loop_mode = 1
 step = 0.2
@@ -71,8 +144,8 @@ tracks/0/keys = {
 "values": [25, 24]
 }
 
-[sub_resource type="Animation" id="Animation_l6sv7"]
-resource_name = "moveUpRight"
+[sub_resource type="Animation" id="Animation_gv2b7"]
+resource_name = "idleUpRight"
 length = 0.40002
 loop_mode = 1
 step = 0.2
@@ -92,9 +165,13 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iq6r8"]
 _data = {
 &"RESET": SubResource("Animation_sjrea"),
+&"death": SubResource("Animation_iq6r8"),
+&"idleDownLeft": SubResource("Animation_rnbdc"),
+&"idleDownRight": SubResource("Animation_all5f"),
+&"idleUpLeft": SubResource("Animation_cmtkr"),
+&"idleUpRight": SubResource("Animation_gv2b7"),
 &"moveDownLeft": SubResource("Animation_k4bj0"),
 &"moveDownRight": SubResource("Animation_cmyp1"),
-&"moveUpLeft": SubResource("Animation_cmtkr"),
 &"moveUpRight": SubResource("Animation_l6sv7")
 }
 
@@ -102,6 +179,7 @@ _data = {
 radius = 5.25
 
 [node name="Bat" type="CharacterBody2D"]
+script = ExtResource("1_k4bj0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cmyp1")
@@ -118,3 +196,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.21, -1.575)
 shape = SubResource("CircleShape2D_sjrea")
+
+[node name="RandomWalk" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("2_sjrea")]
+subject = NodePath("..")

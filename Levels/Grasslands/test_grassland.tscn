@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://de2r1jwa6j27j"]
+[gd_scene load_steps=11 format=4 uid="uid://de2r1jwa6j27j"]
 
 [ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Levels/Grasslands/tileset/Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
 [ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="3_g14j6"]
 [ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Enemies/Orc/orc.tscn" id="4_qq7l6"]
+[ext_resource type="PackedScene" uid="uid://chc6v32x7m2yv" path="res://Entities/Enemies/Bat/bat.tscn" id="5_5gwyr"]
 [ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://Levels/Grasslands/dungeon_entrance.gd" id="7_6tck0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6uqi0"]
@@ -1480,6 +1481,11 @@ shape = SubResource("RectangleShape2D_amg52")
 debug_color = Color(0.857193, 0.000730432, 0.882629, 0.42)
 
 [node name="Orc" parent="." instance=ExtResource("4_qq7l6")]
+z_index = 1
 position = Vector2(80, 26)
+
+[node name="Bat" parent="." instance=ExtResource("5_5gwyr")]
+z_index = 1
+position = Vector2(71, 47)
 
 [connection signal="body_entered" from="DungeonEntrance" to="DungeonEntrance" method="_on_dungeon_entrance_area_entered"]
