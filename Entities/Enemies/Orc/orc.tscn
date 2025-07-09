@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=24 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Utilities/Hurtbox.tscn" id="4_dl5bh"]
+[ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Utilities/Hitbox.tscn" id="4_mdd63"]
 [ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Enemies/AI/RandomWalk.tscn" id="4_tv237"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
@@ -273,6 +274,9 @@ radius = 3.75
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdd63"]
 size = Vector2(7, 7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d02bw"]
+size = Vector2(14.75, 13)
+
 [node name="Orc" type="CharacterBody2D"]
 script = ExtResource("1_tv237")
 
@@ -297,6 +301,13 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_mdd63")
 debug_color = Color(0, 1, 0, 0.313726)
 
+[node name="Hitbox" parent="." instance=ExtResource("4_mdd63")]
+damage = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_d02bw")
+debug_color = Color(1, 0, 0, 0.419608)
+
 [node name="RandomWalk" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("4_tv237")]
 subject = NodePath("..")
 
@@ -304,3 +315,4 @@ subject = NodePath("..")
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
+[editable path="Hitbox"]

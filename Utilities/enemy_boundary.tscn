@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2fm5hsiicw8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpy8c"]
-size = Vector2(41, 4)
+size = Vector2(7, 30)
 
 [node name="EnemyBoundary" type="StaticBody2D"]
 collision_layer = 16

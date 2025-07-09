@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
-@export var speed = 50
 @export var inventory: Inventory
+
+var speed = 50
+var max_health = 3
+var current_health = max_health
 
 signal moved_to_new_map_cell(cell)
 
@@ -108,4 +111,18 @@ func _physics_process(_delta):
 
 
 func _on_animation_finished(anim_name) -> void:
+	if anim_name == "death":
+		queue_free()
 	animation_locked = false
+	$AnimationPlayer.play("RESET")
+
+
+func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
+	current_health -= hitbox.damage
+	print(current_health)
+	if current_health > 0:
+		$AnimationPlayer.play("damaged" + facing)
+		animation_locked = true
+	else:
+		$AnimationPlayer.play("death")
+		animation_locked = true
