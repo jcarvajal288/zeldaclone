@@ -12,34 +12,34 @@ var animation_locked = false
 
 var current_map_cell = Vector2i.ZERO
 
-func _play_walking_animation():
+func _play_moving_animation():
 	if Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_up"):
-			animation_player.play("walkUpRight")
+			animation_player.play("moveUpRight")
 			facing = "UpRight"
 		else:
-			animation_player.play("walkDownRight")
+			animation_player.play("moveDownRight")
 			facing = "DownRight"
 	elif Input.is_action_pressed("ui_left"):
 		if Input.is_action_pressed("ui_up"):
-			animation_player.play("walkUpLeft")
+			animation_player.play("moveUpLeft")
 			facing = "UpLeft"
 		else:
-			animation_player.play("walkDownLeft")
+			animation_player.play("moveDownLeft")
 			facing = "DownLeft"
 	elif Input.is_action_pressed("ui_up"):
 		if Input.is_action_pressed("ui_left"):
-			animation_player.play("walkUpLeft")
+			animation_player.play("moveUpLeft")
 			facing = "UpLeft"
 		else:
-			animation_player.play("walk" + facing)
+			animation_player.play("move" + facing)
 			facing = facing.replace("Down", "Up")
 	elif Input.is_action_pressed("ui_down"):
 		if Input.is_action_pressed("ui_left"):
-			animation_player.play("walkDownLeft")
+			animation_player.play("moveDownLeft")
 			facing = "DownLeft"
 		else:
-			animation_player.play("walk" + facing)
+			animation_player.play("move" + facing)
 			facing = facing.replace("Up", "Down")
 		
 func _play_attack_animation(input_direction: Vector2):
@@ -95,7 +95,7 @@ func get_input():
 		
 	if input_direction != Vector2.ZERO:
 		velocity = input_direction * speed
-		_play_walking_animation()
+		_play_moving_animation()
 	else:
 		velocity = Vector2.ZERO
 		animation_player.play("idle" + facing)

@@ -45,11 +45,11 @@ func play_move_animation():
 		play_random_idle_animation()
 	elif velocity.x > 0:
 		if velocity.y > 0:
-			$AnimationPlayer.play("walkDownRight")
+			$AnimationPlayer.play("moveDownRight")
 		else:
-			$AnimationPlayer.play("walkUpRight")
+			$AnimationPlayer.play("moveUpRight")
 	elif velocity.x < 0:
 		if velocity.y > 0:
-			$AnimationPlayer.play("walkDownLeft")
+			$AnimationPlayer.play("moveDownLeft")
 		else:
-			$AnimationPlayer.play("walkUpLeft")
+			$AnimationPlayer.play("moveUpLeft")
