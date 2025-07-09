@@ -704,10 +704,10 @@ _data = {
 radius = 3.75
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wf4l"]
-size = Vector2(8, 8)
+size = Vector2(6, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01a4e"]
-size = Vector2(7.5, 7)
+size = Vector2(7.5, 8.5)
 
 [node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("inventory")]
 z_index = 5
@@ -739,7 +739,7 @@ script = ExtResource("4_tekja")
 [node name="Hurtbox" parent="." instance=ExtResource("3_5c2io")]
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0, -1)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4wf4l")
 debug_color = Color(0, 1, 0, 0.419608)
 
@@ -748,9 +748,10 @@ rotation = 1.5708
 
 [node name="Hitbox" parent="HitboxPivot" instance=ExtResource("6_4wf4l")]
 damage = 1
+alignment = 0
 
 [node name="CollisionShape2D" parent="HitboxPivot/Hitbox" index="0"]
-position = Vector2(0.25, -7)
+position = Vector2(0.25, -7.75)
 shape = SubResource("RectangleShape2D_01a4e")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)

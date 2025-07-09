@@ -275,7 +275,7 @@ radius = 3.75
 size = Vector2(7, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d02bw"]
-size = Vector2(14.75, 13)
+size = Vector2(7, 7)
 
 [node name="Orc" type="CharacterBody2D"]
 script = ExtResource("1_tv237")
@@ -297,7 +297,7 @@ shape = SubResource("CircleShape2D_jts6d")
 [node name="Hurtbox" parent="." instance=ExtResource("4_dl5bh")]
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(-0.5, -0.5)
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_mdd63")
 debug_color = Color(0, 1, 0, 0.313726)
 
@@ -305,6 +305,7 @@ debug_color = Color(0, 1, 0, 0.313726)
 damage = 1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_d02bw")
 debug_color = Color(1, 0, 0, 0.419608)
 

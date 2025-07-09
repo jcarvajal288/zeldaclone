@@ -15,6 +15,8 @@ func _ready():
 	play_random_idle_animation()
 	
 func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
+	if hitbox.alignment == Global.Alignment.EVIL:
+		return
 	current_health -= hitbox.damage
 	if current_health > 0:
 		$AnimationPlayer.play("damaged" + facing)

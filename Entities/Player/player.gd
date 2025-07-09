@@ -118,8 +118,9 @@ func _on_animation_finished(anim_name) -> void:
 
 
 func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
+	if hitbox.alignment == Global.Alignment.GOOD:
+		return
 	current_health -= hitbox.damage
-	print(current_health)
 	if current_health > 0:
 		$AnimationPlayer.play("damaged" + facing)
 		animation_locked = true
