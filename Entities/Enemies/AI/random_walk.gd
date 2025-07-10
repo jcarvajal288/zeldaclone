@@ -6,8 +6,9 @@ func _ready():
 	change_direction()
 	
 func _process(delta: float) -> void:
-	subject.move_and_slide()
-	subject.play_move_animation()
+	if not subject.animation_locked:
+		subject.move_and_slide()
+		subject.play_move_animation()
 	
 func _on_walk_timer_timeout() -> void:
 	change_direction()
