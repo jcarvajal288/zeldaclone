@@ -21,20 +21,19 @@ func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
 		return
 	current_health -= hitbox.damage
 	if current_health > 0:
+		_impact_bounce(hitbox)
 		$AnimationPlayer.play("damaged" + facing)
 		animation_locked = true
 	else:
 		$AnimationPlayer.play("death")
+		velocity = Vector2.ZERO
 		animation_locked = true
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		queue_free()
-	#elif anim_name.begins_with("damaged"):
-		#$AnimationPlayer.play("idle" + facing)
 	animation_locked = false
-	print("resetting")
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.seek(1)
 		
@@ -69,3 +68,8 @@ func play_move_animation():
 			$AnimationPlayer.play("moveDownLeft")
 		else:
 			$AnimationPlayer.play("moveUpLeft")
+
+func _impact_bounce(hitbox: Hitbox):
+	var hitbox_position = hitbox.owning_character.position
+	var bounce_direction = (self.position - hitbox_position).normalized()
+	velocity = 50 * bounce_direction

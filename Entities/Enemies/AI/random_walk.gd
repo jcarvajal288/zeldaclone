@@ -7,11 +7,12 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	if not subject.animation_locked:
-		subject.move_and_slide()
 		subject.play_move_animation()
+	subject.move_and_slide()
 	
 func _on_walk_timer_timeout() -> void:
-	change_direction()
+	if not subject.animation_locked:
+		change_direction()
 	
 func change_direction():
 	var random_x = Global.rng.randf_range(-1, 1)

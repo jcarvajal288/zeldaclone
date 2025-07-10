@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var inventory: Inventory
 
 var speed = 50
-var max_health = 3
+var max_health = 300
 var current_health = max_health
 
 signal moved_to_new_map_cell(cell)

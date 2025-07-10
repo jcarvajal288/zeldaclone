@@ -746,9 +746,10 @@ debug_color = Color(0, 1, 0, 0.419608)
 [node name="HitboxPivot" type="Marker2D" parent="."]
 rotation = 1.5708
 
-[node name="Hitbox" parent="HitboxPivot" instance=ExtResource("6_4wf4l")]
+[node name="Hitbox" parent="HitboxPivot" node_paths=PackedStringArray("owning_character") instance=ExtResource("6_4wf4l")]
 damage = 1
 alignment = 0
+owning_character = NodePath("../..")
 
 [node name="CollisionShape2D" parent="HitboxPivot/Hitbox" index="0"]
 position = Vector2(0.25, -7.75)
