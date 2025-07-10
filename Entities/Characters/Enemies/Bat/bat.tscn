@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://chc6v32x7m2yv"]
 
-[ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
-[ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Enemies/Bat/bat.gd" id="1_k4bj0"]
-[ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Enemies/AI/RandomWalk.tscn" id="2_sjrea"]
+[ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Characters/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
+[ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Characters/Enemies/Bat/bat.gd" id="1_k4bj0"]
+[ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk.tscn" id="2_sjrea"]
 
 [sub_resource type="Animation" id="Animation_sjrea"]
 length = 0.001

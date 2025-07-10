@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj3l437121rlo" path="res://src/camera.gd" id="1_d5x1h"]
 [ext_resource type="Script" uid="uid://dinmjrryiyo0g" path="res://src/game_controller.gd" id="1_nfk4m"]
-[ext_resource type="PackedScene" uid="uid://u1x1r0jf530w" path="res://Entities/Player/player.tscn" id="3_hq1ik"]
+[ext_resource type="PackedScene" uid="uid://u1x1r0jf530w" path="res://Entities/Characters/Player/player.tscn" id="3_hq1ik"]
 [ext_resource type="Script" uid="uid://bnrjmt5osw1jw" path="res://Levels/level_manager.gd" id="7_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://de2r1jwa6j27j" path="res://Levels/Grasslands/test_grassland.tscn" id="7_66tet"]
 [ext_resource type="PackedScene" uid="uid://cknydywmvj1od" path="res://Levels/Dungeon/test_dungeon.tscn" id="8_7ycvg"]

@@ -1,19 +1,18 @@
-extends CharacterBody2D
+extends Character
 
 @export var inventory: Inventory
-
-var speed = 50
-var max_health = 300
-var current_health = max_health
 
 signal moved_to_new_map_cell(cell)
 
 @onready var animation_player = $AnimationPlayer
 
-var facing = "DownRight"
-var animation_locked = false
-
 var current_map_cell = Vector2i.ZERO
+
+func _init():
+	var speed = 50
+	var max_health = 300
+	super(max_health, speed)
+	alignment = Global.Alignment.GOOD
 
 func _play_moving_animation():
 	if Input.is_action_pressed("ui_right"):
@@ -107,23 +106,23 @@ func get_input():
 func _physics_process(_delta):
 	if not animation_locked:
 		get_input()
-		move_and_slide()
+	move_and_slide()
 
 
-func _on_animation_finished(anim_name) -> void:
-	if anim_name == "death":
-		queue_free()
-	animation_locked = false
-	$AnimationPlayer.play("RESET")
+#func _on_animation_finished(anim_name) -> void:
+	#if anim_name == "death":
+		#queue_free()
+	#animation_locked = false
+	#$AnimationPlayer.play("RESET")
 
 
-func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
-	if hitbox.alignment == Global.Alignment.GOOD:
-		return
-	current_health -= hitbox.damage
-	if current_health > 0:
-		$AnimationPlayer.play("damaged" + facing)
-		animation_locked = true
-	else:
-		$AnimationPlayer.play("death")
-		animation_locked = true
+#func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
+	#if hitbox.alignment == Global.Alignment.GOOD:
+		#return
+	#current_health -= hitbox.damage
+	#if current_health > 0:
+		#$AnimationPlayer.play("damaged" + facing)
+		#animation_locked = true
+	#else:
+		#$AnimationPlayer.play("death")
+		#animation_locked = true

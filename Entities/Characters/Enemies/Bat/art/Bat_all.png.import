@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://e0c0ln23wvk2"
-path="res://.godot/imported/Bat_all.png-cf5b6cab87d9603e7b9167de03dd87fa.ctex"
+path="res://.godot/imported/Bat_all.png-c967e1630c869dd6e1b636adba3f21f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Bat/art/Bat_all.png"
-dest_files=["res://.godot/imported/Bat_all.png-cf5b6cab87d9603e7b9167de03dd87fa.ctex"]
+source_file="res://Entities/Characters/Enemies/Bat/art/Bat_all.png"
+dest_files=["res://.godot/imported/Bat_all.png-c967e1630c869dd6e1b636adba3f21f9.ctex"]
 
 [params]
 
