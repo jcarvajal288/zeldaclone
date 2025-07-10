@@ -1,8 +1,8 @@
 class_name Enemy extends Character
 
 
-func _init(hp, spd):
-	super(hp, spd)
+func _init(spd):
+	super(spd)
 	set_collision_mask_value(5, true)
 
 

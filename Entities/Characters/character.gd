@@ -2,29 +2,16 @@ class_name Character extends CharacterBody2D
 
 var alignment = Global.Alignment.EVIL
 var facing = "DownRight"
-var max_health = 1
-var current_health = max_health
 var speed = 1
 
 var animation_locked = false
 
-func _init(hp, spd):
-	max_health = hp
-	current_health = max_health
+func _init(spd):
 	speed = spd
-
-func _on_hurtbox_area_entered(hitbox: Hitbox) -> void:
-	if hitbox.alignment == alignment:
-		return
-	current_health -= hitbox.damage
-	if current_health > 0:
-		_impact_bounce(hitbox)
-		$AnimationPlayer.play("damaged" + facing)
-		animation_locked = true
-	else:
-		$AnimationPlayer.play("death")
-		velocity = Vector2.ZERO
-		animation_locked = true
+	
+func play_animation(animation_name, should_lock):
+	$AnimationPlayer.play(animation_name)
+	animation_locked = should_lock
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

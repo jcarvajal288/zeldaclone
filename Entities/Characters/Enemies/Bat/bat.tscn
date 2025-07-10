@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://chc6v32x7m2yv"]
+[gd_scene load_steps=18 format=3 uid="uid://chc6v32x7m2yv"]
 
 [ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Characters/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
 [ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Characters/Enemies/Bat/bat.gd" id="1_k4bj0"]
 [ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk.tscn" id="2_sjrea"]
+[ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health.tscn" id="4_ln0j2"]
+[ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox.tscn" id="5_8hvql"]
 
 [sub_resource type="Animation" id="Animation_sjrea"]
 length = 0.001
@@ -178,6 +180,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjrea"]
 radius = 5.25
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvql"]
+size = Vector2(10, 10)
+
 [node name="Bat" type="CharacterBody2D"]
 script = ExtResource("1_k4bj0")
 
@@ -194,8 +199,21 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.21, -1.575)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_sjrea")
 
 [node name="RandomWalk" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("2_sjrea")]
 subject = NodePath("..")
+
+[node name="Health" parent="." instance=ExtResource("4_ln0j2")]
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("5_8hvql")]
+owning_character = NodePath("..")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_8hvql")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[editable path="Hurtbox"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=34 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://dlhwoq0yc7cj1" path="res://Entities/Characters/Player/art/Human_all.png" id="2_tekja"]
-[ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Utilities/Hurtbox.tscn" id="3_5c2io"]
+[ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox.tscn" id="3_5c2io"]
+[ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health.tscn" id="3_guu5u"]
 [ext_resource type="Script" uid="uid://cmqg0vw2vlqnq" path="res://Entities/Characters/Player/inventory.gd" id="4_tekja"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Utilities/Hitbox.tscn" id="6_4wf4l"]
+[ext_resource type="Script" uid="uid://b5ylh55j0x8hb" path="res://Entities/Characters/Components/hurtbox.gd" id="6_bagdn"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -728,6 +730,9 @@ libraries = {
 }
 autoplay = "idleDownRight"
 
+[node name="Health" parent="." instance=ExtResource("3_guu5u")]
+max_health = 3
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
 position = Vector2(-0.195, -0.29)
@@ -736,7 +741,10 @@ shape = SubResource("CircleShape2D_7ycvg")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("4_tekja")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_5c2io")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("3_5c2io")]
+script = ExtResource("6_bagdn")
+owning_character = NodePath("..")
+health = NodePath("../Health")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(0, -0.5)
@@ -758,7 +766,7 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]
