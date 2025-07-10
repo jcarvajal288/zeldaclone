@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
-[ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health.tscn" id="3_qm0o1"]
-[ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox.tscn" id="4_dl5bh"]
-[ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Utilities/Hitbox.tscn" id="4_mdd63"]
+[ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="3_qm0o1"]
+[ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="4_dl5bh"]
+[ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
 [ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk.tscn" id="4_tv237"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]

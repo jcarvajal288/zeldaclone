@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="3_g14j6"]
 [ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Characters/Enemies/Orc/orc.tscn" id="4_qq7l6"]
 [ext_resource type="PackedScene" uid="uid://chc6v32x7m2yv" path="res://Entities/Characters/Enemies/Bat/bat.tscn" id="5_vyboh"]
-[ext_resource type="PackedScene" uid="uid://b2fm5hsiicw8s" path="res://Utilities/enemy_boundary.tscn" id="6_vyboh"]
+[ext_resource type="PackedScene" uid="uid://b2fm5hsiicw8s" path="res://Levels/Components/enemy_boundary.tscn" id="6_vyboh"]
 [ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://Levels/Grasslands/dungeon_entrance.gd" id="7_6tck0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6uqi0"]
