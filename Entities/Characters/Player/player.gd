@@ -16,56 +16,27 @@ func _init():
 func _play_moving_animation():
 	if Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_up"):
-			animation_player.play("moveUpRight")
-			facing = "UpRight"
+			$AnimationPlayer.facing = "UpRight"
 		else:
-			animation_player.play("moveDownRight")
-			facing = "DownRight"
+			$AnimationPlayer.facing = "DownRight"
 	elif Input.is_action_pressed("ui_left"):
 		if Input.is_action_pressed("ui_up"):
-			animation_player.play("moveUpLeft")
-			facing = "UpLeft"
+			$AnimationPlayer.facing = "UpLeft"
 		else:
-			animation_player.play("moveDownLeft")
-			facing = "DownLeft"
+			$AnimationPlayer.facing = "DownLeft"
 	elif Input.is_action_pressed("ui_up"):
 		if Input.is_action_pressed("ui_left"):
-			animation_player.play("moveUpLeft")
-			facing = "UpLeft"
+			$AnimationPlayer.facing = "UpLeft"
 		else:
-			animation_player.play("move" + facing)
-			facing = facing.replace("Down", "Up")
+			$AnimationPlayer.facing.replace("Down", "Up")
 	elif Input.is_action_pressed("ui_down"):
 		if Input.is_action_pressed("ui_left"):
-			animation_player.play("moveDownLeft")
-			facing = "DownLeft"
+			$AnimationPlayer.facing = "DownLeft"
 		else:
-			animation_player.play("move" + facing)
-			facing = facing.replace("Up", "Down")
+			$AnimationPlayer.facing.replace("Up", "Down")
+	$AnimationPlayer.play_move_animation()
+			
 		
-func _play_attack_animation(input_direction: Vector2):
-	if input_direction == Vector2(0, -1):
-		if facing.contains("Left"):
-			animation_player.play("attackUpSlashLeft")
-		else:
-			animation_player.play("attackUpSlashRight")
-	elif input_direction == Vector2(0, 1):
-		if facing.contains("Left"):
-			animation_player.play("attackDownSlashLeft")
-		else:
-			animation_player.play("attackDownSlashRight")
-	elif input_direction == Vector2(-1, 0):
-		if facing.contains("Up"):
-			animation_player.play("attackUpSlashLeft")
-		else:
-			animation_player.play("attackDownLeft")
-	elif input_direction == Vector2(1, 0):
-		if facing.contains("Up"):
-			animation_player.play("attackUpRight")
-		else:
-			animation_player.play("attackDownRight")
-	else: 
-		animation_player.play("attack" + facing)
 		
 		
 func _set_camera_position():
@@ -90,8 +61,7 @@ func get_input():
 	var is_attacking = Input.is_action_just_pressed("action_left")
 	if is_attacking:
 		velocity = Vector2.ZERO
-		_play_attack_animation(input_direction)
-		animation_locked = true
+		$AnimationPlayer.play_attack_animation(input_direction)
 		return
 		
 	if input_direction != Vector2.ZERO:
@@ -99,10 +69,10 @@ func get_input():
 		_play_moving_animation()
 	else:
 		velocity = Vector2.ZERO
-		animation_player.play("idle" + facing)
+		$AnimationPlayer.play_idle_animation()
 	_set_camera_position()
 	
 func _physics_process(_delta):
-	if not animation_locked:
+	if not $AnimationPlayer.animation_locked:
 		get_input()
 	move_and_slide()

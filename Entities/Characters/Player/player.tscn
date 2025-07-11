@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=34 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://dlhwoq0yc7cj1" path="res://Entities/Characters/Player/art/Human_all.png" id="2_tekja"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="3_5c2io"]
+[ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_bagdn"]
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="3_guu5u"]
 [ext_resource type="Script" uid="uid://cmqg0vw2vlqnq" path="res://Entities/Characters/Player/inventory.gd" id="4_tekja"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="6_4wf4l"]
@@ -728,6 +729,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_x1y6q")
 }
 autoplay = "idleDownRight"
+script = ExtResource("3_bagdn")
 
 [node name="Health" parent="." instance=ExtResource("3_guu5u")]
 max_health = 3
@@ -740,8 +742,9 @@ shape = SubResource("CircleShape2D_7ycvg")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("4_tekja")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("3_5c2io")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("owning_character", "animation_player", "health") instance=ExtResource("3_5c2io")]
 owning_character = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

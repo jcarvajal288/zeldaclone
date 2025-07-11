@@ -1,17 +1,21 @@
 extends Node
 
 @export var subject: CharacterBody2D
+@export var animation_player: AnimationPlayer
 
 func _ready():
 	change_direction()
 	
 func _process(delta: float) -> void:
-	if not subject.animation_locked:
-		subject.play_move_animation()
+	print(animation_player.current_animation)
+	if subject.velocity == Vector2.ZERO and not animation_player.current_animation.contains("idle"):
+		animation_player.play_random_idle_animation()
+	else:
+		animation_player.play_move_animation()
 	subject.move_and_slide()
 	
 func _on_walk_timer_timeout() -> void:
-	if not subject.animation_locked:
+	if not animation_player.animation_locked:
 		change_direction()
 	
 func change_direction():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=26 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="3_qm0o1"]
+[ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_t4s6y"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="4_dl5bh"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
 [ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk.tscn" id="4_tv237"]
@@ -363,6 +364,7 @@ vframes = 10
 libraries = {
 &"": SubResource("AnimationLibrary_bk6u0")
 }
+script = ExtResource("3_t4s6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jts6d")
@@ -370,8 +372,9 @@ shape = SubResource("CircleShape2D_jts6d")
 [node name="Health" parent="." instance=ExtResource("3_qm0o1")]
 max_health = 2
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("4_dl5bh")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("owning_character", "animation_player", "health") instance=ExtResource("4_dl5bh")]
 owning_character = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
@@ -388,10 +391,10 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_d02bw")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="RandomWalk" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("4_tv237")]
+[node name="RandomWalk" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("4_tv237")]
 subject = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 
 [editable path="Hurtbox"]

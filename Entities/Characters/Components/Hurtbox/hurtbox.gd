@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var owning_character: Character
+@export var animation_player: AnimationPlayer
 @export var health: Health 
 
 
@@ -19,15 +20,13 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	deal_damage(hitbox.damage)
 	if health.not_dead():
 		_impact_bounce(hitbox)
-		owning_character.play_animation("damaged" + owning_character.facing, true)
+		animation_player.play_damaged_animation()
 	else:
-		owning_character.play_animation("death", true)
+		animation_player.play_death_animation()
 		owning_character.velocity = Vector2.ZERO
 		
 
 func _impact_bounce(hitbox: Hitbox):
 	var hitbox_position = hitbox.owning_character.position
 	var bounce_direction = (owning_character.position - hitbox_position).normalized()
-	print(hitbox_position)
-	print(owning_character.position)
 	owning_character.velocity = 50 * bounce_direction
