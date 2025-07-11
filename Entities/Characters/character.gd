@@ -21,7 +21,3 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.seek(1)
 	
-func _impact_bounce(hitbox: Hitbox):
-	var hitbox_position = hitbox.owning_character.position
-	var bounce_direction = (self.position - hitbox_position).normalized()
-	velocity = 50 * bounce_direction
