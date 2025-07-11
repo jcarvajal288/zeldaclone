@@ -15,6 +15,19 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	self.seek(1)
 	
 	
+func set_facing(direction: Vector2):
+	if direction.x > 0:
+		if direction.y > 0:
+			facing = "DownRight"
+		else:
+			facing = "UpRight"
+	elif direction.x < 0:
+		if direction.y > 0:
+			facing = "DownLeft"
+		else:
+			facing = "UpLeft"
+	
+	
 func play_idle_animation():
 	if not animation_locked:
 		self.play("idle" + facing)

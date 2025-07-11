@@ -22,4 +22,5 @@ func change_direction():
 	var random_y = Global.rng.randf_range(-1, 1)
 	var random_direction = Vector2(random_x, random_y).normalized()
 	subject.velocity = subject.speed * random_direction
+	animation_player.set_facing(random_direction)
 	$WalkTimer.start()
