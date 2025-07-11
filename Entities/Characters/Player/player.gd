@@ -9,35 +9,10 @@ signal moved_to_new_map_cell(cell)
 var current_map_cell = Vector2i.ZERO
 
 func _init():
-	var speed = 50
-	super(speed)
+	var spd = 50
+	super(spd)
 	alignment = Global.Alignment.GOOD
 
-func _play_moving_animation():
-	if Input.is_action_pressed("ui_right"):
-		if Input.is_action_pressed("ui_up"):
-			$AnimationPlayer.facing = "UpRight"
-		else:
-			$AnimationPlayer.facing = "DownRight"
-	elif Input.is_action_pressed("ui_left"):
-		if Input.is_action_pressed("ui_up"):
-			$AnimationPlayer.facing = "UpLeft"
-		else:
-			$AnimationPlayer.facing = "DownLeft"
-	elif Input.is_action_pressed("ui_up"):
-		if Input.is_action_pressed("ui_left"):
-			$AnimationPlayer.facing = "UpLeft"
-		else:
-			$AnimationPlayer.facing.replace("Down", "Up")
-	elif Input.is_action_pressed("ui_down"):
-		if Input.is_action_pressed("ui_left"):
-			$AnimationPlayer.facing = "DownLeft"
-		else:
-			$AnimationPlayer.facing.replace("Up", "Down")
-	$AnimationPlayer.play_move_animation()
-			
-		
-		
 		
 func _set_camera_position():
 	var position_x = self.position.x
@@ -66,7 +41,8 @@ func get_input():
 		
 	if input_direction != Vector2.ZERO:
 		velocity = input_direction * speed
-		_play_moving_animation()
+		$AnimationPlayer.set_facing(input_direction)
+		$AnimationPlayer.play_move_animation()
 	else:
 		velocity = Vector2.ZERO
 		$AnimationPlayer.play_idle_animation()
