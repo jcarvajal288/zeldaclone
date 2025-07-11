@@ -31,24 +31,9 @@ func _set_camera_position():
 		
 	
 
-func get_input():
-	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var is_attacking = Input.is_action_just_pressed("action_left")
-	if is_attacking:
-		velocity = Vector2.ZERO
-		$AnimationPlayer.play_attack_animation(input_direction)
-		return
-		
-	if input_direction != Vector2.ZERO:
-		velocity = input_direction * speed
-		$AnimationPlayer.set_facing(input_direction)
-		$AnimationPlayer.play_move_animation()
-	else:
-		velocity = Vector2.ZERO
-		$AnimationPlayer.play_idle_animation()
-	_set_camera_position()
 	
 func _physics_process(_delta):
 	if not $AnimationPlayer.animation_locked:
-		get_input()
+		$InputController.get_input()
+		_set_camera_position()
 	move_and_slide()

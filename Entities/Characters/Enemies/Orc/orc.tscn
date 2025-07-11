@@ -355,7 +355,6 @@ size = Vector2(7, 7)
 script = ExtResource("1_tv237")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
 texture = ExtResource("2_ylupx")
 hframes = 16
 vframes = 10
@@ -378,7 +377,6 @@ animation_player = NodePath("../AnimationPlayer")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_mdd63")
 debug_color = Color(0, 1, 0, 0.313726)
 
@@ -387,15 +385,12 @@ damage = 1
 owning_character = NodePath("..")
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_d02bw")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="RandomWalk" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("4_tv237")]
 subject = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
-
-[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

@@ -1,5 +1,5 @@
 extends Enemy
 
 func _init():
-	var speed = 30
-	super(speed)
+	var spd = 30
+	super(spd)

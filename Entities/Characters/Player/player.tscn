@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=35 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
+[ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
 [ext_resource type="Texture2D" uid="uid://dlhwoq0yc7cj1" path="res://Entities/Characters/Player/art/Human_all.png" id="2_tekja"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="3_5c2io"]
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_bagdn"]
@@ -719,6 +720,10 @@ collision_mask = 13
 script = ExtResource("1_lu8i8")
 inventory = NodePath("Inventory")
 
+[node name="InputController" parent="." node_paths=PackedStringArray("owning_character", "animation_player") instance=ExtResource("2_bagdn")]
+owning_character = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tekja")
 hframes = 16
@@ -757,7 +762,6 @@ rotation = 1.5708
 
 [node name="Hitbox" parent="HitboxPivot" node_paths=PackedStringArray("owning_character") instance=ExtResource("6_4wf4l")]
 damage = 1
-alignment = 0
 owning_character = NodePath("../..")
 
 [node name="CollisionShape2D" parent="HitboxPivot/Hitbox" index="0"]

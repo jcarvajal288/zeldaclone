@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody2D
 
-var alignment = Global.Alignment.EVIL
+var alignment = Global.Alignment.GOOD
 var speed = 1
 
 

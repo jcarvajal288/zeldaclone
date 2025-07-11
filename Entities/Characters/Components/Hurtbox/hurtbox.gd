@@ -15,7 +15,10 @@ func deal_damage(damage: int):
 
 
 func _on_area_entered(hitbox: Hitbox) -> void:
-	if hitbox.alignment == owning_character.alignment:
+	if owning_character == null:
+		return
+	if hitbox.owning_character.alignment == owning_character.alignment:
+		print("same alignment")
 		return
 	deal_damage(hitbox.damage)
 	if health.not_dead():
