@@ -7,10 +7,9 @@ func _ready():
 	change_direction()
 	
 func _process(delta: float) -> void:
-	print(animation_player.current_animation)
 	if subject.velocity == Vector2.ZERO and not animation_player.current_animation.contains("idle"):
 		animation_player.play_random_idle_animation()
-	else:
+	elif subject.velocity != Vector2.ZERO:
 		animation_player.play_move_animation()
 	subject.move_and_slide()
 	
