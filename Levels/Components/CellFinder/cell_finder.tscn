@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://df2uqw3lmb136"]
+
+[ext_resource type="Script" uid="uid://dxmh3xlqakldv" path="res://Levels/Components/CellFinder/cell_finder.gd" id="1_t55cu"]
+
+[node name="CellFinder" type="Node"]
+script = ExtResource("1_t55cu")

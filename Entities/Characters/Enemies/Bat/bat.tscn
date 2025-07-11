@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Characters/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
 [ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Characters/Enemies/Bat/bat.gd" id="1_k4bj0"]
-[ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk.tscn" id="2_sjrea"]
+[ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk/RandomWalk.tscn" id="2_sjrea"]
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_ap0jm"]
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="4_ln0j2"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="5_8hvql"]

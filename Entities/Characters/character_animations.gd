@@ -29,12 +29,12 @@ func set_facing(direction: Vector2):
 	
 	
 func play_idle_animation():
-	if not animation_locked:
+	if not (animation_locked or self.current_animation.contains("idle")):
 		self.play("idle" + facing)
 	
 	
 func play_random_idle_animation():
-	if animation_locked:
+	if animation_locked or self.current_animation.contains("idle"):
 		return
 	var random_idle = Global.rng.randi_range(1, 4)
 	if random_idle == 1:

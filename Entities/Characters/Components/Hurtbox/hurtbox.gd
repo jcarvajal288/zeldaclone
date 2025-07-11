@@ -18,7 +18,6 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	if owning_character == null:
 		return
 	if hitbox.owning_character.alignment == owning_character.alignment:
-		print("same alignment")
 		return
 	deal_damage(hitbox.damage)
 	if health.not_dead():
@@ -31,5 +30,5 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 
 func _impact_bounce(hitbox: Hitbox):
 	var hitbox_position = hitbox.owning_character.position
-	var bounce_direction = (owning_character.position - hitbox_position).normalized()
+	var bounce_direction = hitbox_position.direction_to(owning_character.position)
 	owning_character.velocity = 50 * bounce_direction

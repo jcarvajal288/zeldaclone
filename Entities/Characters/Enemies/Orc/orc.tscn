@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_t4s6y"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="4_dl5bh"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
-[ext_resource type="PackedScene" uid="uid://b3ai72wsdhn23" path="res://Entities/Characters/Enemies/AI/RandomWalk.tscn" id="4_tv237"]
+[ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="7_qm0o1"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
 length = 0.001
@@ -388,9 +388,10 @@ owning_character = NodePath("..")
 shape = SubResource("RectangleShape2D_d02bw")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="RandomWalk" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("4_tv237")]
+[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("7_qm0o1")]
 subject = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
+tile_distance_to_notice_player = 8
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

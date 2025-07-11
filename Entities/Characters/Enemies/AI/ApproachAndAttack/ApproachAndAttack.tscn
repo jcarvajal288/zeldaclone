@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxi7h8axcujad"]
+
+[ext_resource type="Script" uid="uid://ccssogfjg2hid" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/approach_and_attack.gd" id="1_cxsbg"]
+[ext_resource type="PackedScene" uid="uid://df2uqw3lmb136" path="res://Levels/Components/CellFinder/cell_finder.tscn" id="2_wq5ib"]
+
+[node name="ApproachAndAttack" type="Node"]
+script = ExtResource("1_cxsbg")
+
+[node name="CellFinder" parent="." instance=ExtResource("2_wq5ib")]
