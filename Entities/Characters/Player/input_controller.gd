@@ -8,7 +8,7 @@ func get_input():
 	var is_attacking = Input.is_action_just_pressed("action_left")
 	if is_attacking:
 		owning_character.velocity = Vector2.ZERO
-		animation_player.play_attack_animation(input_direction)
+		animation_player.play_attack_animation_with_input(input_direction)
 		return
 		
 	if input_direction != Vector2.ZERO:

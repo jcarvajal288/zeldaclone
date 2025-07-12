@@ -743,6 +743,12 @@ health = NodePath("../Health")
 shape = SubResource("RectangleShape2D_mdd63")
 debug_color = Color(0, 1, 0, 0.313726)
 
+[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("7_qm0o1")]
+subject = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
+tile_distance_to_notice_player = 8
+attack_range_pixels = 16
+
 [node name="BodyHitbox" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("4_mdd63")]
 damage = 1
 owning_character = NodePath("..")
@@ -751,16 +757,11 @@ owning_character = NodePath("..")
 shape = SubResource("RectangleShape2D_d02bw")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("7_qm0o1")]
-subject = NodePath("..")
-animation_player = NodePath("../AnimationPlayer")
-tile_distance_to_notice_player = 8
-
 [node name="AttackHitboxPivot" type="Marker2D" parent="."]
 
 [node name="AttackHitbox" parent="AttackHitboxPivot" node_paths=PackedStringArray("owning_character") instance=ExtResource("4_mdd63")]
 damage = 1
-owning_character = NodePath("")
+owning_character = NodePath("../..")
 
 [node name="CollisionShape2D" parent="AttackHitboxPivot/AttackHitbox" index="0"]
 position = Vector2(-2.53062e-05, -6.75)

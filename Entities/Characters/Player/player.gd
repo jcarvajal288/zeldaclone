@@ -21,8 +21,6 @@ func _set_camera_position():
 		current_map_cell = new_map_cell
 		
 	
-
-	
 func _physics_process(_delta):
 	if not $AnimationPlayer.animation_locked:
 		$InputController.get_input()

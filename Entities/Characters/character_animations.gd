@@ -55,7 +55,7 @@ func play_move_animation():
 		self.play("move" + facing)
 
 
-func play_attack_animation(input_direction: Vector2):
+func play_attack_animation_with_input(input_direction: Vector2):
 	if input_direction == Vector2(0, -1):
 		if facing.contains("Left"):
 			self.play("attackUpSlashLeft")
@@ -81,10 +81,41 @@ func play_attack_animation(input_direction: Vector2):
 	animation_locked = true
 
 
+func play_attack_animation_with_direction(direction: Vector2):
+	var down = PI / 4
+	var down_left = 5 * PI / 8
+	var down_right = 3 * PI / 8
+	var up = 3 * PI / 4
+	var up_left = 11 * PI / 8
+	var up_right = 13 * PI / 8
+	var left = PI / 2
+	var right = 0
+	var angle = direction.angle()
+	if down_right < angle and angle <= down:
+		self.play("attackDownSlashRight")
+	elif down < angle and angle <= down_left:
+		self.play("attackDownSlashLeft")
+	elif up_left < angle and angle <= up:
+		self.play("attackUpSlashLeft")
+	elif up < angle and angle <= up_right:
+		self.play("attackUpSlashRight")
+	elif right < angle and angle <= down:
+		self.play("attackDownRight")
+	elif down < angle and angle <= left:
+		self.play("attackDownLeft")
+	elif left < angle and angle <= up:
+		self.play("attackUpLeft")
+	else:
+		self.play("attackUpRight")
+	animation_locked = true
+		
+
+
 func play_damaged_animation():
 	self.play("damaged" + facing)
 	animation_locked = true
 	
+
 func play_death_animation():
 	self.play("death")
 	animation_locked = true
