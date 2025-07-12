@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 			move_towards_player()
 		else:
 			attack_player()
+			subject.velocity = Vector2.ZERO
 	subject.move_and_slide()
 
 
