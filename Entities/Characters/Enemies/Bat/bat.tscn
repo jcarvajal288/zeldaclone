@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chc6v32x7m2yv"]
+[gd_scene load_steps=21 format=3 uid="uid://chc6v32x7m2yv"]
 
 [ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Characters/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
 [ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Characters/Enemies/Bat/bat.gd" id="1_k4bj0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_ap0jm"]
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="4_ln0j2"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="5_8hvql"]
+[ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="7_ae0xp"]
 
 [sub_resource type="Animation" id="Animation_sjrea"]
 length = 0.001
@@ -184,6 +185,9 @@ radius = 5.25
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvql"]
 size = Vector2(10, 10)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rmswg"]
+radius = 5.3
+
 [node name="Bat" type="CharacterBody2D"]
 script = ExtResource("1_k4bj0")
 
@@ -220,4 +224,14 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_8hvql")
 debug_color = Color(0, 1, 0, 0.419608)
 
+[node name="Hitbox" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("7_ae0xp")]
+damage = 1
+owning_character = NodePath("..")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0.12, -2)
+shape = SubResource("CircleShape2D_rmswg")
+debug_color = Color(1, 0, 0, 0.419608)
+
 [editable path="Hurtbox"]
+[editable path="Hitbox"]

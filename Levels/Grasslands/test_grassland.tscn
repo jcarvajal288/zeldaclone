@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://de2r1jwa6j27j"]
+[gd_scene load_steps=12 format=4 uid="uid://de2r1jwa6j27j"]
 
 [ext_resource type="Texture2D" uid="uid://bm1uscet8n4vp" path="res://Levels/Grasslands/tileset/Minifantasy_ForgottenPlainsTiles.png" id="1_37kl0"]
 [ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="3_g14j6"]
 [ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Characters/Enemies/Orc/orc.tscn" id="4_qq7l6"]
-[ext_resource type="PackedScene" uid="uid://chc6v32x7m2yv" path="res://Entities/Characters/Enemies/Bat/bat.tscn" id="5_vyboh"]
 [ext_resource type="PackedScene" uid="uid://b2fm5hsiicw8s" path="res://Levels/Components/enemy_boundary.tscn" id="6_vyboh"]
 [ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://Levels/Grasslands/dungeon_entrance.gd" id="7_6tck0"]
 
@@ -1463,7 +1462,7 @@ metadata/_better_terrain = {
 size = Vector2(8, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8akqq"]
-size = Vector2(41, 4)
+size = Vector2(41, 6)
 
 [node name="TestGrassland" type="Node2D"]
 
@@ -1503,12 +1502,10 @@ position = Vector2(133, -92)
 z_index = 1
 position = Vector2(131, -23)
 
-[node name="Bat" parent="." instance=ExtResource("5_vyboh")]
-position = Vector2(53, 32)
-
 [node name="EnemyBoundary" parent="." instance=ExtResource("6_vyboh")]
 
 [node name="CollisionShape2D" parent="EnemyBoundary" index="0"]
+position = Vector2(79.5, 0)
 shape = SubResource("RectangleShape2D_8akqq")
 
 [node name="EnemyBoundary2" parent="." instance=ExtResource("6_vyboh")]
