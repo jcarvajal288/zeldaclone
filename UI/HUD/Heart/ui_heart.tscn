@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://digvmi0ksh2ed"]
 
-[ext_resource type="Script" uid="uid://5kwud1t47b6t" path="res://UI/HUD/ui_heart.gd" id="1_fvoli"]
-[ext_resource type="Texture2D" uid="uid://d15p2wao0rf4a" path="res://UI/HUD/art/Heart_Containers.png" id="1_tj4sn"]
+[ext_resource type="Script" uid="uid://5kwud1t47b6t" path="res://UI/HUD/Heart/ui_heart.gd" id="1_fvoli"]
+[ext_resource type="Texture2D" uid="uid://d15p2wao0rf4a" path="res://UI/HUD/Heart/art/Heart_Containers.png" id="1_tj4sn"]
 
 [node name="UiHeart" type="Node2D"]
 script = ExtResource("1_fvoli")

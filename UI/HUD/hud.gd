@@ -1,7 +1,7 @@
 extends Node2D
 
 # @export var player_health: Health
-@export var heart_scene = preload("res://UI/HUD/ui_heart.tscn")
+@export var heart_scene = preload("res://UI/HUD/Heart/ui_heart.tscn")
 
 func _ready() -> void:
 	Global.player_health_changed.connect(change_health_bar)
