@@ -747,7 +747,7 @@ debug_color = Color(0, 1, 0, 0.313726)
 subject = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
 tile_distance_to_notice_player = 8
-attack_range_pixels = 16
+attack_range_pixels = 12
 
 [node name="BodyHitbox" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("4_mdd63")]
 damage = 1
