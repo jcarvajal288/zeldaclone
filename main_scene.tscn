@@ -19,7 +19,6 @@ process_callback = 0
 script = ExtResource("1_d5x1h")
 
 [node name="Hud" parent="Camera2D" instance=ExtResource("3_nfk4m")]
-top_level = true
 z_index = 100
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_hq1ik")]
