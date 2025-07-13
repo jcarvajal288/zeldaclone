@@ -17,4 +17,4 @@ enum Alignment {
 	EVIL
 }
 
-signal health_changed
+signal player_health_changed

@@ -24,6 +24,9 @@ z_index = 100
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_hq1ik")]
 position = Vector2(80, 60)
 
+[node name="Health" parent="PlayerCharacter" index="3"]
+is_player_health = true
+
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("7_7ycvg")
 grasslands = ExtResource("7_66tet")
