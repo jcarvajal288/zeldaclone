@@ -9,12 +9,12 @@ signal died_signal
 func _ready():
 	current_health = max_health
 	if is_player_health:
-		Global.player_health_changed.emit(current_health)
+		Global.player_health_changed.emit(current_health, max_health)
 	
 func take_damage(damage: int):
 	current_health -= damage
 	if is_player_health:
-		Global.player_health_changed.emit(current_health)
+		Global.player_health_changed.emit(current_health, max_health)
 	if current_health <= 0:
 		died_signal.emit()
 		
