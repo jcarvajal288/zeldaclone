@@ -82,13 +82,14 @@ func play_attack_animation_with_input(input_direction: Vector2):
 
 
 func play_attack_animation_with_direction(direction: Vector2):
-	var down = PI / 4
+	var down = PI / 2
 	var down_left = 5 * PI / 8
 	var down_right = 3 * PI / 8
-	var up = 3 * PI / 4
-	var up_left = 11 * PI / 8
-	var up_right = 13 * PI / 8
-	var left = PI / 2
+	var up = -PI / 2
+	var up_left = -5 * PI / 8
+	var up_right = -3 * PI / 8
+	var left = PI
+	var negative_left = -PI
 	var right = 0
 	var angle = direction.angle()
 	if down_right < angle and angle <= down:
@@ -103,7 +104,7 @@ func play_attack_animation_with_direction(direction: Vector2):
 		self.play("attackDownRight")
 	elif down < angle and angle <= left:
 		self.play("attackDownLeft")
-	elif left < angle and angle <= up:
+	elif negative_left <= angle and angle <= up:
 		self.play("attackUpLeft")
 	else:
 		self.play("attackUpRight")
