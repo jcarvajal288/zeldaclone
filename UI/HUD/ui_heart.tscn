@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://digvmi0ksh2ed"]
+
+[ext_resource type="Texture2D" uid="uid://d15p2wao0rf4a" path="res://UI/HUD/art/Heart_Containers.png" id="1_tj4sn"]
+
+[node name="UiHeart" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tj4sn")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)

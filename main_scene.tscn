@@ -31,3 +31,7 @@ grasslands = ExtResource("7_66tet")
 dungeon = ExtResource("8_7ycvg")
 
 [connection signal="moved_to_new_map_cell" from="PlayerCharacter" to="Camera2D" method="move_camera_to_cell"]
+
+[editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/Hurtbox"]
+[editable path="PlayerCharacter/HitboxPivot/Hitbox"]

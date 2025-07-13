@@ -16,3 +16,5 @@ enum Alignment {
 	GOOD,
 	EVIL
 }
+
+signal health_changed
