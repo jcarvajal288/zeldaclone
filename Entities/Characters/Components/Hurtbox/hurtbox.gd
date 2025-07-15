@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var owning_character: Character
+@export var owning_character: CharacterBody2D
 @export var animation_player: AnimationPlayer
 @export var health: Health 
 
