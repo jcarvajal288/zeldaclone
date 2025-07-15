@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cknydywmvj1od"]
+[gd_scene load_steps=11 format=4 uid="uid://cknydywmvj1od"]
 
 [ext_resource type="Texture2D" uid="uid://b5qgcfwbcs0tg" path="res://Levels/Dungeon/tileset/DungeonTileset.png" id="1_7y2ak"]
 [ext_resource type="Script" uid="uid://cc817mpq7ms0v" path="res://Levels/Dungeon/dungeon_exit.gd" id="2_nsxo0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chqrw1r4mxsk7" path="res://Levels/Dungeon/Door.tscn" id="4_a8kfk"]
 [ext_resource type="PackedScene" uid="uid://chc6v32x7m2yv" path="res://Entities/Characters/Enemies/Bat/bat.tscn" id="5_82w6l"]
 [ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Characters/Enemies/Orc/orc.tscn" id="6_46ece"]
+[ext_resource type="PackedScene" uid="uid://lubcnbmncksa" path="res://Entities/Characters/Enemies/Goblin King/goblin_king.tscn" id="7_lyl1m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsxo0"]
 texture = ExtResource("1_7y2ak")
@@ -460,5 +461,8 @@ position = Vector2(189, 28)
 
 [node name="Orc2" parent="." instance=ExtResource("6_46ece")]
 position = Vector2(188, 99)
+
+[node name="GoblinKing" parent="." instance=ExtResource("7_lyl1m")]
+position = Vector2(37, 207)
 
 [connection signal="body_entered" from="DungeonExit" to="DungeonExit" method="_on_body_entered"]
