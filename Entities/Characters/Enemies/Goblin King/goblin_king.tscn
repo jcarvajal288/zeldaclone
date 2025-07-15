@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://lubcnbmncksa"]
+[gd_scene load_steps=25 format=3 uid="uid://lubcnbmncksa"]
 
 [ext_resource type="Texture2D" uid="uid://dgtm4tgjspklg" path="res://Entities/Characters/Enemies/Goblin King/art/GoblinKing_All.png" id="1_mcxld"]
 
@@ -285,9 +285,81 @@ tracks/0/keys = {
 "values": [141, 142, 143, 142]
 }
 
+[sub_resource type="Animation" id="Animation_60bja"]
+resource_name = "attackDownRight"
+length = 0.50001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [144, 145, 146, 147, 148]
+}
+
+[sub_resource type="Animation" id="Animation_736tp"]
+resource_name = "attackDownLeft"
+length = 0.50001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [149, 150, 151, 152, 153]
+}
+
+[sub_resource type="Animation" id="Animation_pythi"]
+resource_name = "attackUpRight"
+length = 0.50001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [154, 155, 156, 157, 158]
+}
+
+[sub_resource type="Animation" id="Animation_agd3s"]
+resource_name = "attackUpLeft"
+length = 0.50001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [159, 160, 161, 162, 163]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iw3py"]
 _data = {
 &"RESET": SubResource("Animation_iw3py"),
+&"attackDownLeft": SubResource("Animation_736tp"),
+&"attackDownRight": SubResource("Animation_60bja"),
+&"attackUpLeft": SubResource("Animation_agd3s"),
+&"attackUpRight": SubResource("Animation_pythi"),
 &"idleDownLeft": SubResource("Animation_v0743"),
 &"idleDownRight": SubResource("Animation_y5xpp"),
 &"idleEndDownLeft": SubResource("Animation_3yai4"),
