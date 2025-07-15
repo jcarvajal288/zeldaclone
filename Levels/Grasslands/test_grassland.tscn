@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=4 uid="uid://de2r1jwa6j27j"]
+[gd_scene load_steps=7 format=4 uid="uid://de2r1jwa6j27j"]
 
-[ext_resource type="Script" uid="uid://deqshngaehs3k" path="res://Levels/Grasslands/test_grassland.gd" id="1_5gwyr"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="1_qq7l6"]
 [ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Characters/Enemies/Orc/orc.tscn" id="4_qq7l6"]
 [ext_resource type="PackedScene" uid="uid://b2fm5hsiicw8s" path="res://Levels/Components/enemy_boundary.tscn" id="6_vyboh"]
@@ -13,7 +12,6 @@ size = Vector2(8, 2)
 size = Vector2(41, 6)
 
 [node name="TestGrassland" type="Node2D"]
-script = ExtResource("1_5gwyr")
 
 [node name="TileMapBase" type="TileMapLayer" parent="."]
 z_index = -2
