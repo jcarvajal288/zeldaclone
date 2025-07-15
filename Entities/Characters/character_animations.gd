@@ -51,8 +51,8 @@ func play_random_idle_animation():
 	
 	
 func play_move_animation():
-	if not animation_locked:
-		self.play("move" + facing)
+	# if not animation_locked:
+	self.play("move" + facing)
 
 
 func play_attack_animation_with_input(input_direction: Vector2):

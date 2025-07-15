@@ -23,7 +23,6 @@ script = ExtResource("1_d5x1h")
 z_index = 100
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_hq1ik")]
-position = Vector2(80, 60)
 
 [node name="Health" parent="PlayerCharacter" index="3"]
 is_player_health = true

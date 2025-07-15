@@ -17,4 +17,13 @@ enum Alignment {
 	EVIL
 }
 
+enum RenderOrder {
+	BASE = -2,
+	FLOOR = 0,
+	PLAYER = 5,
+	WALL = 10,
+	UI = 100
+}
+
 signal player_health_changed
+signal level_ready

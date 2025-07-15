@@ -13,6 +13,10 @@ func _init():
 	super(spd)
 	alignment = Global.Alignment.GOOD
 
+
+func _ready() -> void:
+	Global.level_ready.connect(enter_down_stairs)
+
 		
 func _set_camera_position():
 	var new_map_cell = $CellFinder.get_cell_for_position(self.position)
@@ -24,6 +28,22 @@ func _set_camera_position():
 func _physics_process(_delta):
 	if not $AnimationPlayer.animation_locked:
 		$InputController.get_input()
-		_set_camera_position()
+	_set_camera_position()
 	move_and_slide()
 	Global.PLAYER_POSITION = self.position
+
+func exit_down_stairs():
+	$AnimationPlayer.animation_locked = true
+	self.set_collision_layer_value(2, false) # disable entryway trigger
+	self.z_index = Global.RenderOrder.BASE + 1
+	self.velocity = Vector2.DOWN * 5
+
+
+func enter_down_stairs():
+	self.z_index = Global.RenderOrder.PLAYER
+	$AnimationPlayer.set_facing(Vector2.DOWN)
+	self.velocity = Vector2.DOWN * 10
+	$AnimationPlayer.play_move_animation()
+	await get_tree().create_timer(1.0).timeout
+	$AnimationPlayer.animation_locked = false
+	self.set_collision_layer_value(2, true) # re-enable triggers
