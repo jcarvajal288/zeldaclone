@@ -15,7 +15,7 @@ func _init():
 
 
 func _ready() -> void:
-	Global.level_ready.connect(enter_down_stairs)
+	Global.transition_level.connect(enter_level)
 
 		
 func _set_camera_position():
@@ -39,6 +39,13 @@ func exit_down_stairs():
 	self.velocity = Vector2.DOWN * 5
 
 
+func enter_level(direction: String):
+	if direction == "UP":
+		enter_up_stairs()
+	else:
+		enter_down_stairs()
+
+
 func enter_down_stairs():
 	self.z_index = Global.RenderOrder.PLAYER
 	$AnimationPlayer.set_facing(Vector2.DOWN)
@@ -47,3 +54,23 @@ func enter_down_stairs():
 	await get_tree().create_timer(1.0).timeout
 	$AnimationPlayer.animation_locked = false
 	self.set_collision_layer_value(2, true) # re-enable triggers
+
+
+func exit_up_stairs():
+	$AnimationPlayer.animation_locked = true
+	self.set_collision_layer_value(2, false) # disable entryway trigger
+	self.velocity = Vector2.UP * 5
+
+
+func enter_up_stairs():
+	$AnimationPlayer.animation_locked = true
+	self.z_index = Global.RenderOrder.BASE + 1
+	$AnimationPlayer.set_facing(Vector2.DOWN)
+	$AnimationPlayer.play_move_animation()
+	self.velocity = Vector2.UP * 10
+	await get_tree().create_timer(1.0).timeout
+	self.z_index = Global.RenderOrder.PLAYER
+	self.velocity = Vector2.DOWN * 5
+	await get_tree().create_timer(0.5).timeout
+	self.set_collision_layer_value(2, true) # re-enable triggers
+	$AnimationPlayer.animation_locked = false

@@ -25,5 +25,5 @@ enum RenderOrder {
 	UI = 100
 }
 
+signal transition_level
 signal player_health_changed
-signal level_ready
