@@ -1,5 +1,6 @@
 class_name LevelManager extends Node
 
+@export var test_area: PackedScene
 @export var grasslands: PackedScene
 @export var dungeon: PackedScene
 
@@ -19,6 +20,10 @@ func _change_level(packed_new_level: PackedScene, delete: bool = true, keep_runn
 	var new_level = packed_new_level.instantiate()
 	self.add_child(new_level)
 	current_level = new_level
+
+func change_to_test_area():
+	_change_level(test_area)
+	Global.game_controller.move_player_to_position(Vector2(20, 20))
 
 func change_to_dungeon():
 	_change_level(dungeon)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cctjt2l6i380l"]
+[gd_scene load_steps=9 format=3 uid="uid://cctjt2l6i380l"]
 
 [ext_resource type="Script" uid="uid://bj3l437121rlo" path="res://src/camera.gd" id="1_d5x1h"]
 [ext_resource type="Script" uid="uid://dinmjrryiyo0g" path="res://src/game_controller.gd" id="1_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://u1x1r0jf530w" path="res://Entities/Characters/Player/player.tscn" id="3_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://qnqmpk64ar2n" path="res://UI/HUD/hud.tscn" id="3_nfk4m"]
+[ext_resource type="PackedScene" uid="uid://bgcnn7f2b0gif" path="res://Levels/Dungeon/test_area.tscn" id="6_66tet"]
 [ext_resource type="Script" uid="uid://bnrjmt5osw1jw" path="res://Levels/level_manager.gd" id="7_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://de2r1jwa6j27j" path="res://Levels/Grasslands/test_grassland.tscn" id="7_66tet"]
 [ext_resource type="PackedScene" uid="uid://cknydywmvj1od" path="res://Levels/Dungeon/test_dungeon.tscn" id="8_7ycvg"]
@@ -29,6 +30,7 @@ is_player_health = true
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("7_7ycvg")
+test_area = ExtResource("6_66tet")
 grasslands = ExtResource("7_66tet")
 dungeon = ExtResource("8_7ycvg")
 
