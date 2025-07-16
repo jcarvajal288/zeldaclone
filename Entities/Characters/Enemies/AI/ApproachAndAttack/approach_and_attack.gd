@@ -5,6 +5,8 @@ extends Node
 @export var tile_distance_to_notice_player: int
 @export var attack_range_pixels: int
 
+signal on_attack
+
 var home_position: Vector2
 
 func _ready() -> void:
@@ -38,7 +40,7 @@ func move_towards_player():
 func attack_player():
 	var direction_to_player = subject.position.direction_to(Global.PLAYER_POSITION)
 	animation_player.play_attack_animation_with_direction(direction_to_player)
-
+	on_attack.emit()
 
 
 func in_same_cell_as_player() -> bool:

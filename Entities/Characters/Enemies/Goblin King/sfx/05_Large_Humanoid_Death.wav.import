@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3cpnuiflimix"
+path="res://.godot/imported/05_Large_Humanoid_Death.wav-d41282a360b508013d964c5a47f6ce0a.sample"
+
+[deps]
+
+source_file="res://Entities/Characters/Enemies/Goblin King/sfx/05_Large_Humanoid_Death.wav"
+dest_files=["res://.godot/imported/05_Large_Humanoid_Death.wav-d41282a360b508013d964c5a47f6ce0a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

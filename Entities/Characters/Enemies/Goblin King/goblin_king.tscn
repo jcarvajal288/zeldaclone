@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://lubcnbmncksa"]
+[gd_scene load_steps=44 format=3 uid="uid://lubcnbmncksa"]
 
 [ext_resource type="Script" uid="uid://ceub0yv2h7tok" path="res://Entities/Characters/Enemies/Goblin King/goblin_king.gd" id="1_1pe0s"]
 [ext_resource type="Texture2D" uid="uid://dgtm4tgjspklg" path="res://Entities/Characters/Enemies/Goblin King/art/GoblinKing_All.png" id="1_mcxld"]
@@ -7,7 +7,12 @@
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_v0743"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="5_y5xpp"]
 [ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="6_y5xpp"]
-[ext_resource type="PackedScene" uid="uid://dhc36w03pmccl" path="res://Entities/Characters/Enemies/_Generic/OnHit_SFX/OnHit_SFX.tscn" id="8_py0b8"]
+[ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="8_a8bte"]
+[ext_resource type="AudioStream" uid="uid://b4qgn1ldbv8s8" path="res://Entities/Characters/Enemies/Goblin King/sfx/01_Large_Humanoid_Attack_1.wav" id="9_ilra5"]
+[ext_resource type="AudioStream" uid="uid://ct5u0143joj0b" path="res://Entities/Characters/Enemies/Goblin King/sfx/02_Large_Humanoid_Attack_2.wav" id="10_g51wm"]
+[ext_resource type="AudioStream" uid="uid://b23o5vaib5qp0" path="res://Entities/Characters/Enemies/Goblin King/sfx/03_Large_Humanoid_Damage_1.wav" id="11_a27gs"]
+[ext_resource type="AudioStream" uid="uid://co2pn6uj64b7s" path="res://Entities/Characters/Enemies/Goblin King/sfx/04_Large_Humanoid_Damage_2.wav" id="12_h5lf8"]
+[ext_resource type="AudioStream" uid="uid://3cpnuiflimix" path="res://Entities/Characters/Enemies/Goblin King/sfx/05_Large_Humanoid_Death.wav" id="13_60bja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mcxld"]
 radius = 8.0
@@ -673,11 +678,31 @@ animation_player = NodePath("../AnimationPlayer")
 tile_distance_to_notice_player = 10
 attack_range_pixels = 25
 
-[node name="OnHitSfx" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("8_py0b8")]
-owning_character = NodePath("..")
+[node name="AttackSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("8_a8bte")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2")]
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
+stream = ExtResource("9_ilra5")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
+stream = ExtResource("10_g51wm")
+
+[node name="DamageSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("8_a8bte")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DamageSoundRandomizer"]
+stream = ExtResource("11_a27gs")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="DamageSoundRandomizer"]
+stream = ExtResource("12_h5lf8")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_60bja")
+
+[connection signal="on_death" from="Health" to="DeathSoundPlayer" method="play"]
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
-[connection signal="on_hit" from="Hurtbox" to="OnHitSfx" method="play"]
+[connection signal="on_hit" from="Hurtbox" to="DamageSoundRandomizer" method="_on_hit"]
+[connection signal="on_attack" from="ApproachAndAttack" to="AttackSoundRandomizer" method="play"]
 
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]

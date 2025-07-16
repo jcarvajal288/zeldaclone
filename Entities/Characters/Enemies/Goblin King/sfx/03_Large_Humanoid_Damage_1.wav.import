@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b23o5vaib5qp0"
+path="res://.godot/imported/03_Large_Humanoid_Damage_1.wav-8ead8653e8924837621fce93c0833add.sample"
+
+[deps]
+
+source_file="res://Entities/Characters/Enemies/Goblin King/sfx/03_Large_Humanoid_Damage_1.wav"
+dest_files=["res://.godot/imported/03_Large_Humanoid_Damage_1.wav-8ead8653e8924837621fce93c0833add.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
