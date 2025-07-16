@@ -2,6 +2,8 @@ extends Area2D
 
 @export var owning_character: CharacterBody2D
 
+signal on_hit
+
 
 func _ready():
 	area_entered.connect(_on_area_entered)
@@ -12,4 +14,4 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 		return
 	if hitbox.owning_character.alignment == owning_character.alignment:
 		return
-	owning_character.on_hit.emit(hitbox)
+	on_hit.emit(hitbox)

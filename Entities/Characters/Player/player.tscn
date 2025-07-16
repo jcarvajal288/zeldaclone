@@ -781,8 +781,9 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="GetHitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ih7kn")
 
-[node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("15_4mxos")]
+[node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("15_4mxos")]
 owning_character = NodePath("..")
+health = NodePath("../Health")
 
 [node name="SwordSwingSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_nv0be")]
 sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
@@ -799,10 +800,12 @@ stream = ExtResource("15_k6v6k")
 [node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_k6v6k")
 
-[connection signal="on_hit" from="." to="GetHitSoundPlayer" method="play"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="on_death" from="Health" to="." method="_on_death"]
 [connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
+[connection signal="on_hit" from="Hurtbox" to="BounceOnHit" method="_on_hit"]
 
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]

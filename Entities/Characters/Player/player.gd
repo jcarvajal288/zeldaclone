@@ -17,7 +17,6 @@ func _init():
 
 
 func _ready() -> void:
-	on_hit.connect(_on_hit)
 	$Health.on_death.connect(_on_death)
 	Global.transition_level.connect(enter_level)
 

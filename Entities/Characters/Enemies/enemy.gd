@@ -9,7 +9,6 @@ func _init(spd):
 
 func _ready():
 	$AnimationPlayer.play_random_idle_animation()
-	on_hit.connect(_on_hit)
 	$Health.on_death.connect(_on_death)
 
 
