@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://cmqg0vw2vlqnq" path="res://Entities/Characters/Player/inventory.gd" id="4_tekja"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="6_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://df2uqw3lmb136" path="res://Levels/Components/CellFinder/cell_finder.tscn" id="9_ms8xu"]
-[ext_resource type="AudioStream" uid="uid://dsn8pmjqxxs4p" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_1.wav" id="10_8cphf"]
 [ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_nv0be"]
-[ext_resource type="AudioStream" uid="uid://uux30uu48pth" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_2.wav" id="12_ih7kn"]
-[ext_resource type="AudioStream" uid="uid://clmnr5yhbix7" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_3.wav" id="13_4mxos"]
+[ext_resource type="AudioStream" uid="uid://c41ueret3ymuy" path="res://Entities/Characters/Player/sfx/01_human_atk_sword_1.wav" id="13_4mxos"]
 [ext_resource type="AudioStream" uid="uid://bqjmgu0nw2whl" path="res://Entities/Characters/Player/sfx/62_Get_hit_01.wav" id="14_ih7kn"]
+[ext_resource type="AudioStream" uid="uid://corl22lh37rk2" path="res://Entities/Characters/Player/sfx/02_human_atk_sword_2.wav" id="14_qqqkq"]
 [ext_resource type="PackedScene" uid="uid://pl15q5aw18gj" path="res://Entities/Characters/Components/BounceOnHit/BounceOnHit.tscn" id="15_4mxos"]
+[ext_resource type="AudioStream" uid="uid://c00kag63iof4f" path="res://Entities/Characters/Player/sfx/03_human_atk_sword_3.wav" id="15_k6v6k"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -777,23 +777,23 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="CellFinder" parent="." instance=ExtResource("9_ms8xu")]
 
-[node name="SwordSwingSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_nv0be")]
-sound_list = [NodePath("SfxSwingSword1"), NodePath("SfxSwingSword2"), NodePath("SfxSwingSword3")]
-
-[node name="SfxSwingSword1" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
-stream = ExtResource("10_8cphf")
-
-[node name="SfxSwingSword2" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
-stream = ExtResource("12_ih7kn")
-
-[node name="SfxSwingSword3" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
-stream = ExtResource("13_4mxos")
-
 [node name="GetHitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ih7kn")
 
 [node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("15_4mxos")]
 owning_character = NodePath("..")
+
+[node name="SwordSwingSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_nv0be")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SwordSwingSoundRandomizer"]
+stream = ExtResource("13_4mxos")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="SwordSwingSoundRandomizer"]
+stream = ExtResource("14_qqqkq")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="SwordSwingSoundRandomizer"]
+stream = ExtResource("15_k6v6k")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

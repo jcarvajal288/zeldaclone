@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=40 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
 [ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="7_qm0o1"]
 [ext_resource type="PackedScene" uid="uid://pl15q5aw18gj" path="res://Entities/Characters/Components/BounceOnHit/BounceOnHit.tscn" id="8_t4s6y"]
-[ext_resource type="PackedScene" uid="uid://dhc36w03pmccl" path="res://Entities/Characters/Enemies/_Generic/OnHit_SFX/OnHit_SFX.tscn" id="9_bk5jg"]
+[ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_ice2i"]
+[ext_resource type="AudioStream" uid="uid://cgfs5ncvvn5sm" path="res://Entities/Characters/Enemies/Orc/sfx/07_orc_damage_1.wav" id="11_1ex5n"]
+[ext_resource type="AudioStream" uid="uid://be10ueleocvx7" path="res://Entities/Characters/Enemies/Orc/sfx/08_orc_damage_2.wav" id="12_rbikg"]
+[ext_resource type="AudioStream" uid="uid://dyb3rs47deyl0" path="res://Entities/Characters/Enemies/Orc/sfx/09_orc_damage_3.wav" id="13_ocrh3"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
 length = 0.001
@@ -820,8 +823,19 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("8_t4s6y")]
 owning_character = NodePath("..")
 
-[node name="OnHitSfx" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("9_bk5jg")]
-owning_character = NodePath("..")
+[node name="OnHitSFXRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_ice2i")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OnHitSFXRandomizer"]
+stream = ExtResource("11_1ex5n")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="OnHitSFXRandomizer"]
+stream = ExtResource("12_rbikg")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="OnHitSFXRandomizer"]
+stream = ExtResource("13_ocrh3")
+
+[connection signal="on_hit" from="." to="OnHitSFXRandomizer" method="_on_hit"]
 
 [editable path="Hurtbox"]
 [editable path="BodyHitbox"]
