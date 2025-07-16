@@ -676,5 +676,8 @@ attack_range_pixels = 25
 [node name="OnHitSfx" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("8_py0b8")]
 owning_character = NodePath("..")
 
+[connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
+[connection signal="on_hit" from="Hurtbox" to="OnHitSfx" method="play"]
+
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]
