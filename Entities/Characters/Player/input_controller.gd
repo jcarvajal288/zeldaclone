@@ -9,6 +9,7 @@ func get_input():
 	if is_attacking:
 		owning_character.velocity = Vector2.ZERO
 		animation_player.play_attack_animation_with_input(input_direction)
+		owning_character.sfx_swing_sword1.play()
 		return
 		
 	if input_direction != Vector2.ZERO:

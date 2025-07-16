@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=37 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cmqg0vw2vlqnq" path="res://Entities/Characters/Player/inventory.gd" id="4_tekja"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="6_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://df2uqw3lmb136" path="res://Levels/Components/CellFinder/cell_finder.tscn" id="9_ms8xu"]
+[ext_resource type="AudioStream" uid="uid://dsn8pmjqxxs4p" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_1.wav" id="10_8cphf"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -772,6 +773,9 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="CellFinder" parent="." instance=ExtResource("9_ms8xu")]
+
+[node name="SfxSwingSword1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8cphf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

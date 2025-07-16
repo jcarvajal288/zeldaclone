@@ -40,5 +40,5 @@ func change_to_grasslands(location: String = "start"):
 		Global.game_controller.move_player_to_position(Vector2(235, -50))
 		Global.transition_level.emit("UP")
 	else:
-		Global.game_controller.move_player_to_position(Vector2(231, -56))
-		#Global.game_controller.move_player_to_position(Vector2(80, 60))
+		# Global.game_controller.move_player_to_position(Vector2(231, -56))
+		Global.game_controller.move_player_to_position(Vector2(80, 60))
