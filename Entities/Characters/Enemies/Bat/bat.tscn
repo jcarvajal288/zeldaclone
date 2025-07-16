@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chc6v32x7m2yv"]
+[gd_scene load_steps=22 format=3 uid="uid://chc6v32x7m2yv"]
 
 [ext_resource type="Texture2D" uid="uid://e0c0ln23wvk2" path="res://Entities/Characters/Enemies/Bat/art/Bat_all.png" id="1_cmyp1"]
 [ext_resource type="Script" uid="uid://3q14jclpncg2" path="res://Entities/Characters/Enemies/Bat/bat.gd" id="1_k4bj0"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="4_ln0j2"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="5_8hvql"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="7_ae0xp"]
+[ext_resource type="AudioStream" uid="uid://br33q1ohgjlyf" path="res://Entities/Characters/Enemies/Bat/sfx/10_Bat_death.wav" id="8_rmswg"]
 
 [sub_resource type="Animation" id="Animation_sjrea"]
 length = 0.001
@@ -280,7 +281,11 @@ position = Vector2(0.12, -2)
 shape = SubResource("CircleShape2D_rmswg")
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_rmswg")
+
 [connection signal="on_death" from="Health" to="." method="_on_death"]
+[connection signal="on_death" from="Health" to="DeathSoundPlayer" method="play"]
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
 
 [editable path="Hurtbox"]
