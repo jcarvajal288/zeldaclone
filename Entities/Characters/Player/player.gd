@@ -18,6 +18,7 @@ func _init():
 
 func _ready() -> void:
 	on_hit.connect(_on_hit)
+	$Health.died_signal.connect(_on_death)
 	Global.transition_level.connect(enter_level)
 
 		
@@ -79,6 +80,12 @@ func enter_up_stairs():
 	$AnimationPlayer.animation_locked = false
 
 
-func _on_hit():
+func _on_hit(hitbox: Hitbox):
 	animation_player.play_damaged_animation()
 	get_hit_sfx.play()
+	$Health.take_damage(hitbox.damage)
+
+
+func _on_death():
+	animation_player.play_death_animation()
+	velocity = Vector2.ZERO
