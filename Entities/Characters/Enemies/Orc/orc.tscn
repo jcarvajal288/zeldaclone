@@ -840,7 +840,7 @@ stream = ExtResource("13_ocrh3")
 stream = ExtResource("13_ice2i")
 
 [connection signal="on_hit" from="." to="OnHitSFXRandomizer" method="_on_hit"]
-[connection signal="died_signal" from="Health" to="OnDeathSoundPlayer" method="play"]
+[connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
 
 [editable path="Hurtbox"]
 [editable path="BodyHitbox"]

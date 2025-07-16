@@ -4,7 +4,8 @@ class_name Health extends Node
 @export var is_player_health: bool
 var current_health = max_health
 
-signal died_signal
+signal on_death
+
 
 func _ready():
 	current_health = max_health
@@ -18,7 +19,7 @@ func take_damage(damage: int):
 	if is_player_health:
 		Global.player_health_changed.emit(current_health, max_health)
 	if current_health <= 0:
-		died_signal.emit()
+		on_death.emit()
 		
 func is_dead() -> bool:
 	return current_health <= 0

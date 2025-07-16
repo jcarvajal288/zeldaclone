@@ -10,7 +10,7 @@ func _init(spd):
 func _ready():
 	$AnimationPlayer.play_random_idle_animation()
 	on_hit.connect(_on_hit)
-	$Health.died_signal.connect(_on_death)
+	$Health.on_death.connect(_on_death)
 
 
 func _on_hit(hitbox: Hitbox):

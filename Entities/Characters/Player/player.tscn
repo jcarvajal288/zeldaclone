@@ -801,7 +801,7 @@ stream = ExtResource("17_k6v6k")
 
 [connection signal="on_hit" from="." to="GetHitSoundPlayer" method="play"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="died_signal" from="Health" to="OnDeathSoundPlayer" method="play"]
+[connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 
 [editable path="Hurtbox"]
