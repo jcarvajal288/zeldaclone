@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhc36w03pmccl"]
+
+[ext_resource type="Script" uid="uid://cnsmf37gj2csh" path="res://Entities/Characters/Enemies/_Generic/OnHit_SFX/on_hit_sfx.gd" id="1_j06m1"]
+[ext_resource type="AudioStream" uid="uid://copv7cwmwojqr" path="res://Entities/Characters/Enemies/_Generic/sfx/64_Get_hit_03.wav" id="1_pkxh4"]
+
+[node name="OnHitSfx" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_pkxh4")
+script = ExtResource("1_j06m1")

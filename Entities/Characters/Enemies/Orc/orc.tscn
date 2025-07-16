@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=37 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
 [ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="7_qm0o1"]
 [ext_resource type="PackedScene" uid="uid://pl15q5aw18gj" path="res://Entities/Characters/Components/BounceOnHit/BounceOnHit.tscn" id="8_t4s6y"]
+[ext_resource type="PackedScene" uid="uid://dhc36w03pmccl" path="res://Entities/Characters/Enemies/_Generic/OnHit_SFX/OnHit_SFX.tscn" id="9_bk5jg"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
 length = 0.001
@@ -66,6 +67,18 @@ tracks/4/path = NodePath("CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -556,6 +569,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.30001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_mdd63"]
 resource_name = "idleDownLeft"
@@ -793,6 +818,9 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("8_t4s6y")]
+owning_character = NodePath("..")
+
+[node name="OnHitSfx" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("9_bk5jg")]
 owning_character = NodePath("..")
 
 [editable path="Hurtbox"]

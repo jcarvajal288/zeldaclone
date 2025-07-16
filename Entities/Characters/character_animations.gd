@@ -118,6 +118,5 @@ func play_damaged_animation():
 	
 
 func play_death_animation():
-	if not animation_locked:
-		self.play("death")
-		animation_locked = true
+	self.play("death")
+	animation_locked = true
