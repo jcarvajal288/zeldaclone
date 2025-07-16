@@ -80,5 +80,5 @@ func enter_up_stairs():
 
 
 func _on_hit():
-	# animation_player.play_damaged_animation()
+	animation_player.play_damaged_animation()
 	get_hit_sfx.play()
