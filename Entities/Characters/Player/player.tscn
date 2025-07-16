@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=40 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="6_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://df2uqw3lmb136" path="res://Levels/Components/CellFinder/cell_finder.tscn" id="9_ms8xu"]
 [ext_resource type="AudioStream" uid="uid://dsn8pmjqxxs4p" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_1.wav" id="10_8cphf"]
+[ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_nv0be"]
+[ext_resource type="AudioStream" uid="uid://uux30uu48pth" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_2.wav" id="12_ih7kn"]
+[ext_resource type="AudioStream" uid="uid://clmnr5yhbix7" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_3.wav" id="13_4mxos"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -774,8 +777,17 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="CellFinder" parent="." instance=ExtResource("9_ms8xu")]
 
-[node name="SfxSwingSword1" type="AudioStreamPlayer" parent="."]
+[node name="SwordSwingSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_nv0be")]
+sound_list = [NodePath("SfxSwingSword1"), NodePath("SfxSwingSword2"), NodePath("SfxSwingSword3")]
+
+[node name="SfxSwingSword1" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
 stream = ExtResource("10_8cphf")
+
+[node name="SfxSwingSword2" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
+stream = ExtResource("12_ih7kn")
+
+[node name="SfxSwingSword3" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
+stream = ExtResource("13_4mxos")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

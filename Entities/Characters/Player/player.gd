@@ -5,7 +5,7 @@ class_name Player extends Character
 signal moved_to_new_map_cell(cell)
 
 @onready var animation_player = $AnimationPlayer
-@onready var sfx_swing_sword1 = $SfxSwingSword1
+@onready var sword_swing_sfx = $SwordSwingSoundRandomizer
 
 var current_map_cell = Vector2i.ZERO
 
