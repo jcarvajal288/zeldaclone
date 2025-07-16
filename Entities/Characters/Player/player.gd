@@ -6,6 +6,7 @@ signal moved_to_new_map_cell(cell)
 
 @onready var animation_player = $AnimationPlayer
 @onready var sword_swing_sfx = $SwordSwingSoundRandomizer
+@onready var get_hit_sfx = $GetHitSoundPlayer
 
 var current_map_cell = Vector2i.ZERO
 
@@ -16,6 +17,7 @@ func _init():
 
 
 func _ready() -> void:
+	on_hit.connect(_on_hit)
 	Global.transition_level.connect(enter_level)
 
 		
@@ -75,3 +77,8 @@ func enter_up_stairs():
 	await get_tree().create_timer(0.5).timeout
 	self.set_collision_layer_value(2, true) # re-enable triggers
 	$AnimationPlayer.animation_locked = false
+
+
+func _on_hit():
+	# animation_player.play_damaged_animation()
+	get_hit_sfx.play()

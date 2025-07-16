@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=41 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_nv0be"]
 [ext_resource type="AudioStream" uid="uid://uux30uu48pth" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_2.wav" id="12_ih7kn"]
 [ext_resource type="AudioStream" uid="uid://clmnr5yhbix7" path="res://Entities/Characters/Player/sfx/Slash_Attack_Sword_3.wav" id="13_4mxos"]
+[ext_resource type="AudioStream" uid="uid://bqjmgu0nw2whl" path="res://Entities/Characters/Player/sfx/62_Get_hit_01.wav" id="14_ih7kn"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -788,6 +789,9 @@ stream = ExtResource("12_ih7kn")
 
 [node name="SfxSwingSword3" type="AudioStreamPlayer" parent="SwordSwingSoundRandomizer"]
 stream = ExtResource("13_4mxos")
+
+[node name="GetHitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ih7kn")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

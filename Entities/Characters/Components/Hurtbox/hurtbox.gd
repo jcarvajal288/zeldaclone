@@ -22,6 +22,7 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	deal_damage(hitbox.damage)
 	if health.not_dead():
 		_impact_bounce(hitbox)
+		owning_character.on_hit.emit()
 		animation_player.play_damaged_animation()
 	else:
 		animation_player.play_death_animation()
