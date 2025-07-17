@@ -1,4 +1,4 @@
-extends Area2D
+class_name Hurtbox extends Area2D
 
 @export var owning_character: CharacterBody2D
 
@@ -15,3 +15,7 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	if hitbox.owning_character.alignment == owning_character.alignment:
 		return
 	on_hit.emit(hitbox)
+
+
+func set_disabled(state: bool):
+	$CollisionShape2D.set_deferred("disabled", state)
