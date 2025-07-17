@@ -2,6 +2,7 @@ extends Node
 
 @export var sprite: Sprite2D
 @export var hurtbox: Hurtbox
+@export var timeout: float = 0.5
 
 
 func _ready() -> void:
@@ -11,7 +12,7 @@ func _ready() -> void:
 
 func start_invulnerability(_hitbox: Hitbox):
 	hurtbox.set_disabled(true)
-	$Timer.start()
+	$Timer.start(timeout)
 
 
 func _physics_process(_delta: float) -> void:
