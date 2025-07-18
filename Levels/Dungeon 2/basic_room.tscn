@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://biyxjjv14qq5i"]
 
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="1_exyhk"]
-[ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/Dungeon 2/room.gd" id="1_goyd8"]
+[ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_goyd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goyd8"]
 size = Vector2(8, 8)

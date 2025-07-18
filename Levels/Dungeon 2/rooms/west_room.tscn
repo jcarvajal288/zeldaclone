@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://cojuo5eetetgf"]
 
-[ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/Dungeon 2/room.gd" id="1_6gni1"]
+[ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_6gni1"]
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="2_nfm6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcmki"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://0a0jsbwyh8hi"]
+
+[ext_resource type="Script" uid="uid://87qkfik6clf7" path="res://Levels/Grasslands/components/DungeonEntrance/dungeon_entrance.gd" id="1_2a54c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amg52"]
+size = Vector2(8, 2)
+
+[node name="DungeonEntrance" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_2a54c")
+
+[node name="EnterTrigger" type="CollisionShape2D" parent="."]
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_amg52")
+debug_color = Color(0.857193, 0.000730432, 0.882629, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_dungeon_entrance_area_entered"]
