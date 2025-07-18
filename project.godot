@@ -56,6 +56,7 @@ action_left={
 2d_physics/layer_3="triggers"
 2d_physics/layer_4="items"
 2d_physics/layer_5="enemy_boundaries"
+2d_physics/layer_6="pits"
 
 [rendering]
 
