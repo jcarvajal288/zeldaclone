@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b77rb75d6mr1s"]
+
+[ext_resource type="PackedScene" uid="uid://biyxjjv14qq5i" path="res://Levels/Dungeon 2/basic_room.tscn" id="1_i0krf"]
+
+[node name="Dungeon2" type="Node2D"]
+
+[node name="BasicRoom" parent="." instance=ExtResource("1_i0krf")]

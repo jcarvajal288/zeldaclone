@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cctjt2l6i380l"]
+[gd_scene load_steps=10 format=3 uid="uid://cctjt2l6i380l"]
 
 [ext_resource type="Script" uid="uid://bj3l437121rlo" path="res://src/camera.gd" id="1_d5x1h"]
 [ext_resource type="Script" uid="uid://dinmjrryiyo0g" path="res://src/game_controller.gd" id="1_nfk4m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bnrjmt5osw1jw" path="res://Levels/level_manager.gd" id="7_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://de2r1jwa6j27j" path="res://Levels/Grasslands/test_grassland.tscn" id="7_66tet"]
 [ext_resource type="PackedScene" uid="uid://cknydywmvj1od" path="res://Levels/Dungeon/test_dungeon.tscn" id="8_7ycvg"]
+[ext_resource type="PackedScene" uid="uid://b77rb75d6mr1s" path="res://Levels/Dungeon 2/Dungeon2.tscn" id="9_7ycvg"]
 
 [node name="GameController" type="Node"]
 script = ExtResource("1_nfk4m")
@@ -32,6 +33,7 @@ script = ExtResource("7_7ycvg")
 test_area = ExtResource("6_66tet")
 grasslands = ExtResource("7_66tet")
 dungeon = ExtResource("8_7ycvg")
+dungeon2 = ExtResource("9_7ycvg")
 
 [connection signal="moved_to_new_map_cell" from="PlayerCharacter" to="Camera2D" method="move_camera_to_cell"]
 
