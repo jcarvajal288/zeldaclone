@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://byuacb0q4ooqs"]
+
+[ext_resource type="Script" uid="uid://cc817mpq7ms0v" path="res://Levels/Dungeon 2/components/DungeonExit/dungeon_exit.gd" id="1_wmk08"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y2ak"]
+size = Vector2(8, 2)
+
+[node name="DungeonExit" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_wmk08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(84, 9)
+shape = SubResource("RectangleShape2D_7y2ak")
+debug_color = Color(0.853717, 0.165855, 0.803979, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
