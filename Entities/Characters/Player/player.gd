@@ -26,6 +26,8 @@ func _set_camera_position():
 	if new_map_cell != current_map_cell:
 		moved_to_new_map_cell.emit(new_map_cell)
 		current_map_cell = new_map_cell
+		var current_room = Global.level_manager.get_room_for_position(self.position)
+		print(current_room.name)
 		
 	
 func _physics_process(_delta):

@@ -5,7 +5,7 @@ class_name LevelManager extends Node
 @export var dungeon: PackedScene
 @export var dungeon2: PackedScene
 
-var current_level
+var current_level: Level
 
 func _ready():
 	Global.level_manager = self
@@ -49,3 +49,7 @@ func change_to_dungeon_2():
 	_change_level(dungeon2)
 	Global.game_controller.move_player_to_position(Vector2(84, 6))
 	Global.transition_level.emit("DOWN")
+
+
+func get_room_for_position(position: Vector2) -> Room:
+	return current_level.get_room_for_position(position)
