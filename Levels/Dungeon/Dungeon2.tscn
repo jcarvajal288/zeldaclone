@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b77rb75d6mr1s"]
 
-[ext_resource type="PackedScene" uid="uid://qjf6oguv36f1" path="res://Levels/Dungeon 2/rooms/middle_room.tscn" id="1_kygnt"]
-[ext_resource type="PackedScene" uid="uid://cojuo5eetetgf" path="res://Levels/Dungeon 2/rooms/west_room.tscn" id="2_p5vui"]
+[ext_resource type="PackedScene" uid="uid://qjf6oguv36f1" path="res://Levels/Dungeon/rooms/middle_room.tscn" id="1_kygnt"]
+[ext_resource type="PackedScene" uid="uid://cojuo5eetetgf" path="res://Levels/Dungeon/rooms/west_room.tscn" id="2_p5vui"]
 
 [node name="Dungeon2" type="Node2D"]
 

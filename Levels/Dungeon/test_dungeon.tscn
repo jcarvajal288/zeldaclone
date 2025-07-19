@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://cknydywmvj1od"]
 
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="1_qidip"]
-[ext_resource type="PackedScene" uid="uid://byuacb0q4ooqs" path="res://Levels/Dungeon 2/components/DungeonExit/dungeon_exit.tscn" id="2_qidip"]
+[ext_resource type="PackedScene" uid="uid://byuacb0q4ooqs" path="res://Levels/Dungeon/components/DungeonExit/dungeon_exit.tscn" id="2_qidip"]
 [ext_resource type="PackedScene" uid="uid://c76h4b51u0g0p" path="res://Entities/Items/Key/key.tscn" id="3_o5bxs"]
 [ext_resource type="PackedScene" uid="uid://chqrw1r4mxsk7" path="res://Levels/Dungeon/Door.tscn" id="4_a8kfk"]
 [ext_resource type="PackedScene" uid="uid://chc6v32x7m2yv" path="res://Entities/Characters/Enemies/Bat/bat.tscn" id="5_82w6l"]

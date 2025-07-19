@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bnrjmt5osw1jw" path="res://Levels/level_manager.gd" id="7_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://b1rgfla7nvyml" path="res://Levels/Grasslands/grasslands.tscn" id="7_wr18j"]
 [ext_resource type="PackedScene" uid="uid://cknydywmvj1od" path="res://Levels/Dungeon/test_dungeon.tscn" id="8_7ycvg"]
-[ext_resource type="PackedScene" uid="uid://b77rb75d6mr1s" path="res://Levels/Dungeon 2/Dungeon2.tscn" id="9_7ycvg"]
+[ext_resource type="PackedScene" uid="uid://b77rb75d6mr1s" path="res://Levels/Dungeon/Dungeon2.tscn" id="9_7ycvg"]
 
 [node name="GameController" type="Node"]
 script = ExtResource("1_nfk4m")

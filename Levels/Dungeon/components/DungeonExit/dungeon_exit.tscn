@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byuacb0q4ooqs"]
 
-[ext_resource type="Script" uid="uid://cc817mpq7ms0v" path="res://Levels/Dungeon 2/components/DungeonExit/dungeon_exit.gd" id="1_wmk08"]
+[ext_resource type="Script" uid="uid://cc817mpq7ms0v" path="res://Levels/Dungeon/components/DungeonExit/dungeon_exit.gd" id="1_wmk08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y2ak"]
 size = Vector2(8, 2)

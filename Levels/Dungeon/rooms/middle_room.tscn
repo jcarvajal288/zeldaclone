@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_uyiit"]
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="2_gois6"]
-[ext_resource type="PackedScene" uid="uid://byuacb0q4ooqs" path="res://Levels/Dungeon 2/components/DungeonExit/dungeon_exit.tscn" id="3_2e34r"]
+[ext_resource type="PackedScene" uid="uid://byuacb0q4ooqs" path="res://Levels/Dungeon/components/DungeonExit/dungeon_exit.tscn" id="3_2e34r"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_4ogkv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goyd8"]
