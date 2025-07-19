@@ -30,7 +30,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAmAAwAAAABAAAAAAAnAAwAAAACAAAAAAAjAAw
 tile_set = ExtResource("2_x0npr")
 
 [node name="Entrances" type="Node2D" parent="."]
-visible = false
 
 [node name="WestEntrance" type="Area2D" parent="Entrances"]
 collision_layer = 16
@@ -49,7 +48,6 @@ position = Vector2(84, 62)
 shape = SubResource("RectangleShape2D_noan7")
 
 [node name="DungeonEntrance" parent="." instance=ExtResource("3_5wtvx")]
-visible = false
 
 [node name="EnterTrigger" parent="DungeonEntrance" index="0"]
 position = Vector2(84, 57)

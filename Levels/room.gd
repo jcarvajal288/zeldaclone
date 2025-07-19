@@ -22,5 +22,4 @@ func rect() -> Rect2:
 
 
 func bind_camera():
-	print("binding camera")
 	Global.game_controller.camera().bind_to_room(self)
