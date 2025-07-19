@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bbrk7awg23a1r"]
+[gd_scene load_steps=8 format=4 uid="uid://bbrk7awg23a1r"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_hvr4h"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="2_i4p1v"]
+[ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_sjf4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0djk"]
 size = Vector2(8, 8)
@@ -31,24 +32,36 @@ tile_set = ExtResource("2_i4p1v")
 visible = false
 
 [node name="NorthEntrance" type="Area2D" parent="Entrances"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_sjf4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/NorthEntrance"]
 position = Vector2(84, 4)
 shape = SubResource("RectangleShape2D_p0djk")
 
 [node name="WestEntrance" type="Area2D" parent="Entrances"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_sjf4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/WestEntrance"]
 position = Vector2(4, 68)
 shape = SubResource("RectangleShape2D_iihjr")
 
 [node name="SouthEntrance" type="Area2D" parent="Entrances"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_sjf4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/SouthEntrance"]
 position = Vector2(84, 124)
 shape = SubResource("RectangleShape2D_7difr")
 
 [node name="EastEntrance" type="Area2D" parent="Entrances"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_sjf4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EastEntrance"]
 position = Vector2(164, 68)

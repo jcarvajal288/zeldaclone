@@ -25,5 +25,14 @@ enum RenderOrder {
 	UI = 100
 }
 
+enum CollisionLayer {
+	WALLS = 1,
+	PLAYER = 2,
+	TRIGGERS = 3,
+	ITEMS = 4,
+	ENEMY_BOUNDARY = 5,
+	PITS = 6
+}
+
 signal transition_level
 signal player_health_changed

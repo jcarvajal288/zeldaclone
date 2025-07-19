@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://yegdt2dfkw1b"]
+[gd_scene load_steps=8 format=4 uid="uid://yegdt2dfkw1b"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_gibc6"]
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="2_noan7"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="2_x0npr"]
 [ext_resource type="PackedScene" uid="uid://0a0jsbwyh8hi" path="res://Levels/Grasslands/components/DungeonEntrance/dungeon_entrance.tscn" id="3_5wtvx"]
+[ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="4_fx3hr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iihjr"]
 size = Vector2(8, 16)
@@ -32,6 +33,9 @@ tile_set = ExtResource("2_x0npr")
 visible = false
 
 [node name="WestEntrance" type="Area2D" parent="Entrances"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("4_fx3hr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/WestEntrance"]
 position = Vector2(4, 64)
