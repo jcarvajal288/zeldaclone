@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1rgfla7nvyml"]
+[gd_scene load_steps=5 format=3 uid="uid://b1rgfla7nvyml"]
 
 [ext_resource type="PackedScene" uid="uid://785be4k7u3xq" path="res://Levels/Grasslands/rooms/starting_room.tscn" id="1_vaett"]
 [ext_resource type="PackedScene" uid="uid://bbrk7awg23a1r" path="res://Levels/Grasslands/rooms/room_0x1.tscn" id="2_bu0tb"]
 [ext_resource type="PackedScene" uid="uid://yegdt2dfkw1b" path="res://Levels/Grasslands/rooms/room1x1.tscn" id="3_soovn"]
+[ext_resource type="PackedScene" uid="uid://cnrtkl8e4v6sk" path="res://Levels/Grasslands/rooms/large_room.tscn" id="4_5diti"]
 
 [node name="Grasslands" type="Node2D"]
 
@@ -13,3 +14,6 @@ position = Vector2(0, -128)
 
 [node name="Room_1x1" parent="." instance=ExtResource("3_soovn")]
 position = Vector2(168, -128)
+
+[node name="LargeRoom" parent="." instance=ExtResource("4_5diti")]
+position = Vector2(168, 0)
