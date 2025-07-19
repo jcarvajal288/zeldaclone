@@ -42,6 +42,7 @@ position = Vector2(4, 64)
 shape = SubResource("RectangleShape2D_iihjr")
 
 [node name="DungeonLanding" type="Area2D" parent="Entrances"]
+script = ExtResource("4_fx3hr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/DungeonLanding"]
 position = Vector2(84, 62)

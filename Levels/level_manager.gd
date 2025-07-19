@@ -32,23 +32,37 @@ func change_to_test_area():
 func change_to_grasslands(location: String = "start"):
 	_change_level(grasslands)
 	if location == "dungeon_entrance":
-		Global.game_controller.move_player_to_position(Vector2(251, -58))
+		var entry_position = Vector2(251, -58)
+		Global.game_controller.move_player_to_position(entry_position)
 		Global.transition_level.emit("UP")
+		transition_to_entry_room(entry_position)
 	else:
-		# Global.game_controller.move_player_to_position(Vector2(231, -56))
-		Global.game_controller.move_player_to_position(Vector2(80, 60))
+		var entry_position = Vector2(80, 60)
+		Global.game_controller.move_player_to_position(entry_position)
+		transition_to_entry_room(entry_position)
 
 
 func change_to_dungeon():
 	_change_level(dungeon)
-	Global.game_controller.move_player_to_position(Vector2(84, 6))
+	var entry_position = Vector2(84, 6)
+	Global.game_controller.move_player_to_position(entry_position)
 	Global.transition_level.emit("DOWN")
+	transition_to_entry_room(entry_position)
 
 
 func change_to_dungeon_2():
 	_change_level(dungeon2)
-	Global.game_controller.move_player_to_position(Vector2(84, 6))
+	var entry_position = Vector2(84, 6)
+	Global.game_controller.move_player_to_position(entry_position)
 	Global.transition_level.emit("DOWN")
+	transition_to_entry_room(entry_position)
+
+
+func transition_to_entry_room(entry_position: Vector2):
+	Global.game_controller.move_player_to_position(entry_position)
+	var entry_room = get_room_for_position(entry_position)
+	Global.game_controller.camera().bind_to_room(entry_room)
+
 
 
 func get_room_for_position(position: Vector2) -> Room:

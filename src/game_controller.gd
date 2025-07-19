@@ -10,3 +10,7 @@ func _ready():
 	
 func move_player_to_position(position: Vector2):
 	$PlayerCharacter.position = position
+
+
+func camera() -> Camera2D:
+	return $Camera2D

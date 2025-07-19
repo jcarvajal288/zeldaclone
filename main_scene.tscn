@@ -15,7 +15,6 @@ script = ExtResource("1_nfk4m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 100
-position = Vector2(0, 1)
 anchor_mode = 0
 process_callback = 0
 script = ExtResource("1_d5x1h")
