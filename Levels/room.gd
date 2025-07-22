@@ -3,6 +3,7 @@ class_name Room extends Node2D
 var absolute_position: Vector2
 
 func _ready() -> void:
+	$TileMapWall.z_index = Global.RenderOrder.WALL
 	for child in $Entrances.get_children():
 		if is_instance_of(child, Entrance):
 			child.player_entered.connect(bind_camera)
