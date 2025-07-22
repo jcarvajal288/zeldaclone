@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://r381co2klmst" path="res://UI/HUD/hud.gd" id="1_ia7gp"]
 
-[node name="Hud" type="Node2D"]
+[node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_ia7gp")

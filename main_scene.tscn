@@ -13,14 +13,13 @@
 [node name="GameController" type="Node"]
 script = ExtResource("1_nfk4m")
 
+[node name="Hud" parent="." instance=ExtResource("3_nfk4m")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 100
 anchor_mode = 0
 process_callback = 0
 script = ExtResource("1_d5x1h")
-
-[node name="Hud" parent="Camera2D" instance=ExtResource("3_nfk4m")]
-z_index = 100
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_hq1ik")]
 
@@ -34,7 +33,7 @@ grasslands = ExtResource("7_wr18j")
 dungeon = ExtResource("8_7ycvg")
 dungeon2 = ExtResource("9_7ycvg")
 
-[connection signal="moved_to_new_map_cell" from="PlayerCharacter" to="Camera2D" method="move_camera_to_cell"]
+[connection signal="move_camera" from="PlayerCharacter" to="Camera2D" method="center_camera_on_position"]
 
 [editable path="PlayerCharacter"]
 [editable path="PlayerCharacter/Hurtbox"]

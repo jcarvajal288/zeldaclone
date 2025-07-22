@@ -2,10 +2,11 @@ extends Camera2D
 
 var current_room: Room
 		
-func move_camera_to_cell(cell):
+func center_camera_on_position(pos):
+	var viewport_size = get_viewport_rect().size
 	self.position = Vector2(
-		Global.MAP_CELL_SIZE.x * cell.x,
-		Global.MAP_CELL_SIZE.y * cell.y,
+		pos.x - viewport_size.x / 2.0,
+		pos.y - viewport_size.y / 2.0,
 	)
 
 

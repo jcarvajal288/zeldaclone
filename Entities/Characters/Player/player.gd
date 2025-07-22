@@ -2,7 +2,7 @@ class_name Player extends Character
 
 @export var inventory: Inventory
 
-signal moved_to_new_map_cell(cell)
+signal move_camera(position)
 
 @onready var animation_player = $AnimationPlayer
 @onready var sword_swing_sfx = $SwordSwingSoundRandomizer
@@ -21,19 +21,14 @@ func _ready() -> void:
 	Global.transition_level.connect(enter_level)
 
 		
-# func _set_camera_position():
-# 	var new_map_cell = $CellFinder.get_cell_for_position(self.position)
-# 	if new_map_cell != current_map_cell:
-# 		moved_to_new_map_cell.emit(new_map_cell)
-# 		current_map_cell = new_map_cell
-# 		var current_room = Global.level_manager.get_room_for_position(self.position)
-# 		print(current_room.name)
+func _set_camera_position():
+	move_camera.emit(self.position)
 		
 	
 func _physics_process(_delta):
 	if not $AnimationPlayer.animation_locked:
 		$InputController.get_input()
-	#_set_camera_position()
+	_set_camera_position()
 	move_and_slide()
 	Global.PLAYER_POSITION = self.position
 

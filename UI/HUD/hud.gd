@@ -1,6 +1,5 @@
-extends Node2D
+extends CanvasLayer
 
-# @export var player_health: Health
 @export var heart_scene = preload("res://UI/HUD/Heart/ui_heart.tscn")
 
 func _ready() -> void:
