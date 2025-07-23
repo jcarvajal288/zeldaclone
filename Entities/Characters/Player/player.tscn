@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=45 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -55,6 +55,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_xr8lj"]
@@ -626,6 +650,46 @@ tracks/0/keys = {
 "values": [73, 74, 75, 72]
 }
 
+[sub_resource type="Animation" id="Animation_k6v6k"]
+resource_name = "fall"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [112]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.71239]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x1y6q"]
 _data = {
 &"RESET": SubResource("Animation_4wf4l"),
@@ -642,6 +706,7 @@ _data = {
 &"damagedUpLeft": SubResource("Animation_dv6dp"),
 &"damagedUpRight": SubResource("Animation_avsg8"),
 &"death": SubResource("Animation_01ng6"),
+&"fall": SubResource("Animation_k6v6k"),
 &"idleDownLeft": SubResource("Animation_01a4e"),
 &"idleDownRight": SubResource("Animation_5c2io"),
 &"idleUpLeft": SubResource("Animation_lub02"),

@@ -85,3 +85,4 @@ func _on_hit(hitbox: Hitbox):
 func _on_death():
 	animation_player.play_death_animation()
 	velocity = Vector2.ZERO
+

@@ -73,6 +73,4 @@ position = Vector2(84, 72)
 shape = SubResource("RectangleShape2D_4ndi0")
 debug_color = Color(0, 0, 0.952941, 0.223529)
 
-[connection signal="fell_in_pit" from="Pit" to="." method="teleport_to_last_used_entrance"]
-
 [editable path="Pit"]

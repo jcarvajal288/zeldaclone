@@ -10,6 +10,7 @@ func _ready() -> void:
 		if is_instance_of(child, Entrance):
 			child.player_entered.connect(enter_room)
 	last_entrance_used = $Entrances.get_children()[0]
+	Global.fell_in_pit.connect(teleport_to_last_used_entrance)
 
 
 func contains_position(pos: Vector2) -> bool:
@@ -30,5 +31,5 @@ func enter_room(entrance: Entrance):
 	last_entrance_used = entrance
 
 
-func teleport_to_last_used_entrance(character: Character):
-	character.position = last_entrance_used.get_collision_shape_position()
+func teleport_to_last_used_entrance(player: Player):
+	player.position = last_entrance_used.get_collision_shape_position()
