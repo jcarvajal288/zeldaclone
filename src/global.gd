@@ -37,3 +37,4 @@ enum CollisionLayer {
 signal transition_level
 signal player_health_changed
 signal fell_in_pit
+signal fall_finished

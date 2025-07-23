@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwgsqcy2savhe"]
+
+[ext_resource type="Script" uid="uid://dctrr72a7x864" path="res://Entities/Characters/Components/FallDownPit/fall_down_pit.gd" id="1_caaee"]
+
+[node name="FallDownPit" type="Node"]
+script = ExtResource("1_caaee")

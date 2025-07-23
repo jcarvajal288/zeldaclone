@@ -65,7 +65,8 @@ shape = SubResource("RectangleShape2D_uqlqb")
 
 [node name="DungeonExit" parent="." instance=ExtResource("3_2e34r")]
 
-[node name="Pit" parent="." instance=ExtResource("5_snwxx")]
+[node name="Pit" parent="." node_paths=PackedStringArray("room") instance=ExtResource("5_snwxx")]
+room = NodePath("..")
 
 [node name="PitCollisionShape" parent="Pit" index="0"]
 position = Vector2(84, 72)

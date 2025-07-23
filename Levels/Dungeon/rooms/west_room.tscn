@@ -21,9 +21,9 @@ tile_set = ExtResource("2_nfm6r")
 
 [node name="Entrances" type="Node2D" parent="."]
 
-[node name="WestEntrance" type="Area2D" parent="Entrances"]
+[node name="EastEntrance" type="Area2D" parent="Entrances"]
 script = ExtResource("3_wns0x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/WestEntrance"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EastEntrance"]
 position = Vector2(164, 68)
 shape = SubResource("RectangleShape2D_vcmki")

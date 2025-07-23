@@ -11,7 +11,7 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		get_parent().queue_free()
 	elif anim_name == "fall":
-		Global.fell_in_pit.emit(get_parent())
+		Global.fall_finished.emit(get_parent())
 	animation_locked = false
 	self.play("RESET")
 	self.seek(1)
