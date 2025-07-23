@@ -2,11 +2,13 @@ class_name Room extends Node2D
 
 var absolute_position: Vector2
 
+var last_entrance_used: Entrance = null
+
 func _ready() -> void:
 	$TileMapWall.z_index = Global.RenderOrder.WALL
 	for child in $Entrances.get_children():
 		if is_instance_of(child, Entrance):
-			child.player_entered.connect(bind_camera)
+			child.player_entered.connect(enter_room)
 
 
 func contains_position(pos: Vector2) -> bool:
@@ -22,5 +24,7 @@ func rect() -> Rect2:
 	return Rect2(absolute_position, pixel_room_size)
 
 
-func bind_camera():
+func enter_room(entrance: Entrance):
 	Global.game_controller.camera().bind_to_room(self)
+	last_entrance_used = entrance
+

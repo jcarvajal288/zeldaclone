@@ -21,7 +21,7 @@ enum RenderOrder {
 	BASE = -2,
 	FLOOR = 0,
 	PLAYER = 5,
-	WALL = 2,
+	WALL = 10,
 	UI = 100
 }
 

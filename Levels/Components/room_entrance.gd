@@ -9,4 +9,4 @@ func _ready() -> void:
 
 
 func player_detected(_player: Player):
-	player_entered.emit()
+	player_entered.emit(self)
