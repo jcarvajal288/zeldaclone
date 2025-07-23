@@ -9,6 +9,7 @@ func _ready() -> void:
 	for child in $Entrances.get_children():
 		if is_instance_of(child, Entrance):
 			child.player_entered.connect(enter_room)
+	last_entrance_used = $Entrances.get_children()[0]
 
 
 func contains_position(pos: Vector2) -> bool:
@@ -28,3 +29,6 @@ func enter_room(entrance: Entrance):
 	Global.game_controller.camera().bind_to_room(self)
 	last_entrance_used = entrance
 
+
+func teleport_to_last_used_entrance(character: Character):
+	character.position = last_entrance_used.get_collision_shape_position()

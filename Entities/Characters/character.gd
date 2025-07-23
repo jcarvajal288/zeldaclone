@@ -7,3 +7,5 @@ func _init(spd):
 	speed = spd
 
 	
+func take_pit_damage():
+	$Health.take_damage(1)

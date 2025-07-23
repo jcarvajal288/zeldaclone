@@ -10,3 +10,7 @@ func _ready() -> void:
 
 func player_detected(_player: Player):
 	player_entered.emit(self)
+
+
+func get_collision_shape_position():
+	return $CollisionShape2D.position

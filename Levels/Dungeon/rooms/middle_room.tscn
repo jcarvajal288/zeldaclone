@@ -39,7 +39,7 @@ tile_set = ExtResource("2_gois6")
 script = ExtResource("3_4ogkv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/NorthEntrance"]
-position = Vector2(84, 14)
+position = Vector2(84, 15)
 shape = SubResource("RectangleShape2D_goyd8")
 
 [node name="WestEntrance" type="Area2D" parent="Entrances"]
@@ -72,5 +72,7 @@ respawn_points = [NodePath("../Entrances/NorthEntrance"), NodePath("../Entrances
 position = Vector2(84, 72)
 shape = SubResource("RectangleShape2D_4ndi0")
 debug_color = Color(0, 0, 0.952941, 0.223529)
+
+[connection signal="fell_in_pit" from="Pit" to="." method="teleport_to_last_used_entrance"]
 
 [editable path="Pit"]
