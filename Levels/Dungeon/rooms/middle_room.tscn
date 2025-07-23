@@ -65,8 +65,7 @@ shape = SubResource("RectangleShape2D_uqlqb")
 
 [node name="DungeonExit" parent="." instance=ExtResource("3_2e34r")]
 
-[node name="Pit" parent="." node_paths=PackedStringArray("respawn_points") instance=ExtResource("5_snwxx")]
-respawn_points = [NodePath("../Entrances/NorthEntrance"), NodePath("../Entrances/WestEntrance"), NodePath("../Entrances/SouthEntrance"), NodePath("../Entrances/EastEntrance")]
+[node name="Pit" parent="." instance=ExtResource("5_snwxx")]
 
 [node name="PitCollisionShape" parent="Pit" index="0"]
 position = Vector2(84, 72)
