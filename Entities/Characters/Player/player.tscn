@@ -860,8 +860,9 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="GetHitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ih7kn")
 
-[node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("15_4mxos")]
-owning_character = NodePath("..")
+[node name="BounceOnHit" parent="." node_paths=PackedStringArray("subject", "animation_player", "health") instance=ExtResource("15_4mxos")]
+subject = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
 health = NodePath("../Health")
 
 [node name="SwordSwingSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_nv0be")]

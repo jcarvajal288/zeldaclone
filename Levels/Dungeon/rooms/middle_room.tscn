@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://qjf6oguv36f1"]
+[gd_scene load_steps=13 format=4 uid="uid://qjf6oguv36f1"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_uyiit"]
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="2_gois6"]
@@ -23,13 +23,7 @@ size = Vector2(8, 8)
 size = Vector2(36, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryfpj"]
-size = Vector2(6, 5.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_snwxx"]
-size = Vector2(4, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0txjc"]
-size = Vector2(40, 32)
+size = Vector2(40, 31.75)
 
 [node name="MiddleRoom" type="Node2D"]
 script = ExtResource("1_uyiit")
@@ -84,26 +78,17 @@ shape = SubResource("RectangleShape2D_4ndi0")
 debug_color = Color(0, 0, 0.952941, 0.223529)
 
 [node name="EnemyExclusionShape" parent="Pit/StaticBody2D" index="0"]
-position = Vector2(44, 43.25)
+position = Vector2(84, 72.125)
 shape = SubResource("RectangleShape2D_ryfpj")
 
-[node name="Pit2" parent="." node_paths=PackedStringArray("room") instance=ExtResource("5_snwxx")]
-room = NodePath("..")
-
-[node name="PitCollisionShape" parent="Pit2" index="0"]
-position = Vector2(44, 43.5)
-shape = SubResource("RectangleShape2D_snwxx")
-
-[node name="StaticBody2D" parent="Pit2" index="1"]
-collision_layer = 16
-collision_mask = 0
-
-[node name="EnemyExclusionShape" parent="Pit2/StaticBody2D" index="0"]
-position = Vector2(84, 72)
-shape = SubResource("RectangleShape2D_0txjc")
-
 [node name="Orc" parent="." instance=ExtResource("6_4ndi0")]
-position = Vector2(85, 101)
+position = Vector2(80.29, 94.825)
+
+[node name="Health" parent="Orc" index="3"]
+max_health = 20
 
 [editable path="Pit"]
-[editable path="Pit2"]
+[editable path="Orc"]
+[editable path="Orc/Hurtbox"]
+[editable path="Orc/BodyHitbox"]
+[editable path="Orc/AttackHitboxPivot/AttackHitbox"]

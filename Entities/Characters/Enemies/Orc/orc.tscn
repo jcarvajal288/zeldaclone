@@ -927,8 +927,9 @@ shape = SubResource("RectangleShape2D_t4s6y")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="BounceOnHit" parent="." node_paths=PackedStringArray("owning_character", "health") instance=ExtResource("8_t4s6y")]
-owning_character = NodePath("..")
+[node name="BounceOnHit" parent="." node_paths=PackedStringArray("subject", "animation_player", "health") instance=ExtResource("8_t4s6y")]
+subject = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
 health = NodePath("../Health")
 
 [node name="OnHitSFXRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_ice2i")]
