@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://qjf6oguv36f1"]
+[gd_scene load_steps=13 format=4 uid="uid://qjf6oguv36f1"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_uyiit"]
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="2_gois6"]
 [ext_resource type="PackedScene" uid="uid://byuacb0q4ooqs" path="res://Levels/Dungeon/components/DungeonExit/dungeon_exit.tscn" id="3_2e34r"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_4ogkv"]
 [ext_resource type="PackedScene" uid="uid://jww76l7d25xr" path="res://Levels/Components/Pit/pit.tscn" id="5_snwxx"]
+[ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Characters/Enemies/Orc/orc.tscn" id="6_4ndi0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goyd8"]
 size = Vector2(8, 8)
@@ -82,6 +83,9 @@ room = NodePath("..")
 [node name="PitCollisionShape" parent="Pit2" index="0"]
 position = Vector2(44, 43.5)
 shape = SubResource("RectangleShape2D_snwxx")
+
+[node name="Orc" parent="." instance=ExtResource("6_4ndi0")]
+position = Vector2(85, 101)
 
 [editable path="Pit"]
 [editable path="Pit2"]

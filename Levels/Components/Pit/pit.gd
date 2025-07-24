@@ -10,5 +10,7 @@ func _on_body_entered(character: Character) -> void:
 
 
 func _on_fall_animation_finished(character: Character):
-	if room.contains_position(character.position): 
+	if is_instance_of(character, Enemy):
+		character.queue_free()
+	elif room.contains_position(character.position): 
 		room.teleport_to_last_used_entrance(character)

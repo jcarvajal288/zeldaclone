@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=43 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://be10ueleocvx7" path="res://Entities/Characters/Enemies/Orc/sfx/08_orc_damage_2.wav" id="12_rbikg"]
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="13_ice2i"]
 [ext_resource type="AudioStream" uid="uid://dyb3rs47deyl0" path="res://Entities/Characters/Enemies/Orc/sfx/09_orc_damage_3.wav" id="13_ocrh3"]
+[ext_resource type="PackedScene" uid="uid://dwgsqcy2savhe" path="res://Entities/Characters/Components/FallDownPit/FallDownPit.tscn" id="14_1ex5n"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
 length = 0.001
@@ -87,6 +88,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_bpnf5"]
@@ -742,6 +767,46 @@ tracks/0/keys = {
 "values": [73, 74, 75, 74]
 }
 
+[sub_resource type="Animation" id="Animation_rbikg"]
+resource_name = "fall"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [115]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.71239]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bk6u0"]
 _data = {
 &"RESET": SubResource("Animation_dl5bh"),
@@ -758,6 +823,7 @@ _data = {
 &"damagedUpLeft": SubResource("Animation_uviny"),
 &"damagedUpRight": SubResource("Animation_rlkyi"),
 &"death": SubResource("Animation_ylupx"),
+&"fall": SubResource("Animation_rbikg"),
 &"idleDownLeft": SubResource("Animation_mdd63"),
 &"idleDownRight": SubResource("Animation_tv237"),
 &"idleUpLeft": SubResource("Animation_owwpy"),
@@ -851,6 +917,11 @@ stream = ExtResource("13_ocrh3")
 
 [node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_ice2i")
+
+[node name="FallDownPit" parent="." node_paths=PackedStringArray("subject", "health", "animation_player") instance=ExtResource("14_1ex5n")]
+subject = NodePath("..")
+health = NodePath("../Health")
+animation_player = NodePath("../AnimationPlayer")
 
 [connection signal="on_death" from="Health" to="." method="_on_death"]
 [connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
