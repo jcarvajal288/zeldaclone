@@ -11,6 +11,8 @@ func _ready() -> void:
 func fall_down_pit(character: Character, fall_velocity: Vector2):
 	if subject != character:
 		return
-	health.take_damage(1)
+	if is_instance_of(character, Player):
+		health.take_damage(1)
 	animation_player.play_fall_animation()
+	$FallSFX.play()
 	character.velocity = fall_velocity
