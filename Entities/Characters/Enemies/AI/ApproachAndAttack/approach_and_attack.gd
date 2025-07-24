@@ -2,6 +2,7 @@ extends Node
 
 @export var subject: Character
 @export var animation_player: AnimationPlayer
+@export var sound_randomizer: SoundRandomizer
 @export var tile_distance_to_notice_player: int
 @export var attack_range_pixels: int
 
@@ -40,6 +41,7 @@ func move_towards_player():
 func attack_player():
 	var direction_to_player = subject.position.direction_to(Global.PLAYER_POSITION)
 	animation_player.play_attack_animation_with_direction(direction_to_player)
+	sound_randomizer.play()
 	on_attack.emit()
 
 

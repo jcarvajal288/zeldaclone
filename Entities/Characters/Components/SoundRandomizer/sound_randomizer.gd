@@ -1,4 +1,4 @@
-extends Node
+class_name SoundRandomizer extends Node
 
 @export var sound_list: Array[AudioStreamPlayer2D]
 

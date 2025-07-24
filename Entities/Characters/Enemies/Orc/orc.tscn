@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=46 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="4_dl5bh"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
 [ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="7_qm0o1"]
+[ext_resource type="AudioStream" uid="uid://mfl6f4y3gve1" path="res://Entities/Characters/Enemies/Orc/sfx/01_orc_atk_sword_1.wav" id="8_qd36t"]
 [ext_resource type="PackedScene" uid="uid://pl15q5aw18gj" path="res://Entities/Characters/Components/BounceOnHit/BounceOnHit.tscn" id="8_t4s6y"]
+[ext_resource type="AudioStream" uid="uid://b1dtdftm4f8vj" path="res://Entities/Characters/Enemies/Orc/sfx/02_orc_atk_sword_2.wav" id="9_vsjwf"]
 [ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_ice2i"]
+[ext_resource type="AudioStream" uid="uid://cjy68p0ijw7ox" path="res://Entities/Characters/Enemies/Orc/sfx/03_orc_atk_sword_3.wav" id="10_yrvlm"]
 [ext_resource type="AudioStream" uid="uid://cgfs5ncvvn5sm" path="res://Entities/Characters/Enemies/Orc/sfx/07_orc_damage_1.wav" id="11_1ex5n"]
 [ext_resource type="AudioStream" uid="uid://be10ueleocvx7" path="res://Entities/Characters/Enemies/Orc/sfx/08_orc_damage_2.wav" id="12_rbikg"]
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="13_ice2i"]
@@ -885,11 +888,24 @@ owning_character = NodePath("..")
 shape = SubResource("RectangleShape2D_mdd63")
 debug_color = Color(0, 1, 0, 0.313726)
 
-[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject", "animation_player") instance=ExtResource("7_qm0o1")]
+[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject", "animation_player", "sound_randomizer") instance=ExtResource("7_qm0o1")]
 subject = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
+sound_randomizer = NodePath("../AttackSoundRandomizer")
 tile_distance_to_notice_player = 8
 attack_range_pixels = 12
+
+[node name="AttackSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_ice2i")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
+stream = ExtResource("8_qd36t")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
+stream = ExtResource("9_vsjwf")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
+stream = ExtResource("10_yrvlm")
 
 [node name="BodyHitbox" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("4_mdd63")]
 damage = 1
