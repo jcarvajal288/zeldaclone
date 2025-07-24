@@ -19,10 +19,10 @@ size = Vector2(8, 8)
 size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ndi0"]
-size = Vector2(40, 32)
+size = Vector2(36, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snwxx"]
-size = Vector2(8, 8)
+size = Vector2(4, 3)
 
 [node name="MiddleRoom" type="Node2D"]
 script = ExtResource("1_uyiit")
@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_uqlqb")
 room = NodePath("..")
 
 [node name="PitCollisionShape" parent="Pit" index="0"]
-position = Vector2(84, 72)
+position = Vector2(84, 71.5)
 shape = SubResource("RectangleShape2D_4ndi0")
 debug_color = Color(0, 0, 0.952941, 0.223529)
 
@@ -80,7 +80,7 @@ debug_color = Color(0, 0, 0.952941, 0.223529)
 room = NodePath("..")
 
 [node name="PitCollisionShape" parent="Pit2" index="0"]
-position = Vector2(44, 44)
+position = Vector2(44, 43.5)
 shape = SubResource("RectangleShape2D_snwxx")
 
 [editable path="Pit"]
