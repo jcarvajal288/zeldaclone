@@ -2,6 +2,7 @@ extends Node
 
 @export var sprite: Sprite2D
 @export var hurtbox: Hurtbox
+@export var animation_player: AnimationPlayer
 @export var timeout: float = 0.5
 
 
@@ -21,5 +22,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func end_invulnerability():
-	hurtbox.set_disabled(false)
+	if animation_player.current_animation != "fall":
+		hurtbox.set_disabled(false)
 	sprite.visible = true

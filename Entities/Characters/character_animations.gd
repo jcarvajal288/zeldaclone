@@ -13,6 +13,8 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "fall":
 		Global.fall_finished.emit(get_parent())
 	animation_locked = false
+	if is_instance_of(get_parent(), Player):
+		print("RESET")
 	self.play("RESET")
 	self.seek(1)
 	

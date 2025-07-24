@@ -81,6 +81,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_xr8lj"]
 resource_name = "attackDownLeft"
@@ -426,6 +438,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [100, 101, 102, 103]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_v7p16"]
 resource_name = "damagedDownRight"
@@ -442,6 +466,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [96, 97, 98, 99]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_dv6dp"]
@@ -460,6 +496,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [108, 109, 110, 111]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_avsg8"]
 resource_name = "damagedUpRight"
@@ -476,6 +524,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [104, 105, 106, 107]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_01ng6"]
@@ -545,6 +605,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 4.71239]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_01a4e"]
@@ -807,9 +879,10 @@ stream = ExtResource("15_k6v6k")
 [node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_k6v6k")
 
-[node name="InvulnerableAfterHit" parent="." node_paths=PackedStringArray("sprite", "hurtbox") instance=ExtResource("17_sk8pv")]
+[node name="InvulnerableAfterHit" parent="." node_paths=PackedStringArray("sprite", "hurtbox", "animation_player") instance=ExtResource("17_sk8pv")]
 sprite = NodePath("../Sprite2D")
 hurtbox = NodePath("../Hurtbox")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="FallDownPit" parent="." node_paths=PackedStringArray("subject", "health", "animation_player") instance=ExtResource("18_sk8pv")]
 subject = NodePath("..")
