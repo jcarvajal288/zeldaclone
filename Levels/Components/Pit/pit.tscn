@@ -10,5 +10,10 @@ script = ExtResource("1_c1d51")
 [node name="PitCollisionShape" type="CollisionShape2D" parent="."]
 debug_color = Color(0, 0, 1, 0.419608)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 65
+
+[node name="EnemyExclusionShape" type="CollisionShape2D" parent="StaticBody2D"]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

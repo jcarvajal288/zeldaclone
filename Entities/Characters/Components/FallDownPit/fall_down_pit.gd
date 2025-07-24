@@ -6,6 +6,8 @@ extends Node
 
 func _ready() -> void:
 	Global.fell_in_pit.connect(fall_down_pit)
+	if is_instance_of(subject, Enemy):
+		subject.set_collision_layer_value(Global.CollisionLayer.PIT_BOUNDARY, true)
 
 
 func fall_down_pit(character: Character, fall_velocity: Vector2):

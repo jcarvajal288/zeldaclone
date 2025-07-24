@@ -31,7 +31,8 @@ enum CollisionLayer {
 	TRIGGERS = 3,
 	ITEMS = 4,
 	ENEMY_BOUNDARY = 5,
-	PITS = 6
+	PITS = 6,
+	PIT_BOUNDARY = 7
 }
 
 signal transition_level
