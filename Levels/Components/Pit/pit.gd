@@ -4,7 +4,8 @@ class_name Pit extends Area2D
 
 func _on_body_entered(character: Character) -> void:
 	var fall_direction = ($PitCollisionShape.position - character.position).normalized()
-	Global.fell_in_pit.emit(character, fall_direction)
+	var distance_to_center = character.position.distance_to($PitCollisionShape.position)
+	Global.fell_in_pit.emit(character, fall_direction * distance_to_center)
 	Global.fall_finished.connect(_on_fall_animation_finished)
 
 
