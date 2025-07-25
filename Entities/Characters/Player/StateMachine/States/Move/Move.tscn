@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lanxp1ahnsjh"]
+
+[ext_resource type="Script" uid="uid://co0yvs2q61u3q" path="res://Entities/Characters/Player/StateMachine/States/Move/move.gd" id="1_44v65"]
+
+[node name="Move" type="Node"]
+script = ExtResource("1_44v65")

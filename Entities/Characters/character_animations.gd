@@ -7,6 +7,10 @@ func _ready():
 	animation_finished.connect(_on_animation_finished)
 
 
+func play_with_facing(animation_name: String) -> void:
+	self.play(animation_name + facing)
+
+
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		get_parent().queue_free()
