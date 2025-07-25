@@ -4,4 +4,6 @@
 
 [node name="Idle" type="Node"]
 script = ExtResource("1_afeq3")
+animation_name = "idle"
+animate_with_facing = true
 metadata/_custom_type_script = "uid://d1n11p0hurb7s"
