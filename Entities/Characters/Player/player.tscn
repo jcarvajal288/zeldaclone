@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=50 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -16,7 +16,12 @@
 [ext_resource type="AudioStream" uid="uid://c00kag63iof4f" path="res://Entities/Characters/Player/sfx/03_human_atk_sword_3.wav" id="15_k6v6k"]
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="17_k6v6k"]
 [ext_resource type="PackedScene" uid="uid://bm23d4bl1p4uj" path="res://Entities/Characters/Components/InvulnerableAfterHit/InvulnerableAfterHit.tscn" id="17_sk8pv"]
+[ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Player/StateMachine/StateMachine.tscn" id="18_rcmxi"]
 [ext_resource type="PackedScene" uid="uid://dwgsqcy2savhe" path="res://Entities/Characters/Components/FallDownPit/FallDownPit.tscn" id="18_sk8pv"]
+[ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Player/StateMachine/States/Idle/Idle.tscn" id="19_bw4wv"]
+[ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Player/StateMachine/States/Move/Move.tscn" id="20_tknau"]
+[ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Player/StateMachine/States/Hit/Hit.tscn" id="21_p8w72"]
+[ext_resource type="PackedScene" uid="uid://b3khutoue2pl0" path="res://Entities/Characters/Player/StateMachine/States/Attack/Attack.tscn" id="22_mh0u4"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -886,6 +891,26 @@ animation_player = NodePath("../AnimationPlayer")
 subject = NodePath("..")
 health = NodePath("../Health")
 animation_player = NodePath("../AnimationPlayer")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("18_rcmxi")]
+starting_state = NodePath("Idle")
+
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
+idle_state = NodePath("../Idle")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Hit" parent="StateMachine" instance=ExtResource("21_p8w72")]
+
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+hit_state = NodePath("../Hit")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="on_death" from="Health" to="." method="_on_death"]

@@ -15,6 +15,8 @@ func process_input(_event: InputEvent) -> State:
 func process_physics(_delta: float) -> State:
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var movement = input_direction * parent.speed
+	parent.animation_player.set_facing(input_direction)
+	parent.animation_player.play_with_facing(animation_name)
 	if movement == Vector2.ZERO:
 		return idle_state
 	parent.velocity = movement

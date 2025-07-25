@@ -8,6 +8,7 @@ signal move_camera(position)
 @onready var sword_swing_sfx = $SwordSwingSoundRandomizer
 @onready var get_hit_sfx = $GetHitSoundPlayer
 
+
 var current_map_cell = Vector2i.ZERO
 
 func _init():
@@ -17,20 +18,31 @@ func _init():
 
 
 func _ready() -> void:
-	$Health.on_death.connect(_on_death)
-	Global.transition_level.connect(enter_level)
+	# $Health.on_death.connect(_on_death)
+	# Global.transition_level.connect(enter_level)
+	$StateMachine.init(self)
 
 		
-func _set_camera_position():
+func set_camera_position():
 	move_camera.emit(self.position)
+
+func _unhandled_input(event: InputEvent) -> void:
+	$StateMachine.process_input(event)
 		
 	
-func _physics_process(_delta):
-	if not $AnimationPlayer.animation_locked:
-		$InputController.get_input()
-	_set_camera_position()
-	move_and_slide()
-	Global.PLAYER_POSITION = self.position
+func _physics_process(delta):
+	# if not $AnimationPlayer.animation_locked:
+	# 	$InputController.get_input()
+	# set_camera_position()
+	# move_and_slide()
+	# Global.PLAYER_POSITION = self.position
+	$StateMachine.process_physics(delta)
+	set_camera_position()
+
+
+func _process(delta: float) -> void:
+	$StateMachine.process_frame(delta)
+
 
 func exit_down_stairs():
 	$AnimationPlayer.animation_locked = true

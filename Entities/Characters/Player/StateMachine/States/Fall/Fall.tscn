@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc5ohem8uwved"]
+
+[ext_resource type="Script" uid="uid://bf40t833wcr6w" path="res://Entities/Characters/Player/StateMachine/States/Fall/fall.gd" id="1_2hxoh"]
+
+[node name="Fall" type="Node"]
+script = ExtResource("1_2hxoh")
+animation_name = "fall"
