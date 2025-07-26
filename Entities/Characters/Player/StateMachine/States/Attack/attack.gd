@@ -15,6 +15,7 @@ func enter() -> void:
 	var input_direction = Global.game_controller.bind_8_way(Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	parent.animation_player.play_attack_animation_with_input(input_direction)
 	parent.animation_player.animation_finished.connect(_on_animation_finished)
+	$AttackSoundRandomizer.play()
 	is_finished = false
 
 
