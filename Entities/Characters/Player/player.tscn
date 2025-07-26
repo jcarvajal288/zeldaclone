@@ -829,7 +829,8 @@ hit_state = NodePath("../Hit")
 idle_state = NodePath("../Idle")
 hurtbox = NodePath("../../Hurtbox")
 
-[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
+director = NodePath("../../InputController")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 hit_state = NodePath("../Hit")

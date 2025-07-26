@@ -1,5 +1,6 @@
 extends State
 
+@export var director: Director
 @export var idle_state: State
 @export var move_state: State
 @export var hit_state: State
@@ -12,8 +13,7 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 
 
 func enter() -> void:
-	var input_direction = Global.game_controller.bind_8_way(Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
-	subject.animation_player.play_attack_animation_with_input(input_direction)
+	subject.animation_player.play_attack_animation_with_input(director.movement_vector)
 	subject.animation_player.animation_finished.connect(_on_animation_finished)
 	$AttackSoundRandomizer.play()
 	is_finished = false
@@ -22,8 +22,7 @@ func enter() -> void:
 func process_input(_event: InputEvent) -> State:
 	if not is_finished:
 		return null
-	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if input_direction != Vector2.ZERO:
+	if director.movement_vector != Vector2.ZERO:
 		return move_state
 	else:
 		return idle_state
