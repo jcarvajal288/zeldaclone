@@ -12,5 +12,6 @@ func _ready() -> void:
 
 
 func fall_down_pit(_character: Character, fall_velocity: Vector2):
-	fall_state.fall_velocity = fall_velocity
-	state_machine.change_state(fall_state)
+	pass
+	# fall_state.fall_velocity = fall_velocity
+	# state_machine.change_state(fall_state)

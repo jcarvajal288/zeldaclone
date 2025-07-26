@@ -1,5 +1,6 @@
 extends State
 
+@export var allow_walking_into_pits: bool
 @export var idle_state: State
 @export var move_state: State
 @export var hit_state: State

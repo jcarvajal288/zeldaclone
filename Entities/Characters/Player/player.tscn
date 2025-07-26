@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=49 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="17_k6v6k"]
 [ext_resource type="PackedScene" uid="uid://bm23d4bl1p4uj" path="res://Entities/Characters/Components/InvulnerableAfterHit/InvulnerableAfterHit.tscn" id="17_sk8pv"]
 [ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Player/StateMachine/StateMachine.tscn" id="18_rcmxi"]
-[ext_resource type="PackedScene" uid="uid://dwgsqcy2savhe" path="res://Entities/Characters/Components/FallDownPit/FallDownPit.tscn" id="18_sk8pv"]
 [ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Player/StateMachine/States/Idle/Idle.tscn" id="19_bw4wv"]
 [ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Player/StateMachine/States/Move/Move.tscn" id="20_tknau"]
 [ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Player/StateMachine/States/Hit/Hit.tscn" id="21_p8w72"]
@@ -843,10 +842,12 @@ stream = ExtResource("14_qqqkq")
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="2"]
 stream = ExtResource("15_k6v6k")
 
-[node name="Fall" parent="StateMachine" node_paths=PackedStringArray("health", "idle_state") instance=ExtResource("22_rcmxi")]
+[node name="Fall" parent="StateMachine" node_paths=PackedStringArray("state_machine", "health", "idle_state") instance=ExtResource("22_rcmxi")]
+state_machine = NodePath("..")
 health = NodePath("../../Health")
 idle_state = NodePath("../Idle")
 damage = 1
+allow_walking_into_pits = true
 
 [node name="InputController" parent="." node_paths=PackedStringArray("owning_character", "animation_player") instance=ExtResource("2_bagdn")]
 owning_character = NodePath("..")
@@ -911,11 +912,6 @@ stream = ExtResource("17_k6v6k")
 sprite = NodePath("../Sprite2D")
 hurtbox = NodePath("../Hurtbox")
 animation_player = NodePath("../AnimationPlayer")
-
-[node name="FallDownPit" parent="." node_paths=PackedStringArray("subject", "state_machine") instance=ExtResource("18_sk8pv")]
-subject = NodePath("..")
-state_machine = NodePath("../StateMachine")
-allow_walking_into_pits = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="on_death" from="Health" to="." method="_on_death"]
