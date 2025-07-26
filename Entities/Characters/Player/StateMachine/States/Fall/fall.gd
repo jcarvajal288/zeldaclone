@@ -11,7 +11,7 @@ var fall_velocity = Vector2.ZERO
 func _ready() -> void:
 	Global.fell_in_pit.connect(fall_down_pit)
 	if not allow_walking_into_pits:
-		parent.set_collision_mask_value(Global.CollisionLayer.PIT_BOUNDARY, true)
+		subject.set_collision_mask_value(Global.CollisionLayer.PIT_BOUNDARY, true)
 
 
 func fall_down_pit(_character: Character, fall_vel: Vector2):
@@ -21,19 +21,18 @@ func fall_down_pit(_character: Character, fall_vel: Vector2):
 
 
 func enter() -> void:
-	parent.animation_player.play_fall_animation()
-	print(fall_velocity)
-	parent.velocity = fall_velocity
+	subject.animation_player.play_fall_animation()
+	subject.velocity = fall_velocity
 	$FallSFX.play()
 
 
 func process_physics(_delta: float) -> State:
-	if parent.animation_player.current_animation == "fall":
-		parent.move_and_slide()
+	if subject.animation_player.current_animation == "fall":
+		subject.move_and_slide()
 		return null
 	elif damage > 0:
 		health.take_damage(1)
 		return idle_state
 	else:
-		parent.queue_free()
+		subject.queue_free()
 		return null

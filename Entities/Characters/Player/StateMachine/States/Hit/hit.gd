@@ -14,7 +14,7 @@ func enter() -> void:
 
 func process_physics(_delta: float) -> State:
 	if not $Timer.is_stopped():
-		parent.sprite.visible = not parent.sprite.visible
+		subject.sprite.visible = not subject.sprite.visible
 	return null
 
 

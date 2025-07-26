@@ -813,17 +813,21 @@ inventory = NodePath("Inventory")
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("18_rcmxi")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("director", "move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
+director = NodePath("../../InputController")
 move_state = NodePath("../Move")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 
-[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
+director = NodePath("../../InputController")
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 
-[node name="Hit" parent="StateMachine" instance=ExtResource("21_p8w72")]
+[node name="Hit" parent="StateMachine" node_paths=PackedStringArray("idle_state", "hurtbox") instance=ExtResource("21_p8w72")]
+idle_state = NodePath("../Idle")
+hurtbox = NodePath("../../Hurtbox")
 
 [node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
 idle_state = NodePath("../Idle")
@@ -849,9 +853,7 @@ idle_state = NodePath("../Idle")
 damage = 1
 allow_walking_into_pits = true
 
-[node name="InputController" parent="." node_paths=PackedStringArray("owning_character", "animation_player") instance=ExtResource("2_bagdn")]
-owning_character = NodePath("..")
-animation_player = NodePath("../AnimationPlayer")
+[node name="InputController" parent="." instance=ExtResource("2_bagdn")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tekja")

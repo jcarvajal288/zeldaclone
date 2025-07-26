@@ -3,13 +3,13 @@ class_name State extends Node
 @export var animation_name: String
 @export var animate_with_facing: bool
 
-var parent: Player
+var subject: Player
 
 func enter() -> void:
 	if animate_with_facing:
-		parent.animation_player.play_with_facing(animation_name)
+		subject.animation_player.play_with_facing(animation_name)
 	else:
-		parent.animation_player.play(animation_name)
+		subject.animation_player.play(animation_name)
 
 
 func exit() -> void:

@@ -4,9 +4,9 @@ class_name StateMachine extends Node
 
 var current_state: State
 
-func init(parent: Player) -> void:
+func init(subject: Character) -> void:
 	for child in get_children():
-		child.parent = parent
+		child.subject = subject
 	change_state(starting_state)
 
 
