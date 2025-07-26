@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=50 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Player/StateMachine/States/Move/Move.tscn" id="20_tknau"]
 [ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Player/StateMachine/States/Hit/Hit.tscn" id="21_p8w72"]
 [ext_resource type="PackedScene" uid="uid://b3khutoue2pl0" path="res://Entities/Characters/Player/StateMachine/States/Attack/Attack.tscn" id="22_mh0u4"]
+[ext_resource type="PackedScene" uid="uid://cc5ohem8uwved" path="res://Entities/Characters/Player/StateMachine/States/Fall/Fall.tscn" id="22_rcmxi"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -810,6 +811,43 @@ collision_mask = 45
 script = ExtResource("1_lu8i8")
 inventory = NodePath("Inventory")
 
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("18_rcmxi")]
+starting_state = NodePath("Idle")
+
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
+idle_state = NodePath("../Idle")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Hit" parent="StateMachine" instance=ExtResource("21_p8w72")]
+
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+hit_state = NodePath("../Hit")
+
+[node name="AttackSoundRandomizer" parent="StateMachine/Attack" index="0" node_paths=PackedStringArray("sound_list")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="0"]
+stream = ExtResource("13_4mxos")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="1"]
+stream = ExtResource("14_qqqkq")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="2"]
+stream = ExtResource("15_k6v6k")
+
+[node name="Fall" parent="StateMachine" node_paths=PackedStringArray("health", "idle_state") instance=ExtResource("22_rcmxi")]
+health = NodePath("../../Health")
+idle_state = NodePath("../Idle")
+damage = 1
+
 [node name="InputController" parent="." node_paths=PackedStringArray("owning_character", "animation_player") instance=ExtResource("2_bagdn")]
 owning_character = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
@@ -874,42 +912,10 @@ sprite = NodePath("../Sprite2D")
 hurtbox = NodePath("../Hurtbox")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="FallDownPit" parent="." node_paths=PackedStringArray("subject", "health", "animation_player") instance=ExtResource("18_sk8pv")]
+[node name="FallDownPit" parent="." node_paths=PackedStringArray("subject", "state_machine") instance=ExtResource("18_sk8pv")]
 subject = NodePath("..")
-health = NodePath("../Health")
-animation_player = NodePath("../AnimationPlayer")
-
-[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("18_rcmxi")]
-starting_state = NodePath("Idle")
-
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
-move_state = NodePath("../Move")
-attack_state = NodePath("../Attack")
-hit_state = NodePath("../Hit")
-
-[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
-idle_state = NodePath("../Idle")
-attack_state = NodePath("../Attack")
-hit_state = NodePath("../Hit")
-
-[node name="Hit" parent="StateMachine" instance=ExtResource("21_p8w72")]
-
-[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
-idle_state = NodePath("../Idle")
-move_state = NodePath("../Move")
-hit_state = NodePath("../Hit")
-
-[node name="AttackSoundRandomizer" parent="StateMachine/Attack" index="0" node_paths=PackedStringArray("sound_list")]
-sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="0"]
-stream = ExtResource("13_4mxos")
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="1"]
-stream = ExtResource("14_qqqkq")
-
-[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="2"]
-stream = ExtResource("15_k6v6k")
+state_machine = NodePath("../StateMachine")
+allow_walking_into_pits = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="on_death" from="Health" to="." method="_on_death"]
@@ -918,6 +924,6 @@ stream = ExtResource("15_k6v6k")
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
 [connection signal="on_hit" from="Hurtbox" to="BounceOnHit" method="_on_hit"]
 
+[editable path="StateMachine/Attack"]
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]
-[editable path="StateMachine/Attack"]

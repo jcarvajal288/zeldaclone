@@ -21,10 +21,3 @@ func get_input():
 		owning_character.velocity = Vector2.ZERO
 		animation_player.play_idle_animation()
 
-
-func bind_8_way(input_direction: Vector2) -> Vector2:
-	return Vector2(
-		snapped(input_direction.x, 0.5),
-		snapped(input_direction.y, 0.5)
-	).normalized()
-

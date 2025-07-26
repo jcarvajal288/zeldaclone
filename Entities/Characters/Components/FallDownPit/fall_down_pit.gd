@@ -1,20 +1,16 @@
 extends Node
 
 @export var subject: Character
-@export var health: Health
-@export var animation_player: AnimationPlayer
+@export var state_machine: StateMachine
+@export var fall_state: State
+@export var allow_walking_into_pits: bool
 
 func _ready() -> void:
 	Global.fell_in_pit.connect(fall_down_pit)
-	if is_instance_of(subject, Enemy):
+	if not allow_walking_into_pits:
 		subject.set_collision_mask_value(Global.CollisionLayer.PIT_BOUNDARY, true)
 
 
-func fall_down_pit(character: Character, fall_velocity: Vector2):
-	if subject != character:
-		return
-	if is_instance_of(character, Player):
-		health.take_damage(1)
-	animation_player.play_fall_animation()
-	$FallSFX.play()
-	character.velocity = fall_velocity
+func fall_down_pit(_character: Character, fall_velocity: Vector2):
+	fall_state.fall_velocity = fall_velocity
+	state_machine.change_state(fall_state)

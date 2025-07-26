@@ -23,7 +23,7 @@ script = ExtResource("1_d5x1h")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_hq1ik")]
 
-[node name="Health" parent="PlayerCharacter" index="3"]
+[node name="Health" parent="PlayerCharacter" index="4"]
 is_player_health = true
 
 [node name="LevelManager" type="Node" parent="."]
@@ -36,5 +36,6 @@ dungeon2 = ExtResource("9_7ycvg")
 [connection signal="move_camera" from="PlayerCharacter" to="Camera2D" method="center_camera_on_position"]
 
 [editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/StateMachine/Attack"]
 [editable path="PlayerCharacter/Hurtbox"]
 [editable path="PlayerCharacter/HitboxPivot/Hitbox"]
