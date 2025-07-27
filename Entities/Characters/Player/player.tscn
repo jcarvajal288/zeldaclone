@@ -814,13 +814,13 @@ inventory = NodePath("Inventory")
 starting_state = NodePath("Idle")
 
 [node name="Idle" parent="StateMachine" node_paths=PackedStringArray("director", "move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
-director = NodePath("../../InputController")
+director = NodePath("../../InputDirector")
 move_state = NodePath("../Move")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 
 [node name="Move" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
-director = NodePath("../../InputController")
+director = NodePath("../../InputDirector")
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
@@ -830,7 +830,7 @@ idle_state = NodePath("../Idle")
 hurtbox = NodePath("../../Hurtbox")
 
 [node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
-director = NodePath("../../InputController")
+director = NodePath("../../InputDirector")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 hit_state = NodePath("../Hit")
@@ -854,7 +854,7 @@ idle_state = NodePath("../Idle")
 damage = 1
 allow_walking_into_pits = true
 
-[node name="InputController" parent="." instance=ExtResource("2_bagdn")]
+[node name="InputDirector" parent="." instance=ExtResource("2_bagdn")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tekja")

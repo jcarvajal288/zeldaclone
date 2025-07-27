@@ -1,4 +1,4 @@
-class_name InputController extends Director
+class_name InputDirector extends Director
 
 
 func bind_8_way(input_direction: Vector2) -> Vector2:

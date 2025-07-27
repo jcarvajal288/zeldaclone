@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _physics_process(delta):
 	# if not $AnimationPlayer.animation_locked:
-	# 	$InputController.get_input()
+	# 	$InputDirector.get_input()
 	# set_camera_position()
 	# move_and_slide()
 	# Global.PLAYER_POSITION = self.position
