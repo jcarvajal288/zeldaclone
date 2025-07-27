@@ -4,7 +4,6 @@ class_name Player extends Character
 
 signal move_camera(position)
 
-@onready var animation_player = $AnimationPlayer
 @onready var sword_swing_sfx = $SwordSwingSoundRandomizer
 @onready var get_hit_sfx = $GetHitSoundPlayer
 
@@ -35,7 +34,7 @@ func _physics_process(delta):
 	# 	$InputDirector.get_input()
 	# set_camera_position()
 	# move_and_slide()
-	# Global.PLAYER_POSITION = self.position
+	Global.PLAYER_POSITION = self.position
 	$StateMachine.process_physics(delta)
 	set_camera_position()
 
@@ -97,4 +96,3 @@ func _on_hit(hitbox: Hitbox):
 func _on_death():
 	animation_player.play_death_animation()
 	velocity = Vector2.ZERO
-

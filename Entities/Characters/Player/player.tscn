@@ -15,12 +15,12 @@
 [ext_resource type="AudioStream" uid="uid://c00kag63iof4f" path="res://Entities/Characters/Player/sfx/03_human_atk_sword_3.wav" id="15_k6v6k"]
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="17_k6v6k"]
 [ext_resource type="PackedScene" uid="uid://bm23d4bl1p4uj" path="res://Entities/Characters/Components/InvulnerableAfterHit/InvulnerableAfterHit.tscn" id="17_sk8pv"]
-[ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Player/StateMachine/StateMachine.tscn" id="18_rcmxi"]
-[ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Player/StateMachine/States/Idle/Idle.tscn" id="19_bw4wv"]
-[ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Player/StateMachine/States/Move/Move.tscn" id="20_tknau"]
-[ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Player/StateMachine/States/Hit/Hit.tscn" id="21_p8w72"]
-[ext_resource type="PackedScene" uid="uid://b3khutoue2pl0" path="res://Entities/Characters/Player/StateMachine/States/Attack/Attack.tscn" id="22_mh0u4"]
-[ext_resource type="PackedScene" uid="uid://cc5ohem8uwved" path="res://Entities/Characters/Player/StateMachine/States/Fall/Fall.tscn" id="22_rcmxi"]
+[ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Components/StateMachine/StateMachine.tscn" id="18_rcmxi"]
+[ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Components/StateMachine/States/Idle/Idle.tscn" id="19_bw4wv"]
+[ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Components/StateMachine/States/Move/Move.tscn" id="20_tknau"]
+[ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Components/StateMachine/States/Hit/Hit.tscn" id="21_p8w72"]
+[ext_resource type="PackedScene" uid="uid://b3khutoue2pl0" path="res://Entities/Characters/Components/StateMachine/States/Attack/Attack.tscn" id="22_mh0u4"]
+[ext_resource type="PackedScene" uid="uid://cc5ohem8uwved" path="res://Entities/Characters/Components/StateMachine/States/Fall/Fall.tscn" id="22_rcmxi"]
 
 [sub_resource type="Animation" id="Animation_4wf4l"]
 length = 0.001
@@ -852,7 +852,6 @@ state_machine = NodePath("..")
 health = NodePath("../../Health")
 idle_state = NodePath("../Idle")
 damage = 1
-allow_walking_into_pits = true
 
 [node name="InputDirector" parent="." instance=ExtResource("2_bagdn")]
 

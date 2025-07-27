@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=52 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
@@ -6,9 +6,14 @@
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_t4s6y"]
 [ext_resource type="PackedScene" uid="uid://c83kh7ucx5lgn" path="res://Entities/Characters/Components/Hurtbox/Hurtbox.tscn" id="4_dl5bh"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="4_mdd63"]
+[ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Components/StateMachine/States/Idle/Idle.tscn" id="5_82kko"]
+[ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Components/StateMachine/States/Move/Move.tscn" id="6_8uipt"]
 [ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="7_qm0o1"]
+[ext_resource type="PackedScene" uid="uid://b3khutoue2pl0" path="res://Entities/Characters/Components/StateMachine/States/Attack/Attack.tscn" id="7_y2gft"]
+[ext_resource type="PackedScene" uid="uid://cc5ohem8uwved" path="res://Entities/Characters/Components/StateMachine/States/Fall/Fall.tscn" id="8_n2jkb"]
 [ext_resource type="AudioStream" uid="uid://mfl6f4y3gve1" path="res://Entities/Characters/Enemies/Orc/sfx/01_orc_atk_sword_1.wav" id="8_qd36t"]
 [ext_resource type="PackedScene" uid="uid://pl15q5aw18gj" path="res://Entities/Characters/Components/BounceOnHit/BounceOnHit.tscn" id="8_t4s6y"]
+[ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Components/StateMachine/States/Hit/Hit.tscn" id="9_u0id6"]
 [ext_resource type="AudioStream" uid="uid://b1dtdftm4f8vj" path="res://Entities/Characters/Enemies/Orc/sfx/02_orc_atk_sword_2.wav" id="9_vsjwf"]
 [ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_ice2i"]
 [ext_resource type="AudioStream" uid="uid://cjy68p0ijw7ox" path="res://Entities/Characters/Enemies/Orc/sfx/03_orc_atk_sword_3.wav" id="10_yrvlm"]
@@ -17,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="13_ice2i"]
 [ext_resource type="AudioStream" uid="uid://dyb3rs47deyl0" path="res://Entities/Characters/Enemies/Orc/sfx/09_orc_damage_3.wav" id="13_ocrh3"]
 [ext_resource type="PackedScene" uid="uid://dwgsqcy2savhe" path="res://Entities/Characters/Components/FallDownPit/FallDownPit.tscn" id="14_1ex5n"]
+[ext_resource type="Script" uid="uid://bh1vfi812aayg" path="res://Entities/Characters/Components/StateMachine/state_machine.gd" id="18_vsjwf"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
 length = 0.001
@@ -875,6 +881,56 @@ libraries = {
 }
 script = ExtResource("3_t4s6y")
 
+[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("7_qm0o1")]
+subject = NodePath("..")
+tile_distance_to_notice_player = 8
+attack_range_pixels = 12
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("18_vsjwf")
+starting_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bh1vfi812aayg"
+
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("director", "move_state", "attack_state", "hit_state") instance=ExtResource("5_82kko")]
+director = NodePath("../../ApproachAndAttack")
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "attack_state", "hit_state", "fall_state") instance=ExtResource("6_8uipt")]
+director = NodePath("../../ApproachAndAttack")
+idle_state = NodePath("../Idle")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+fall_state = NodePath("../Fall")
+
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state", "hit_state") instance=ExtResource("7_y2gft")]
+director = NodePath("../../ApproachAndAttack")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+hit_state = NodePath("../Hit")
+
+[node name="AttackSoundRandomizer" parent="StateMachine/Attack" index="0" node_paths=PackedStringArray("sound_list")]
+sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="0"]
+stream = ExtResource("8_qd36t")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="1"]
+stream = ExtResource("9_vsjwf")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="2"]
+stream = ExtResource("10_yrvlm")
+
+[node name="Fall" parent="StateMachine" node_paths=PackedStringArray("state_machine", "health", "idle_state") instance=ExtResource("8_n2jkb")]
+state_machine = NodePath("..")
+health = NodePath("../../Health")
+idle_state = NodePath("../Idle")
+
+[node name="Hit" parent="StateMachine" node_paths=PackedStringArray("idle_state", "hurtbox") instance=ExtResource("9_u0id6")]
+idle_state = NodePath("../Idle")
+hurtbox = NodePath("../../Hurtbox")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jts6d")
 
@@ -887,25 +943,6 @@ owning_character = NodePath("..")
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_mdd63")
 debug_color = Color(0, 1, 0, 0.313726)
-
-[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject", "animation_player", "sound_randomizer") instance=ExtResource("7_qm0o1")]
-subject = NodePath("..")
-animation_player = NodePath("../AnimationPlayer")
-sound_randomizer = NodePath("../AttackSoundRandomizer")
-tile_distance_to_notice_player = 8
-attack_range_pixels = 12
-
-[node name="AttackSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_ice2i")]
-sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
-stream = ExtResource("8_qd36t")
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
-stream = ExtResource("9_vsjwf")
-
-[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="AttackSoundRandomizer"]
-stream = ExtResource("10_yrvlm")
 
 [node name="BodyHitbox" parent="." node_paths=PackedStringArray("owning_character") instance=ExtResource("4_mdd63")]
 damage = 1
@@ -947,10 +984,8 @@ stream = ExtResource("13_ocrh3")
 [node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_ice2i")
 
-[node name="FallDownPit" parent="." node_paths=PackedStringArray("subject", "health", "animation_player") instance=ExtResource("14_1ex5n")]
+[node name="FallDownPit" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("14_1ex5n")]
 subject = NodePath("..")
-health = NodePath("../Health")
-animation_player = NodePath("../AnimationPlayer")
 
 [connection signal="on_death" from="Health" to="." method="_on_death"]
 [connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
@@ -958,6 +993,7 @@ animation_player = NodePath("../AnimationPlayer")
 [connection signal="on_hit" from="Hurtbox" to="BounceOnHit" method="_on_hit"]
 [connection signal="on_hit" from="Hurtbox" to="OnHitSFXRandomizer" method="_on_hit"]
 
+[editable path="StateMachine/Attack"]
 [editable path="Hurtbox"]
 [editable path="BodyHitbox"]
 [editable path="AttackHitboxPivot/AttackHitbox"]

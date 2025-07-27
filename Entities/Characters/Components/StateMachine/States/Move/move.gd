@@ -13,7 +13,6 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 
-
 func process_physics(_delta: float) -> State:
 	var movement = director.movement_vector * subject.speed
 	subject.animation_player.set_facing(director.movement_vector)

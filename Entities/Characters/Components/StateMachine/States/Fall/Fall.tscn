@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc5ohem8uwved"]
 
-[ext_resource type="Script" uid="uid://bf40t833wcr6w" path="res://Entities/Characters/Player/StateMachine/States/Fall/fall.gd" id="1_2hxoh"]
+[ext_resource type="Script" uid="uid://bf40t833wcr6w" path="res://Entities/Characters/Components/StateMachine/States/Fall/fall.gd" id="1_2hxoh"]
 [ext_resource type="AudioStream" uid="uid://bk4bv13ayu0i3" path="res://Entities/Characters/Components/FallDownPit/89_Teleport_03.wav" id="2_08ngk"]
 
 [node name="Fall" type="Node"]

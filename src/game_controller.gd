@@ -16,8 +16,3 @@ func camera() -> Camera2D:
 	return $Camera2D
 
 
-func bind_8_way(input_direction: Vector2) -> Vector2:
-	return Vector2(
-		snapped(input_direction.x, 0.5),
-		snapped(input_direction.y, 0.5)
-	).normalized()

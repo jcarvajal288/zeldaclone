@@ -3,7 +3,7 @@ class_name State extends Node
 @export var animation_name: String
 @export var animate_with_facing: bool
 
-var subject: Player
+var subject: Character
 
 func enter() -> void:
 	if animate_with_facing:
