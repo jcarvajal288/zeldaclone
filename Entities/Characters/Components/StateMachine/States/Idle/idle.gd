@@ -11,7 +11,7 @@ func enter() -> void:
 	subject.velocity = Vector2.ZERO
 
 
-func process_input(_event: InputEvent) -> State:
+func process_frame(_delta: float) -> State:
 	if director.movement_vector != Vector2.ZERO:
 		return move_state
 	if director.action_attack:
