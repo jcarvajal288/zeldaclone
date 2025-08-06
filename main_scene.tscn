@@ -36,6 +36,7 @@ dungeon2 = ExtResource("9_7ycvg")
 [connection signal="move_camera" from="PlayerCharacter" to="Camera2D" method="center_camera_on_position"]
 
 [editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/StateMachine/Hit"]
 [editable path="PlayerCharacter/StateMachine/Attack"]
 [editable path="PlayerCharacter/Hurtbox"]
 [editable path="PlayerCharacter/HitboxPivot/Hitbox"]

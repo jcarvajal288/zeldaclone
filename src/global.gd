@@ -17,6 +17,14 @@ enum Alignment {
 	EVIL
 }
 
+enum StairsDirection {
+	ENTER_UP,
+	ENTER_DOWN,
+	EXIT_UP,
+	EXIT_DOWN
+}
+
+
 enum RenderOrder {
 	BASE = -2,
 	FLOOR = 0,
@@ -35,7 +43,8 @@ enum CollisionLayer {
 	PIT_BOUNDARY = 7
 }
 
-signal transition_level
 signal player_health_changed
 signal fell_in_pit
 signal fall_finished
+signal transition_level
+signal stairs_used

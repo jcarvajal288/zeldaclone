@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=48 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="3_guu5u"]
 [ext_resource type="Script" uid="uid://cmqg0vw2vlqnq" path="res://Entities/Characters/Player/inventory.gd" id="4_tekja"]
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="6_4wf4l"]
+[ext_resource type="PackedScene" uid="uid://oyysf0b1erlj" path="res://Entities/Characters/Components/StateMachine/States/UseStairs/use_stairs.tscn" id="12_f88lc"]
 [ext_resource type="AudioStream" uid="uid://c41ueret3ymuy" path="res://Entities/Characters/Player/sfx/01_human_atk_sword_1.wav" id="13_4mxos"]
 [ext_resource type="AudioStream" uid="uid://bqjmgu0nw2whl" path="res://Entities/Characters/Player/sfx/62_Get_hit_01.wav" id="14_ih7kn"]
 [ext_resource type="AudioStream" uid="uid://corl22lh37rk2" path="res://Entities/Characters/Player/sfx/02_human_atk_sword_2.wav" id="14_qqqkq"]
@@ -854,6 +855,9 @@ state_machine = NodePath("..")
 health = NodePath("../../Health")
 idle_state = NodePath("../Idle")
 damage = 1
+
+[node name="UseStairs" parent="StateMachine" node_paths=PackedStringArray("idle_state") instance=ExtResource("12_f88lc")]
+idle_state = NodePath("../Idle")
 
 [node name="InputDirector" parent="." instance=ExtResource("2_bagdn")]
 
