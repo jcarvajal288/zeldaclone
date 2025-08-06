@@ -21,7 +21,6 @@ func _on_hit(area: Area2D) -> void:
 
 
 func enter() -> void:
-	print("enter")
 	super()
 	hurtbox.set_disabled(true)
 	start_bounce()

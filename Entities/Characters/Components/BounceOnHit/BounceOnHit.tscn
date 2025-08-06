@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://pl15q5aw18gj"]
-
-[ext_resource type="Script" uid="uid://bjkam0n8ee71n" path="res://Entities/Characters/Components/BounceOnHit/bounce_on_hit.gd" id="1_ovyul"]
-
-[node name="BounceOnHit" type="Node"]
-script = ExtResource("1_ovyul")
