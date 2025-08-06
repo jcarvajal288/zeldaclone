@@ -7,7 +7,7 @@ extends State
 @export var fall_state: State
 
 
-func process_input(_event: InputEvent) -> State:
+func process_frame(_delta: float) -> State:
 	if director.action_attack:
 		return attack_state
 	return null

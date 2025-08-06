@@ -4,6 +4,7 @@ class_name State extends Node
 @export var animate_with_facing: bool
 
 var subject: Character
+var signal_state_change
 
 func enter() -> void:
 	if animate_with_facing:

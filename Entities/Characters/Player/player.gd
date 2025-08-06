@@ -5,7 +5,7 @@ class_name Player extends Character
 signal move_camera(position)
 
 @onready var sword_swing_sfx = $SwordSwingSoundRandomizer
-@onready var get_hit_sfx = $GetHitSoundPlayer
+# @onready var get_hit_sfx = $GetHitSoundPlayer
 
 
 var current_map_cell = Vector2i.ZERO
@@ -18,7 +18,7 @@ func _init():
 
 func _ready() -> void:
 	# $Health.on_death.connect(_on_death)
-	# Global.transition_level.connect(enter_level)
+	Global.transition_level.connect(enter_level)
 	$StateMachine.init(self)
 
 		
@@ -87,10 +87,10 @@ func enter_up_stairs():
 	$AnimationPlayer.animation_locked = false
 
 
-func _on_hit(hitbox: Hitbox):
-	animation_player.play_damaged_animation()
-	get_hit_sfx.play()
-	$Health.take_damage(hitbox.damage)
+# func _on_hit(hitbox: Hitbox):
+# 	animation_player.play_damaged_animation()
+# 	get_hit_sfx.play()
+# 	$Health.take_damage(hitbox.damage)
 
 
 func _on_death():

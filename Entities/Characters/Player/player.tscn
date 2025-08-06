@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=47 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -11,10 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://c41ueret3ymuy" path="res://Entities/Characters/Player/sfx/01_human_atk_sword_1.wav" id="13_4mxos"]
 [ext_resource type="AudioStream" uid="uid://bqjmgu0nw2whl" path="res://Entities/Characters/Player/sfx/62_Get_hit_01.wav" id="14_ih7kn"]
 [ext_resource type="AudioStream" uid="uid://corl22lh37rk2" path="res://Entities/Characters/Player/sfx/02_human_atk_sword_2.wav" id="14_qqqkq"]
-[ext_resource type="PackedScene" uid="uid://pl15q5aw18gj" path="res://Entities/Characters/Components/BounceOnHit/BounceOnHit.tscn" id="15_4mxos"]
 [ext_resource type="AudioStream" uid="uid://c00kag63iof4f" path="res://Entities/Characters/Player/sfx/03_human_atk_sword_3.wav" id="15_k6v6k"]
 [ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="17_k6v6k"]
-[ext_resource type="PackedScene" uid="uid://bm23d4bl1p4uj" path="res://Entities/Characters/Components/InvulnerableAfterHit/InvulnerableAfterHit.tscn" id="17_sk8pv"]
 [ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Components/StateMachine/StateMachine.tscn" id="18_rcmxi"]
 [ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Components/StateMachine/States/Idle/Idle.tscn" id="19_bw4wv"]
 [ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Components/StateMachine/States/Move/Move.tscn" id="20_tknau"]
@@ -825,9 +823,13 @@ idle_state = NodePath("../Idle")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 
-[node name="Hit" parent="StateMachine" node_paths=PackedStringArray("idle_state", "hurtbox") instance=ExtResource("21_p8w72")]
+[node name="Hit" parent="StateMachine" node_paths=PackedStringArray("idle_state", "hurtbox", "sprite") instance=ExtResource("21_p8w72")]
 idle_state = NodePath("../Idle")
 hurtbox = NodePath("../../Hurtbox")
+sprite = NodePath("../../Sprite2D")
+
+[node name="OnHitSFX" parent="StateMachine/Hit" index="1"]
+stream = ExtResource("14_ih7kn")
 
 [node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
 director = NodePath("../../InputDirector")
@@ -899,29 +901,16 @@ shape = SubResource("RectangleShape2D_01a4e")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="GetHitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_ih7kn")
-
-[node name="BounceOnHit" parent="." node_paths=PackedStringArray("subject", "animation_player", "health") instance=ExtResource("15_4mxos")]
-subject = NodePath("..")
-animation_player = NodePath("../AnimationPlayer")
-health = NodePath("../Health")
-
 [node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_k6v6k")
-
-[node name="InvulnerableAfterHit" parent="." node_paths=PackedStringArray("sprite", "hurtbox", "animation_player") instance=ExtResource("17_sk8pv")]
-sprite = NodePath("../Sprite2D")
-hurtbox = NodePath("../Hurtbox")
-animation_player = NodePath("../AnimationPlayer")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="on_death" from="Health" to="." method="_on_death"]
 [connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
-[connection signal="on_hit" from="Hurtbox" to="BounceOnHit" method="_on_hit"]
 
+[editable path="StateMachine/Hit"]
 [editable path="StateMachine/Attack"]
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]

@@ -8,3 +8,5 @@ animation_name = "damaged"
 animate_with_facing = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="OnHitSFX" type="AudioStreamPlayer2D" parent="."]

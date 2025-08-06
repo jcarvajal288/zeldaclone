@@ -1,7 +1,7 @@
 extends Enemy
 
 func _init():
-	var spd = 30
+	var spd = 10
 	super(spd)
 
 

@@ -9,7 +9,9 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 
 
-func _on_area_entered(hitbox: Hitbox) -> void:
+func _on_area_entered(hitbox: Area2D) -> void:
+	if not hitbox is Hitbox:
+		return
 	if owning_character == null:
 		return
 	if hitbox.owning_character.alignment == owning_character.alignment:

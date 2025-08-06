@@ -4,10 +4,14 @@ class_name StateMachine extends Node
 
 var current_state: State
 
+signal signal_state_change
+
 func init(subject: Character) -> void:
 	for child in get_children():
 		child.subject = subject
+		child.signal_state_change = signal_state_change
 	change_state(starting_state)
+	signal_state_change.connect(change_state)
 
 
 func change_state(new_state: State) -> void:
