@@ -11,9 +11,10 @@ func _ready() -> void:
 	Global.fell_in_pit.connect(fall_down_pit)
 
 
-func fall_down_pit(_character: Character, fall_vel: Vector2):
-	fall_velocity = fall_vel
-	state_machine.change_state(self)
+func fall_down_pit(character: Character, fall_vel: Vector2):
+	if character == subject:
+		fall_velocity = fall_vel
+		state_machine.change_state(self)
 
 
 
