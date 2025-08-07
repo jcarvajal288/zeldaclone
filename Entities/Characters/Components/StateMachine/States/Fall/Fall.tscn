@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc5ohem8uwved"]
 
 [ext_resource type="Script" uid="uid://bf40t833wcr6w" path="res://Entities/Characters/Components/StateMachine/States/Fall/fall.gd" id="1_2hxoh"]
-[ext_resource type="AudioStream" uid="uid://bk4bv13ayu0i3" path="res://Entities/Characters/Components/FallDownPit/89_Teleport_03.wav" id="2_08ngk"]
+[ext_resource type="AudioStream" uid="uid://cjli6lvcaqvij" path="res://Entities/Characters/Components/StateMachine/States/Fall/sfx/89_Teleport_03.wav" id="2_mo82k"]
 
 [node name="Fall" type="Node"]
 script = ExtResource("1_2hxoh")
@@ -9,4 +9,4 @@ animation_name = "fall"
 
 [node name="FallSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)
-stream = ExtResource("2_08ngk")
+stream = ExtResource("2_mo82k")

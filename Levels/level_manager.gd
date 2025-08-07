@@ -9,9 +9,10 @@ var current_level: Level
 
 func _ready():
 	Global.level_manager = self
+	Global.transition_level.connect(transition_to_scene)
 	
 
-func _change_level(packed_new_level: PackedScene, delete: bool = true, keep_running: bool = false):
+func change_level(packed_new_level: PackedScene, delete: bool = true, keep_running: bool = false):
 	if current_level != null:
 		if delete:
 			current_level.queue_free() # removes node entirely
@@ -25,12 +26,12 @@ func _change_level(packed_new_level: PackedScene, delete: bool = true, keep_runn
 
 
 func change_to_test_area():
-	_change_level(test_area)
+	change_level(test_area)
 	Global.game_controller.move_player_to_position(Vector2(20, 20))
 
 
 func change_to_grasslands(location: String = "start"):
-	_change_level(grasslands)
+	change_level(grasslands)
 	if location == "dungeon_entrance":
 		var entry_position = Vector2(251, -58)
 		Global.game_controller.move_player_to_position(entry_position)
@@ -43,7 +44,7 @@ func change_to_grasslands(location: String = "start"):
 
 
 func change_to_dungeon():
-	_change_level(dungeon)
+	change_level(dungeon)
 	var entry_position = Vector2(84, 6)
 	Global.game_controller.move_player_to_position(entry_position)
 	Global.transition_level.emit("DOWN")
@@ -51,7 +52,7 @@ func change_to_dungeon():
 
 
 func change_to_dungeon_2():
-	_change_level(dungeon2)
+	change_level(dungeon2)
 	# var entry_position = Vector2(84, 6)
 	var entry_position = Vector2(20, 20)
 	Global.game_controller.move_player_to_position(entry_position)
@@ -68,3 +69,19 @@ func transition_to_entry_room(entry_position: Vector2):
 
 func get_room_for_position(position: Vector2) -> Room:
 	return current_level.get_room_for_position(position)
+
+
+func transition_to_scene(scene: PackedScene, location: String) -> void:
+	change_level(scene)
+	var entry_position = get_entry_position(scene, location)
+	transition_to_entry_room(entry_position)
+
+
+func get_entry_position(scene: PackedScene, location: String) -> Vector2:
+	if scene == grasslands:
+		if location == "dungeon_entrance":
+			return Vector2(251, -58)
+	elif scene == dungeon2:
+		return Vector2(84, 6)
+	push_error("Invalid scene/location combination: [invalid scene], %s" % location)
+	return Vector2.ZERO

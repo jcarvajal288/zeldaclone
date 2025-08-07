@@ -84,11 +84,12 @@ shape = SubResource("RectangleShape2D_ryfpj")
 [node name="Orc" parent="." instance=ExtResource("6_4ndi0")]
 position = Vector2(80.29, 94.825)
 
-[node name="Health" parent="Orc" index="3"]
+[node name="Health" parent="Orc" index="5"]
 max_health = 20
 
 [editable path="Pit"]
 [editable path="Orc"]
+[editable path="Orc/StateMachine/Attack"]
 [editable path="Orc/Hurtbox"]
 [editable path="Orc/BodyHitbox"]
 [editable path="Orc/AttackHitboxPivot/AttackHitbox"]

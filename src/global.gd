@@ -18,8 +18,6 @@ enum Alignment {
 }
 
 enum StairsDirection {
-	ENTER_UP,
-	ENTER_DOWN,
 	EXIT_UP,
 	EXIT_DOWN
 }
