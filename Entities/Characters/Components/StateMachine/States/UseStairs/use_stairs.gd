@@ -12,7 +12,6 @@ func _ready() -> void:
 
 
 func _on_stairs_used(sent_direction: Global.StairsDirection, sent_scene: PackedScene, sent_location: String) -> void:
-	print("stairs used")
 	direction = sent_direction
 	next_scene = sent_scene
 	next_location = sent_location
@@ -36,7 +35,6 @@ func set_entryway_trigger(trigger: bool) -> void:
 
 
 func exit_up() -> void:
-	print("exit up")
 	set_entryway_trigger(false)
 	subject.velocity = Vector2.UP * 5
 	await await_and_signal_level_change()
@@ -44,7 +42,6 @@ func exit_up() -> void:
 
 
 func exit_down() -> void:
-	print("exit down")
 	set_entryway_trigger(false)
 	subject.z_index = Global.RenderOrder.BASE + 1
 	subject.animation_player.set_facing(Vector2.UP)
@@ -54,22 +51,21 @@ func exit_down() -> void:
 
 
 func enter_from_down() -> void:
-	print("enter from down")
 	subject.z_index = Global.RenderOrder.BASE + 1
 	subject.animation_player.set_facing(Vector2.DOWN)
-	subject.animation_player.play(self.animation_name)
+	subject.animation_player.play_with_facing(self.animation_name)
 	subject.velocity = Vector2.UP * 10
 	await get_tree().create_timer(1.0).timeout
 	# step down to avoid the exit trigger
+	subject.z_index = Global.RenderOrder.PLAYER
 	subject.velocity = Vector2.DOWN * 10
 	await get_tree().create_timer(0.2).timeout
 	signal_state_change.emit(idle_state)
 
 
 func enter_from_up() -> void:
-	print("enter from up")
 	subject.animation_player.set_facing(Vector2.DOWN)
-	subject.animation_player.play(self.animation_name)
+	subject.animation_player.play_with_facing(self.animation_name)
 	subject.z_index = Global.RenderOrder.PLAYER
 	subject.velocity = Vector2.DOWN * 10
 	await get_tree().create_timer(1.0).timeout
