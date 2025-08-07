@@ -17,9 +17,8 @@ func fall_down_pit(character: Character, fall_vel: Vector2):
 		state_machine.change_state(self)
 
 
-
 func enter() -> void:
-	subject.animation_player.play_fall_animation()
+	# subject.animation_player.play_fall_animation()
 	subject.velocity = fall_velocity
 	$FallSFX.play()
 

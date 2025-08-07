@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://mv23j4koy1sn"]
+
+[ext_resource type="Script" uid="uid://bqo7661dlmero" path="res://Entities/Characters/Components/StateMachine/States/Death/death.gd" id="1_1lwuf"]
+
+[node name="Death" type="Node"]
+script = ExtResource("1_1lwuf")
+animation_name = "death"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]

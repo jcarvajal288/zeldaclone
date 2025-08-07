@@ -84,6 +84,10 @@ shape = SubResource("RectangleShape2D_ryfpj")
 [node name="Orc" parent="." instance=ExtResource("6_4ndi0")]
 position = Vector2(80.29, 94.825)
 
+[node name="Fall" parent="Orc/StateMachine" index="3"]
+damage = null
+animate_with_facing = null
+
 [node name="Health" parent="Orc" index="5"]
 max_health = 20
 

@@ -33,6 +33,6 @@ func _process(delta: float) -> void:
 	$StateMachine.process_frame(delta)
 
 
-func _on_death():
-	animation_player.play_death_animation()
-	velocity = Vector2.ZERO
+# func _on_death():
+# 	animation_player.play_death_animation()
+# 	velocity = Vector2.ZERO

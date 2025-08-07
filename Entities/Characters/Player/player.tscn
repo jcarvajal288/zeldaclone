@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://u1x1r0jf530w"]
+[gd_scene load_steps=49 format=3 uid="uid://u1x1r0jf530w"]
 
 [ext_resource type="Script" uid="uid://cky6j4dxy0mib" path="res://Entities/Characters/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://b6vv8qrdn80p" path="res://Entities/Characters/Player/InputController.tscn" id="2_bagdn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://11s6l65d4vpu" path="res://Entities/Characters/Components/Hitbox/Hitbox.tscn" id="6_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://oyysf0b1erlj" path="res://Entities/Characters/Components/StateMachine/States/UseStairs/use_stairs.tscn" id="12_f88lc"]
 [ext_resource type="AudioStream" uid="uid://c41ueret3ymuy" path="res://Entities/Characters/Player/sfx/01_human_atk_sword_1.wav" id="13_4mxos"]
+[ext_resource type="PackedScene" uid="uid://mv23j4koy1sn" path="res://Entities/Characters/Components/StateMachine/States/Death/death.tscn" id="13_eq8yb"]
 [ext_resource type="AudioStream" uid="uid://bqjmgu0nw2whl" path="res://Entities/Characters/Player/sfx/62_Get_hit_01.wav" id="14_ih7kn"]
 [ext_resource type="AudioStream" uid="uid://corl22lh37rk2" path="res://Entities/Characters/Player/sfx/02_human_atk_sword_2.wav" id="14_qqqkq"]
 [ext_resource type="AudioStream" uid="uid://c00kag63iof4f" path="res://Entities/Characters/Player/sfx/03_human_atk_sword_3.wav" id="15_k6v6k"]
@@ -855,9 +856,17 @@ state_machine = NodePath("..")
 health = NodePath("../../Health")
 idle_state = NodePath("../Idle")
 damage = 1
+animate_with_facing = null
 
 [node name="UseStairs" parent="StateMachine" node_paths=PackedStringArray("idle_state") instance=ExtResource("12_f88lc")]
 idle_state = NodePath("../Idle")
+
+[node name="Death" parent="StateMachine" node_paths=PackedStringArray("subject_health", "animation_player") instance=ExtResource("13_eq8yb")]
+subject_health = NodePath("../../Health")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="DeathSFX" parent="StateMachine/Death" index="0"]
+stream = ExtResource("17_k6v6k")
 
 [node name="InputDirector" parent="." instance=ExtResource("2_bagdn")]
 
@@ -875,6 +884,7 @@ script = ExtResource("3_bagdn")
 
 [node name="Health" parent="." instance=ExtResource("3_guu5u")]
 max_health = 12
+is_player_health = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -905,16 +915,14 @@ shape = SubResource("RectangleShape2D_01a4e")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_k6v6k")
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="on_death" from="Health" to="." method="_on_death"]
-[connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
+[connection signal="on_hit" from="Hurtbox" to="Health" method="_on_hit"]
 
 [editable path="StateMachine/Hit"]
 [editable path="StateMachine/Attack"]
+[editable path="StateMachine/Death"]
 [editable path="Hurtbox"]
 [editable path="HitboxPivot/Hitbox"]

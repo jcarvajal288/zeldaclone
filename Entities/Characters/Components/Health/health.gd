@@ -11,6 +11,14 @@ func _ready():
 	current_health = max_health
 	if is_player_health:
 		Global.player_health_changed.emit(current_health, max_health)
+
+
+func _on_hit(hitbox: Area2D):
+	if not hitbox is Hitbox:
+		return
+	else:
+		take_damage(hitbox.damage)
+
 	
 func take_damage(damage: int):
 	if current_health <= 0:
@@ -20,6 +28,7 @@ func take_damage(damage: int):
 		Global.player_health_changed.emit(current_health, max_health)
 	if current_health <= 0:
 		on_death.emit()
+
 		
 func is_dead() -> bool:
 	return current_health <= 0
