@@ -7,6 +7,10 @@ func _on_dungeon_entrance_area_entered(player: Node2D):
 	# Global.level_manager.change_to_dungeon_2()
 	if player is Player:
 		print("emitting down")
-		Global.stairs_used.emit(Global.StairsDirection.EXIT_DOWN)
+		Global.stairs_used.emit(
+			Global.StairsDirection.EXIT_DOWN,  
+			Global.level_manager.dungeon2, 
+			"dungeon_exit"
+		)
 
 
