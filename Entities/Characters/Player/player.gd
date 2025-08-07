@@ -4,9 +4,6 @@ class_name Player extends Character
 
 signal move_camera(position)
 
-@onready var sword_swing_sfx = $SwordSwingSoundRandomizer
-
-
 var current_map_cell = Vector2i.ZERO
 
 func _init():
