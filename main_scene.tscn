@@ -23,9 +23,6 @@ script = ExtResource("1_d5x1h")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_hq1ik")]
 
-[node name="Fall" parent="PlayerCharacter/StateMachine" index="4"]
-animate_with_facing = null
-
 [node name="Health" parent="PlayerCharacter" index="4"]
 is_player_health = true
 

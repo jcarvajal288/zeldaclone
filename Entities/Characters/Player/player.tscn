@@ -851,19 +851,16 @@ stream = ExtResource("14_qqqkq")
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="StateMachine/Attack/AttackSoundRandomizer" index="2"]
 stream = ExtResource("15_k6v6k")
 
-[node name="Fall" parent="StateMachine" node_paths=PackedStringArray("state_machine", "health", "idle_state") instance=ExtResource("22_rcmxi")]
-state_machine = NodePath("..")
+[node name="Fall" parent="StateMachine" node_paths=PackedStringArray("health", "idle_state") instance=ExtResource("22_rcmxi")]
 health = NodePath("../../Health")
 idle_state = NodePath("../Idle")
 damage = 1
-animate_with_facing = null
 
 [node name="UseStairs" parent="StateMachine" node_paths=PackedStringArray("idle_state") instance=ExtResource("12_f88lc")]
 idle_state = NodePath("../Idle")
 
-[node name="Death" parent="StateMachine" node_paths=PackedStringArray("subject_health", "animation_player") instance=ExtResource("13_eq8yb")]
+[node name="Death" parent="StateMachine" node_paths=PackedStringArray("subject_health") instance=ExtResource("13_eq8yb")]
 subject_health = NodePath("../../Health")
-animation_player = NodePath("../../AnimationPlayer")
 
 [node name="DeathSFX" parent="StateMachine/Death" index="0"]
 stream = ExtResource("17_k6v6k")
@@ -915,7 +912,8 @@ shape = SubResource("RectangleShape2D_01a4e")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Fall" method="_on_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Death" method="_on_animation_finished"]
 [connection signal="on_death" from="Health" to="." method="_on_death"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]

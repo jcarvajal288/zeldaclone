@@ -1,6 +1,5 @@
 extends State
 
-@export var state_machine: StateMachine
 @export var health: Health
 @export var idle_state: State
 @export var damage: int = 0
@@ -14,22 +13,28 @@ func _ready() -> void:
 func fall_down_pit(character: Character, fall_vel: Vector2):
 	if character == subject:
 		fall_velocity = fall_vel
-		state_machine.change_state(self)
+		signal_state_change.emit(self)
 
 
 func enter() -> void:
-	# subject.animation_player.play_fall_animation()
+	super()
 	subject.velocity = fall_velocity
 	$FallSFX.play()
 
 
-func process_physics(_delta: float) -> State:
-	if subject.animation_player.current_animation == "fall":
-		subject.move_and_slide()
-		return null
-	elif damage > 0:
+func exit() -> void:
+	super()
+	if damage > 0:
 		health.take_damage(1)
-		return idle_state
 	else:
 		subject.queue_free()
-		return null
+
+
+func process_physics(_delta: float) -> State:
+	subject.move_and_slide()
+	return null
+
+
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == "fall":
+		signal_state_change.emit(idle_state)
