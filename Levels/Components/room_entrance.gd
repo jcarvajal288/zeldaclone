@@ -8,8 +8,9 @@ func _ready() -> void:
 	self.body_entered.connect(player_detected)
 
 
-func player_detected(_player: Player):
-	player_entered.emit(self)
+func player_detected(player: Node2D):
+	if player is Player:
+		player_entered.emit(self)
 
 
 func get_collision_shape_position():

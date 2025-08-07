@@ -47,7 +47,7 @@ func change_to_dungeon():
 	change_level(dungeon)
 	var entry_position = Vector2(84, 6)
 	Global.game_controller.move_player_to_position(entry_position)
-	Global.transition_level.emit("DOWN")
+	# Global.transition_level.emit("DOWN")
 	transition_to_entry_room(entry_position)
 
 
@@ -56,7 +56,7 @@ func change_to_dungeon_2():
 	# var entry_position = Vector2(84, 6)
 	var entry_position = Vector2(20, 20)
 	Global.game_controller.move_player_to_position(entry_position)
-	Global.transition_level.emit("DOWN")
+	# Global.transition_level.emit("DOWN")
 	transition_to_entry_room(entry_position)
 
 
