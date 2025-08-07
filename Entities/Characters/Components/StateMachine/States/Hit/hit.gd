@@ -16,8 +16,12 @@ func _ready() -> void:
 
 
 func _on_hit(area: Area2D) -> void:
-	hit_origin = area.global_position
-	signal_state_change.emit(self)
+	if not area is Hitbox:
+		return
+	if not subject.health.is_dead():
+		hit_origin = area.global_position
+		signal_state_change.emit(self)
+	$OnHitSFX.play()
 
 
 func enter() -> void:
@@ -25,7 +29,6 @@ func enter() -> void:
 	hurtbox.set_disabled(true)
 	start_bounce()
 	$Timer.start(timer_length)
-	$OnHitSFX.play()
 
 
 func process_physics(delta: float) -> State:

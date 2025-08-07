@@ -8,11 +8,14 @@ func _ready() -> void:
 
 
 func _on_death() -> void:
+	print("death signal received")
 	signal_state_change.emit(self)
 
 
 func enter() -> void:
+	super()
 	subject.velocity = Vector2.ZERO
+	$DeathSFX.play()
 
 
 func _on_animation_finished(anim_name: String) -> void:
