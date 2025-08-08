@@ -27,7 +27,6 @@ func take_damage(damage: int):
 	if is_player_health:
 		Global.player_health_changed.emit(current_health, max_health)
 	if current_health <= 0:
-		print("death signal sent")
 		on_death.emit()
 
 		

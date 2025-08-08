@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cvnuju0kpsfnj"]
+[gd_scene load_steps=48 format=3 uid="uid://cvnuju0kpsfnj"]
 
 [ext_resource type="Script" uid="uid://bd1hl1a8poaw6" path="res://Entities/Characters/Enemies/Orc/orc.gd" id="1_tv237"]
 [ext_resource type="Texture2D" uid="uid://dvai5m7aia4tf" path="res://Entities/Characters/Enemies/Orc/art/Orc_all.png" id="2_ylupx"]
@@ -14,12 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://mfl6f4y3gve1" path="res://Entities/Characters/Enemies/Orc/sfx/01_orc_atk_sword_1.wav" id="8_qd36t"]
 [ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Components/StateMachine/States/Hit/Hit.tscn" id="9_u0id6"]
 [ext_resource type="AudioStream" uid="uid://b1dtdftm4f8vj" path="res://Entities/Characters/Enemies/Orc/sfx/02_orc_atk_sword_2.wav" id="9_vsjwf"]
-[ext_resource type="PackedScene" uid="uid://dqn1pyixe4py3" path="res://Entities/Characters/Components/SoundRandomizer/SoundRandomizer.tscn" id="10_ice2i"]
 [ext_resource type="AudioStream" uid="uid://cjy68p0ijw7ox" path="res://Entities/Characters/Enemies/Orc/sfx/03_orc_atk_sword_3.wav" id="10_yrvlm"]
 [ext_resource type="AudioStream" uid="uid://cgfs5ncvvn5sm" path="res://Entities/Characters/Enemies/Orc/sfx/07_orc_damage_1.wav" id="11_1ex5n"]
-[ext_resource type="AudioStream" uid="uid://be10ueleocvx7" path="res://Entities/Characters/Enemies/Orc/sfx/08_orc_damage_2.wav" id="12_rbikg"]
-[ext_resource type="AudioStream" uid="uid://c2ndw7bopgbuu" path="res://Entities/Characters/Player/sfx/23_human_death_spin.wav" id="13_ice2i"]
-[ext_resource type="AudioStream" uid="uid://dyb3rs47deyl0" path="res://Entities/Characters/Enemies/Orc/sfx/09_orc_damage_3.wav" id="13_ocrh3"]
+[ext_resource type="PackedScene" uid="uid://mv23j4koy1sn" path="res://Entities/Characters/Components/StateMachine/States/Death/death.tscn" id="14_a2qv4"]
+[ext_resource type="AudioStream" uid="uid://cw7giheivxsca" path="res://Entities/Characters/Enemies/Orc/sfx/13_orc_death_spin.wav" id="16_yrvlm"]
 [ext_resource type="Script" uid="uid://bh1vfi812aayg" path="res://Entities/Characters/Components/StateMachine/state_machine.gd" id="18_vsjwf"]
 
 [sub_resource type="Animation" id="Animation_dl5bh"]
@@ -894,19 +892,16 @@ metadata/_custom_type_script = "uid://bh1vfi812aayg"
 move_state = NodePath("../Move")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
-animation_type = 1
 
 [node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state", "fall_state") instance=ExtResource("6_8uipt")]
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 fall_state = NodePath("../Fall")
-animation_type = 1
 
 [node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state") instance=ExtResource("7_y2gft")]
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
-animation_type = 2
 
 [node name="AttackSoundRandomizer" parent="StateMachine/Attack" index="0" node_paths=PackedStringArray("sound_list")]
 sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
@@ -928,7 +923,15 @@ idle_state = NodePath("../Idle")
 idle_state = NodePath("../Idle")
 hurtbox = NodePath("../../Hurtbox")
 sprite = NodePath("../../Sprite2D")
-animation_type = 1
+
+[node name="OnHitSFX" parent="StateMachine/Hit" index="1"]
+stream = ExtResource("11_1ex5n")
+
+[node name="Death" parent="StateMachine" node_paths=PackedStringArray("subject_health") instance=ExtResource("14_a2qv4")]
+subject_health = NodePath("../../Health")
+
+[node name="DeathSFX" parent="StateMachine/Death" index="0"]
+stream = ExtResource("16_yrvlm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jts6d")
@@ -963,27 +966,12 @@ shape = SubResource("RectangleShape2D_t4s6y")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="OnHitSFXRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("10_ice2i")]
-sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OnHitSFXRandomizer"]
-stream = ExtResource("11_1ex5n")
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="OnHitSFXRandomizer"]
-stream = ExtResource("12_rbikg")
-
-[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="OnHitSFXRandomizer"]
-stream = ExtResource("13_ocrh3")
-
-[node name="OnDeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_ice2i")
-
 [connection signal="on_death" from="Health" to="." method="_on_death"]
-[connection signal="on_death" from="Health" to="OnDeathSoundPlayer" method="play"]
-[connection signal="on_hit" from="Hurtbox" to="." method="_on_hit"]
-[connection signal="on_hit" from="Hurtbox" to="OnHitSFXRandomizer" method="_on_hit"]
+[connection signal="on_hit" from="Hurtbox" to="Health" method="_on_hit"]
 
 [editable path="StateMachine/Attack"]
+[editable path="StateMachine/Hit"]
+[editable path="StateMachine/Death"]
 [editable path="Hurtbox"]
 [editable path="BodyHitbox"]
 [editable path="AttackHitboxPivot/AttackHitbox"]
