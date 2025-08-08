@@ -7,6 +7,8 @@ var subject: Character
 var signal_state_change
 
 func enter() -> void:
+	subject.animation_player.play("RESET")
+	subject.animation_player.advance(0)
 	if animate_with_facing:
 		subject.animation_player.play_with_facing(animation_name)
 	else:

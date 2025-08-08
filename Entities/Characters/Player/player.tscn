@@ -833,11 +833,10 @@ sprite = NodePath("../../Sprite2D")
 [node name="OnHitSFX" parent="StateMachine/Hit" index="1"]
 stream = ExtResource("14_ih7kn")
 
-[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state", "hit_state") instance=ExtResource("22_mh0u4")]
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state") instance=ExtResource("22_mh0u4")]
 director = NodePath("../../InputDirector")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
-hit_state = NodePath("../Hit")
 
 [node name="AttackSoundRandomizer" parent="StateMachine/Attack" index="0" node_paths=PackedStringArray("sound_list")]
 sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]

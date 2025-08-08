@@ -28,6 +28,7 @@ func exit() -> void:
 		health.take_damage(1)
 	else:
 		subject.queue_free()
+	Global.fall_finished.emit(subject)
 
 
 func process_physics(_delta: float) -> State:

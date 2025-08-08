@@ -3,7 +3,6 @@ extends State
 @export var director: Director
 @export var idle_state: State
 @export var move_state: State
-@export var hit_state: State
 
 var is_finished = false
 
@@ -14,6 +13,7 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 
 func enter() -> void:
 	subject.animation_player.play_attack_animation_with_input(director.movement_vector)
+	# super()
 	subject.animation_player.animation_finished.connect(_on_animation_finished)
 	$AttackSoundRandomizer.play()
 	is_finished = false

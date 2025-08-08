@@ -1,7 +1,6 @@
 extends AnimationPlayer
 
 var facing = "DownRight"
-var animation_locked = false
 
 func _ready():
 	animation_finished.connect(_on_animation_finished)
@@ -11,14 +10,14 @@ func play_with_facing(animation_name: String) -> void:
 	self.play(animation_name + facing)
 
 
-func _on_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "death":
-		get_parent().queue_free()
-	elif anim_name == "fall":
-		Global.fall_finished.emit(get_parent())
-	animation_locked = false
-	self.play("RESET")
-	self.seek(1)
+func _on_animation_finished(_anim_name: StringName) -> void:
+	# if anim_name == "death":
+	# 	get_parent().queue_free()
+	# elif anim_name == "fall":
+	# 	Global.fall_finished.emit(get_parent())
+	# self.play("RESET")
+	# self.seek(1)
+	pass
 	
 	
 func set_facing(direction: Vector2):
@@ -35,12 +34,12 @@ func set_facing(direction: Vector2):
 	
 	
 func play_idle_animation():
-	if not (animation_locked or self.current_animation.contains("idle")):
+	if not self.current_animation.contains("idle"):
 		self.play("idle" + facing)
 	
 	
 func play_random_idle_animation():
-	if animation_locked or self.current_animation.contains("idle"):
+	if self.current_animation.contains("idle"):
 		return
 	var random_idle = Global.rng.randi_range(1, 4)
 	if random_idle == 1:
@@ -56,11 +55,6 @@ func play_random_idle_animation():
 	self.seek(random_time)
 	
 	
-func play_move_animation():
-	# if not animation_locked:
-	self.play("move" + facing)
-
-
 func play_attack_animation_with_input(input_direction: Vector2):
 	if input_direction == Vector2(0, -1):
 		if facing.contains("Left"):
@@ -84,7 +78,6 @@ func play_attack_animation_with_input(input_direction: Vector2):
 			self.play("attackDownRight")
 	else: 
 		self.play("attack" + facing)
-	animation_locked = true
 
 
 func play_attack_animation_with_direction(direction: Vector2):
@@ -114,20 +107,3 @@ func play_attack_animation_with_direction(direction: Vector2):
 		self.play("attackUpLeft")
 	else:
 		self.play("attackUpRight")
-	animation_locked = true
-		
-
-
-func play_damaged_animation():
-	self.play("damaged" + facing)
-	animation_locked = true
-	
-
-func play_death_animation():
-	self.play("death")
-	animation_locked = true
-
-
-func play_fall_animation():
-	self.play("fall")
-	animation_locked = true
