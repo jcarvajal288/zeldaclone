@@ -8,7 +8,6 @@ func _ready() -> void:
 
 
 func _on_death() -> void:
-	print("death signal received")
 	signal_state_change.emit(self)
 
 
