@@ -16,9 +16,8 @@ var signal_state_change
 
 func enter() -> void:
 	subject.animation_player.play("RESET")
-	# subject.animation_player.advance(0)
-	subject.animation_player.call_deferred("advance", 0)
-	# call_deferred("subject.animation_player.advance", 0)
+	# subject.animation_player.call_deferred("advance", 0)
+	subject.animation_player.advance(0)
 	if animation_type == AnimationType.FACING:
 		subject.animation_player.play_with_facing(animation_name)
 	elif animation_type == AnimationType.EIGHT_WAY:

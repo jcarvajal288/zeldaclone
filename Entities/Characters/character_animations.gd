@@ -2,22 +2,9 @@ extends AnimationPlayer
 
 var facing = "DownRight"
 
-# func _ready():
-# 	animation_finished.connect(_on_animation_finished)
-
 
 func play_with_facing(animation_name: String) -> void:
 	self.play(animation_name + facing)
-
-
-# func _on_animation_finished(_anim_name: StringName) -> void:
-# 	# if anim_name == "death":
-# 	# 	get_parent().queue_free()
-# 	# elif anim_name == "fall":
-# 	# 	Global.fall_finished.emit(get_parent())
-# 	# self.play("RESET")
-# 	# self.seek(1)
-# 	pass
 	
 	
 func set_facing(direction: Vector2):
@@ -31,28 +18,6 @@ func set_facing(direction: Vector2):
 			facing = "DownLeft"
 		else:
 			facing = "UpLeft"
-	
-	
-# func play_idle_animation():
-# 	if not self.current_animation.contains("idle"):
-# 		self.play("idle" + facing)
-	
-	
-# func play_random_idle_animation():
-# 	if self.current_animation.contains("idle"):
-# 		return
-# 	var random_idle = Global.rng.randi_range(1, 4)
-# 	if random_idle == 1:
-# 		facing = "DownRight"
-# 	elif random_idle == 2:
-# 		facing = "DownLeft"
-# 	elif random_idle == 3:
-# 		facing = "UpRight"
-# 	else:
-# 		facing = "UpLeft"
-# 	self.play_idle_animation()
-# 	var random_time = Global.rng.randf_range(0, self.current_animation_length)
-# 	self.seek(random_time)
 	
 	
 func play_animation_with_input(anim_name: String, input_direction: Vector2):
