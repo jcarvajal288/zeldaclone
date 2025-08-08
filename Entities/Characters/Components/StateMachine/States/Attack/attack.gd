@@ -12,12 +12,13 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 
 func enter() -> void:
 	super()
-	subject.animation_player.animation_finished.connect(_on_animation_finished)
+	if not subject.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
+		subject.animation_player.animation_finished.connect(_on_animation_finished)
 	$AttackSoundRandomizer.play()
 	is_finished = false
 
 
-func process_input(_event: InputEvent) -> State:
+func process_frame(_delta: float) -> State:
 	if not is_finished:
 		return null
 	if director.movement_vector != Vector2.ZERO:
