@@ -5,7 +5,7 @@
 [node name="Hit" type="Node"]
 script = ExtResource("1_nysia")
 animation_name = "damaged"
-animate_with_facing = true
+animation_type = 1
 
 [node name="Timer" type="Timer" parent="."]
 

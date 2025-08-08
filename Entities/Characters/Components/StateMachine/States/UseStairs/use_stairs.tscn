@@ -5,4 +5,4 @@
 [node name="UseStairs" type="Node"]
 script = ExtResource("1_x586p")
 animation_name = "move"
-animate_with_facing = true
+animation_type = 1

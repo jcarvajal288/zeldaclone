@@ -884,28 +884,29 @@ subject = NodePath("..")
 tile_distance_to_notice_player = 8
 attack_range_pixels = 12
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("director", "starting_state")]
 script = ExtResource("18_vsjwf")
+director = NodePath("../ApproachAndAttack")
 starting_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://bh1vfi812aayg"
 
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("director", "move_state", "attack_state", "hit_state") instance=ExtResource("5_82kko")]
-director = NodePath("../../ApproachAndAttack")
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("5_82kko")]
 move_state = NodePath("../Move")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
+animation_type = 1
 
-[node name="Move" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "attack_state", "hit_state", "fall_state") instance=ExtResource("6_8uipt")]
-director = NodePath("../../ApproachAndAttack")
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state", "fall_state") instance=ExtResource("6_8uipt")]
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 fall_state = NodePath("../Fall")
+animation_type = 1
 
-[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state") instance=ExtResource("7_y2gft")]
-director = NodePath("../../ApproachAndAttack")
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state") instance=ExtResource("7_y2gft")]
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
+animation_type = 2
 
 [node name="AttackSoundRandomizer" parent="StateMachine/Attack" index="0" node_paths=PackedStringArray("sound_list")]
 sound_list = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
@@ -927,6 +928,7 @@ idle_state = NodePath("../Idle")
 idle_state = NodePath("../Idle")
 hurtbox = NodePath("../../Hurtbox")
 sprite = NodePath("../../Sprite2D")
+animation_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jts6d")

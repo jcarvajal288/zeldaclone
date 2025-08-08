@@ -810,17 +810,16 @@ collision_mask = 45
 script = ExtResource("1_lu8i8")
 inventory = NodePath("Inventory")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("18_rcmxi")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("director", "starting_state") instance=ExtResource("18_rcmxi")]
+director = NodePath("../InputDirector")
 starting_state = NodePath("Idle")
 
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("director", "move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
-director = NodePath("../../InputDirector")
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("19_bw4wv")]
 move_state = NodePath("../Move")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
 
-[node name="Move" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
-director = NodePath("../../InputDirector")
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state") instance=ExtResource("20_tknau")]
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../Attack")
 hit_state = NodePath("../Hit")
@@ -833,8 +832,7 @@ sprite = NodePath("../../Sprite2D")
 [node name="OnHitSFX" parent="StateMachine/Hit" index="1"]
 stream = ExtResource("14_ih7kn")
 
-[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("director", "idle_state", "move_state") instance=ExtResource("22_mh0u4")]
-director = NodePath("../../InputDirector")
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state") instance=ExtResource("22_mh0u4")]
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
 

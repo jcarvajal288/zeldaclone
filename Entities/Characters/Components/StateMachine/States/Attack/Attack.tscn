@@ -6,7 +6,7 @@
 [node name="Attack" type="Node"]
 script = ExtResource("1_8jaif")
 animation_name = "attack"
-animate_with_facing = true
+animation_type = 2
 
 [node name="AttackSoundRandomizer" parent="." node_paths=PackedStringArray("sound_list") instance=ExtResource("2_157vc")]
-sound_list = [NodePath(""), NodePath(""), NodePath("")]
+sound_list = [null, null, null]

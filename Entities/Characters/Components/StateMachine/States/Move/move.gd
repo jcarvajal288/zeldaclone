@@ -1,6 +1,5 @@
 extends State
 
-@export var director: Director
 @export var idle_state: State
 @export var attack_state: State
 @export var hit_state: State
