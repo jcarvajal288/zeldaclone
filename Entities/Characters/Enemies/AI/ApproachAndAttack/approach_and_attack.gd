@@ -19,7 +19,6 @@ func _process(_delta: float) -> void:
 	if not can_see_player():
 		halt_subject()
 		return
-	# if not animation_player.animation_locked:
 	if subject.position.distance_to(Global.PLAYER_POSITION) > attack_range_pixels:
 		move_towards_player()
 	else:
