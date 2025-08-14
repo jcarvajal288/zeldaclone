@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1rgfla7nvyml"]
 
 [ext_resource type="Script" uid="uid://cwi6tmkhxonn" path="res://Levels/level.gd" id="1_4bikf"]
-[ext_resource type="PackedScene" uid="uid://785be4k7u3xq" path="res://Levels/Grasslands/rooms/starting_room.tscn" id="1_vaett"]
-[ext_resource type="PackedScene" uid="uid://bbrk7awg23a1r" path="res://Levels/Grasslands/rooms/room_0x1.tscn" id="2_bu0tb"]
-[ext_resource type="PackedScene" uid="uid://yegdt2dfkw1b" path="res://Levels/Grasslands/rooms/room1x1.tscn" id="3_soovn"]
-[ext_resource type="PackedScene" uid="uid://cnrtkl8e4v6sk" path="res://Levels/Grasslands/rooms/large_room.tscn" id="4_5diti"]
+[ext_resource type="PackedScene" uid="uid://785be4k7u3xq" path="res://Levels/Grasslands/oldRooms/starting_room.tscn" id="1_vaett"]
+[ext_resource type="PackedScene" uid="uid://bbrk7awg23a1r" path="res://Levels/Grasslands/oldRooms/room_0x1.tscn" id="2_bu0tb"]
+[ext_resource type="PackedScene" uid="uid://yegdt2dfkw1b" path="res://Levels/Grasslands/oldRooms/room1x1.tscn" id="3_soovn"]
+[ext_resource type="PackedScene" uid="uid://cnrtkl8e4v6sk" path="res://Levels/Grasslands/oldRooms/large_room.tscn" id="4_5diti"]
 
 [node name="Grasslands" type="Node2D"]
 script = ExtResource("1_4bikf")
