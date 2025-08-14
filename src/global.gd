@@ -26,8 +26,8 @@ enum StairsDirection {
 enum RenderOrder {
 	BASE = -2,
 	FLOOR = 0,
+	WALL = 1,
 	PLAYER = 5,
-	WALL = 10,
 	UI = 100
 }
 

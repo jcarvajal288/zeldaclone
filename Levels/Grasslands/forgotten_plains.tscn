@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://fqnwk3i8rmjr"]
+[gd_scene load_steps=5 format=3 uid="uid://fqnwk3i8rmjr"]
 
 [ext_resource type="Script" uid="uid://cwi6tmkhxonn" path="res://Levels/level.gd" id="1_4xuwh"]
 [ext_resource type="PackedScene" uid="uid://c825isk4u4iye" path="res://Levels/Grasslands/rooms/starting_room.tscn" id="1_ts3ks"]
 [ext_resource type="PackedScene" uid="uid://2sr5h8l78r40" path="res://Levels/Grasslands/rooms/road_to_village.tscn" id="2_0y2iv"]
+[ext_resource type="PackedScene" uid="uid://cw1fsxoq6c0fc" path="res://Levels/Grasslands/rooms/mountain_trail.tscn" id="4_jdmwr"]
 
 [node name="ForgottenPlains" type="Node2D"]
 script = ExtResource("1_4xuwh")
@@ -11,3 +12,6 @@ script = ExtResource("1_4xuwh")
 
 [node name="RoadToVillage" parent="." instance=ExtResource("2_0y2iv")]
 position = Vector2(-168, 128)
+
+[node name="MountainTrail" parent="." instance=ExtResource("4_jdmwr")]
+position = Vector2(-80, -384)
