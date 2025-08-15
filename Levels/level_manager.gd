@@ -36,14 +36,13 @@ func change_to_test_area():
 func change_to_grasslands(location: String = "start"):
 	change_level(grasslands)
 	if location == "dungeon_entrance":
-		# var entry_position = Vector2(251, -58)
 		Global.game_controller.move_player_to_position(grasslands_dungeon_entrance)
 		Global.transition_level.emit("UP")
 		transition_to_entry_room(grasslands_dungeon_entrance)
 	else:
-		# var entry_position = Vector2(80, 60)
-		Global.game_controller.move_player_to_position(grasslands_dungeon_entrance)
-		transition_to_entry_room(grasslands_dungeon_entrance)
+		var entry_position = Vector2(80, 60)
+		Global.game_controller.move_player_to_position(entry_position)
+		transition_to_entry_room(entry_position)
 
 
 func change_to_dungeon():
