@@ -5,7 +5,10 @@ class_name LevelManager extends Node
 @export var dungeon: PackedScene
 @export var dungeon2: PackedScene
 
+var grasslands_dungeon_entrance = Vector2(332, -316)
+
 var current_level: Level
+
 
 func _ready():
 	Global.level_manager = self
@@ -34,15 +37,13 @@ func change_to_grasslands(location: String = "start"):
 	change_level(grasslands)
 	if location == "dungeon_entrance":
 		# var entry_position = Vector2(251, -58)
-		var entry_position = Vector2(332, -316)
-		Global.game_controller.move_player_to_position(entry_position)
+		Global.game_controller.move_player_to_position(grasslands_dungeon_entrance)
 		Global.transition_level.emit("UP")
-		transition_to_entry_room(entry_position)
+		transition_to_entry_room(grasslands_dungeon_entrance)
 	else:
 		# var entry_position = Vector2(80, 60)
-		var entry_position = Vector2(332, -316)
-		Global.game_controller.move_player_to_position(entry_position)
-		transition_to_entry_room(entry_position)
+		Global.game_controller.move_player_to_position(grasslands_dungeon_entrance)
+		transition_to_entry_room(grasslands_dungeon_entrance)
 
 
 func change_to_dungeon():
