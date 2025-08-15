@@ -33,12 +33,14 @@ func change_to_test_area():
 func change_to_grasslands(location: String = "start"):
 	change_level(grasslands)
 	if location == "dungeon_entrance":
-		var entry_position = Vector2(251, -58)
+		# var entry_position = Vector2(251, -58)
+		var entry_position = Vector2(332, -316)
 		Global.game_controller.move_player_to_position(entry_position)
 		Global.transition_level.emit("UP")
 		transition_to_entry_room(entry_position)
 	else:
-		var entry_position = Vector2(80, 60)
+		# var entry_position = Vector2(80, 60)
+		var entry_position = Vector2(332, -316)
 		Global.game_controller.move_player_to_position(entry_position)
 		transition_to_entry_room(entry_position)
 
@@ -80,7 +82,8 @@ func transition_to_scene(scene: PackedScene, location: String) -> void:
 func get_entry_position(scene: PackedScene, location: String) -> Vector2:
 	if scene == grasslands:
 		if location == "dungeon_entrance":
-			return Vector2(251, -58)
+			# return Vector2(251, -58)
+			return Vector2(332, -316)
 	elif scene == dungeon2:
 		return Vector2(84, 6)
 	push_error("Invalid scene/location combination: [invalid scene], %s" % location)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://fqnwk3i8rmjr"]
+[gd_scene load_steps=8 format=3 uid="uid://fqnwk3i8rmjr"]
 
 [ext_resource type="Script" uid="uid://cwi6tmkhxonn" path="res://Levels/level.gd" id="1_4xuwh"]
 [ext_resource type="PackedScene" uid="uid://c825isk4u4iye" path="res://Levels/Grasslands/rooms/starting_room.tscn" id="1_ts3ks"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1fsxoq6c0fc" path="res://Levels/Grasslands/rooms/mountain_trail.tscn" id="4_jdmwr"]
 [ext_resource type="PackedScene" uid="uid://culsrn6rclik0" path="res://Levels/Grasslands/rooms/west_of_start.tscn" id="5_48fc6"]
 [ext_resource type="PackedScene" uid="uid://bdhc341bpebls" path="res://Levels/Grasslands/rooms/secret_room.tscn" id="6_sfnwc"]
+[ext_resource type="PackedScene" uid="uid://b2tkhgngid2r4" path="res://Levels/Grasslands/rooms/dungeon_entrance.tscn" id="7_c5e88"]
 
 [node name="ForgottenPlains" type="Node2D"]
 script = ExtResource("1_4xuwh")
@@ -23,3 +24,6 @@ position = Vector2(-168, 0)
 
 [node name="SecretRoom" parent="." instance=ExtResource("6_sfnwc")]
 position = Vector2(-248, -128)
+
+[node name="DungeonEntrance" parent="." instance=ExtResource("7_c5e88")]
+position = Vector2(248, -384)
