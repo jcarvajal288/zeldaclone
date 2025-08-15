@@ -36,6 +36,7 @@ func set_entryway_trigger(trigger: bool) -> void:
 
 func exit_up() -> void:
 	set_entryway_trigger(false)
+	subject.z_index = Global.RenderOrder.FLOOR + 1
 	subject.velocity = Vector2.UP * 5
 	await await_and_signal_level_change()
 	enter_from_down()
@@ -66,7 +67,7 @@ func enter_from_down() -> void:
 func enter_from_up() -> void:
 	subject.animation_player.set_facing(Vector2.DOWN)
 	subject.animation_player.play_with_facing(self.animation_name)
-	subject.z_index = Global.RenderOrder.PLAYER
+	subject.z_index = Global.RenderOrder.FLOOR + 1
 	subject.velocity = Vector2.DOWN * 10
 	await get_tree().create_timer(1.0).timeout
 	signal_state_change.emit(idle_state)
