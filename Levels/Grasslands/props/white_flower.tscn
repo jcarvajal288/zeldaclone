@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://df5105ok8564u"]
+
+[ext_resource type="Texture2D" uid="uid://br0v3pdkjaj3n" path="res://Levels/Grasslands/props/art/Minifantasy_ForgottenPlainsProps.png" id="1_nr8yd"]
+[ext_resource type="Texture2D" uid="uid://ccg2r25ahqcm0" path="res://Levels/Grasslands/props/art/Minifantasy_ForgottenPlainsPropsShadows.png" id="2_n6jdb"]
+
+[node name="WhiteFlower" type="Node2D"]
+z_index = 10
+
+[node name="Flower" type="Sprite2D" parent="."]
+texture = ExtResource("1_nr8yd")
+region_enabled = true
+region_rect = Rect2(92, 74, 3, 5)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("2_n6jdb")
+region_enabled = true
+region_rect = Rect2(74, 78, 1, 1)
