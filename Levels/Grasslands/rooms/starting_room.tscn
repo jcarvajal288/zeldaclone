@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://c825isk4u4iye"]
+[gd_scene load_steps=9 format=4 uid="uid://c825isk4u4iye"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_gx6p0"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="2_rwp0d"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_l3tsp"]
+[ext_resource type="PackedScene" uid="uid://b35rabt2eu4g8" path="res://Levels/Grasslands/props/tree.tscn" id="4_relyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0djk"]
 size = Vector2(21, 13)
@@ -57,3 +58,6 @@ script = ExtResource("3_l3tsp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EastEntrance"]
 position = Vector2(164, 64)
 shape = SubResource("RectangleShape2D_hlni6")
+
+[node name="Tree" parent="." instance=ExtResource("4_relyb")]
+position = Vector2(55, 77)
