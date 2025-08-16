@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://c825isk4u4iye"]
+[gd_scene load_steps=10 format=4 uid="uid://c825isk4u4iye"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_gx6p0"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="2_rwp0d"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_l3tsp"]
 [ext_resource type="PackedScene" uid="uid://b35rabt2eu4g8" path="res://Levels/Grasslands/props/tree.tscn" id="4_relyb"]
+[ext_resource type="PackedScene" uid="uid://bn68fwqwc8ovl" path="res://Levels/Grasslands/props/apple_tree.tscn" id="5_saa28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0djk"]
 size = Vector2(21, 13)
@@ -61,3 +62,6 @@ shape = SubResource("RectangleShape2D_hlni6")
 
 [node name="Tree" parent="." instance=ExtResource("4_relyb")]
 position = Vector2(55, 77)
+
+[node name="AppleTree" parent="." instance=ExtResource("5_saa28")]
+position = Vector2(124, 48)
