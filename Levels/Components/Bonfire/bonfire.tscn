@@ -294,3 +294,6 @@ frame_progress = 0.211536
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vdkbx")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-9, -7)

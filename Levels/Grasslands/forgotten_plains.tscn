@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://fqnwk3i8rmjr"]
 
-[ext_resource type="Script" uid="uid://cwi6tmkhxonn" path="res://Levels/level.gd" id="1_4xuwh"]
+[ext_resource type="Script" uid="uid://d3qlemyfcgytn" path="res://Levels/Grasslands/forgotten_plains.gd" id="1_sncxp"]
 [ext_resource type="PackedScene" uid="uid://c825isk4u4iye" path="res://Levels/Grasslands/rooms/starting_room.tscn" id="1_ts3ks"]
 [ext_resource type="PackedScene" uid="uid://2sr5h8l78r40" path="res://Levels/Grasslands/rooms/road_to_village.tscn" id="2_0y2iv"]
 [ext_resource type="PackedScene" uid="uid://cw1fsxoq6c0fc" path="res://Levels/Grasslands/rooms/mountain_trail.tscn" id="4_jdmwr"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://be2u82qmiqw4h" path="res://Levels/Grasslands/rooms/east_of_start.tscn" id="8_sncxp"]
 
 [node name="ForgottenPlains" type="Node2D"]
-script = ExtResource("1_4xuwh")
+script = ExtResource("1_sncxp")
 
 [node name="StartingRoom" parent="." instance=ExtResource("1_ts3ks")]
 

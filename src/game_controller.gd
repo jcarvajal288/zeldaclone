@@ -1,5 +1,7 @@
 class_name GameController extends Node
 
+var active_bonfire: Bonfire
+
 func _ready():
 	Global.game_controller = self
 	Global.rng = RandomNumberGenerator.new()

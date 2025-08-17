@@ -9,3 +9,7 @@ func _ready() -> void:
 		$Base.play("unlit")
 	$Flame.visible = is_lit
 	$Glow.visible = is_lit
+
+
+func get_spawn_point() -> Vector2:
+	return $SpawnPoint.global_position
