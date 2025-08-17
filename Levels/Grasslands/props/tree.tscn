@@ -16,10 +16,10 @@ region_enabled = true
 region_rect = Rect2(154.819, 3, 21.1808, 25)
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(-2.795, 8.565)
+position = Vector2(-2.625, 8.565)
 texture = ExtResource("2_ewvj5")
 region_enabled = true
-region_rect = Rect2(149.255, 19.06, 26.729, 10)
+region_rect = Rect2(149.81, 19, 26.729, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 9)

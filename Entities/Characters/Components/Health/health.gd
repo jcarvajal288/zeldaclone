@@ -13,6 +13,11 @@ func _ready():
 		Global.player_health_changed.emit(current_health, max_health)
 
 
+func reset() -> void:
+	current_health = max_health
+	Global.player_health_changed.emit(current_health, max_health)
+
+
 func _on_hit(hitbox: Area2D):
 	if not hitbox is Hitbox:
 		return

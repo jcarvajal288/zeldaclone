@@ -11,17 +11,19 @@ height = 12.0
 z_index = 10
 
 [node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(0.285, 0)
 texture = ExtResource("1_e3hiy")
 region_enabled = true
-region_rect = Rect2(154.819, 35, 21.1808, 25)
+region_rect = Rect2(155, 35, 21, 25)
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(-2.79, 7.5)
+position = Vector2(-2.355, 7.5)
 texture = ExtResource("2_n2qov")
 region_enabled = true
-region_rect = Rect2(149.255, 50, 26.729, 10)
+region_rect = Rect2(153, 50, 20, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, 9)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_q2ev7")

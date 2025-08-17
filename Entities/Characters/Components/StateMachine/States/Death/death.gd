@@ -21,7 +21,7 @@ func enter() -> void:
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == 'death':
 		if subject is Player:
-			subject.global_position = Global.game_controller.active_bonfire.get_spawn_point()
+			Global.game_controller.respawn_at_active_bonfire()
 			signal_state_change.emit(idle_state)
 		else:
 			queue_free()
