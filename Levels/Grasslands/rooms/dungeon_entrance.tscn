@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://b2tkhgngid2r4"]
+[gd_scene load_steps=11 format=4 uid="uid://b2tkhgngid2r4"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_bn6e7"]
 [ext_resource type="TileSet" uid="uid://dfeqsr3lrivf3" path="res://Levels/Dungeon/tileset/test_dungeon.tres" id="2_8u8we"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="2_cc8xa"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_q0h0r"]
 [ext_resource type="PackedScene" uid="uid://0a0jsbwyh8hi" path="res://Levels/Grasslands/components/DungeonEntrance/dungeon_entrance.tscn" id="5_ay2c7"]
+[ext_resource type="PackedScene" uid="uid://dmetxpt0exkab" path="res://Levels/Grasslands/props/pillar5a.tscn" id="6_0m45u"]
+[ext_resource type="PackedScene" uid="uid://d16wa05rxxen8" path="res://Levels/Grasslands/props/pillar2a.tscn" id="7_gqwdy"]
+[ext_resource type="PackedScene" uid="uid://c4400m48t86va" path="res://Levels/Grasslands/props/pillar2b.tscn" id="8_3pwda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iihjr"]
 size = Vector2(8, 24.5)
@@ -50,5 +53,19 @@ shape = SubResource("RectangleShape2D_ay2c7")
 
 [node name="EnterTrigger" parent="DungeonEntrance" index="0"]
 position = Vector2(84, 57)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Pillar5A" parent="Props" instance=ExtResource("6_0m45u")]
+position = Vector2(52, 51)
+
+[node name="Pillar5A2" parent="Props" instance=ExtResource("6_0m45u")]
+position = Vector2(117, 51)
+
+[node name="Pillar2A" parent="Props" instance=ExtResource("7_gqwdy")]
+position = Vector2(68, 73)
+
+[node name="Pillar2B" parent="Props" instance=ExtResource("8_3pwda")]
+position = Vector2(100, 73)
 
 [editable path="DungeonEntrance"]
