@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://2sr5h8l78r40"]
+[gd_scene load_steps=8 format=4 uid="uid://2sr5h8l78r40"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_ch70o"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/Grasslands/tileset/test_grassland.tres" id="2_u1l4w"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_r3sl8"]
+[ext_resource type="PackedScene" uid="uid://cvnuju0kpsfnj" path="res://Entities/Characters/Enemies/Orc/orc.tscn" id="4_2de33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0djk"]
 size = Vector2(16, 13)
@@ -47,3 +48,14 @@ script = ExtResource("3_r3sl8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EastEntrance"]
 position = Vector2(4, 204)
 shape = SubResource("RectangleShape2D_hlni6")
+
+[node name="Orc" parent="." instance=ExtResource("4_2de33")]
+position = Vector2(285, 77)
+
+[editable path="Orc"]
+[editable path="Orc/StateMachine/Attack"]
+[editable path="Orc/StateMachine/Hit"]
+[editable path="Orc/StateMachine/Death"]
+[editable path="Orc/Hurtbox"]
+[editable path="Orc/BodyHitbox"]
+[editable path="Orc/AttackHitboxPivot/AttackHitbox"]

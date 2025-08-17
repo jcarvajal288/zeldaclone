@@ -24,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	
 func _physics_process(delta):
-	Global.PLAYER_POSITION = self.position
+	Global.PLAYER_POSITION = self.global_position
 	$StateMachine.process_physics(delta)
 	set_camera_position()
 

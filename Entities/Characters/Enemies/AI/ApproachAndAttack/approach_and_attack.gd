@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	if not can_see_player():
 		halt_subject()
 		return
-	if subject.position.distance_to(Global.PLAYER_POSITION) > attack_range_pixels:
+	if subject.global_position.distance_to(Global.PLAYER_POSITION) > attack_range_pixels:
 		move_towards_player()
 	else:
 		attack_player()
@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 
 
 func move_towards_player():
-	movement_vector = subject.position.direction_to(Global.PLAYER_POSITION)
+	movement_vector = subject.global_position.direction_to(Global.PLAYER_POSITION)
 
 
 func attack_player():
@@ -36,14 +36,14 @@ func attack_player():
 
 
 func in_same_cell_as_player() -> bool:
-	var this_cell = $CellFinder.get_cell_for_position(subject.position)
+	var this_cell = $CellFinder.get_cell_for_position(subject.global_position)
 	var player_cell = $CellFinder.get_cell_for_position(Global.PLAYER_POSITION)
 	return this_cell == player_cell
 
 
 func can_see_player():
 	var sight_distance = Global.MAP_TILE_SIZE * tile_distance_to_notice_player
-	var distance_to_player = subject.position.distance_to(Global.PLAYER_POSITION)
+	var distance_to_player = subject.global_position.distance_to(Global.PLAYER_POSITION)
 	# return in_same_cell_as_player() and distance_to_player <= sight_distance
 	return distance_to_player <= sight_distance
 
