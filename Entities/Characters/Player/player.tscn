@@ -856,7 +856,8 @@ damage = 1
 [node name="UseStairs" parent="StateMachine" node_paths=PackedStringArray("idle_state") instance=ExtResource("12_f88lc")]
 idle_state = NodePath("../Idle")
 
-[node name="Death" parent="StateMachine" node_paths=PackedStringArray("subject_health") instance=ExtResource("13_eq8yb")]
+[node name="Death" parent="StateMachine" node_paths=PackedStringArray("idle_state", "subject_health") instance=ExtResource("13_eq8yb")]
+idle_state = NodePath("../Idle")
 subject_health = NodePath("../../Health")
 
 [node name="DeathSFX" parent="StateMachine/Death" index="0"]

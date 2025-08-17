@@ -23,9 +23,6 @@ func set_facing(direction: Vector2):
 	
 	
 func play_animation_with_input(anim_name: String, input_direction: Vector2):
-	print("======")
-	print(input_direction)
-	print(facing)
 	if input_direction == Vector2(0, -1):
 		if facing.contains("Left"):
 			self.play(anim_name + "UpSlashLeft")

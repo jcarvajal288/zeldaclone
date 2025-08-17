@@ -14,7 +14,6 @@ func _ready() -> void:
 func fall_down_pit(character: Character, fall_vel: Vector2):
 	if character == subject:
 		fall_velocity = fall_vel
-		print(fall_velocity)
 		signal_state_change.emit(self)
 
 
