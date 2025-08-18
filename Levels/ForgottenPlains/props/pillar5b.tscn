@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqrgmgmtthibj"]
+
+[ext_resource type="Texture2D" uid="uid://br0v3pdkjaj3n" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsProps.png" id="1_p2ucl"]
+[ext_resource type="Texture2D" uid="uid://ccg2r25ahqcm0" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsPropsShadows.png" id="2_lgkdv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mro3u"]
+radius = 5.0
+
+[node name="Pillar5B" type="StaticBody2D"]
+z_index = 10
+
+[node name="Pillar" type="Sprite2D" parent="."]
+texture = ExtResource("1_p2ucl")
+region_enabled = true
+region_rect = Rect2(19, 4, 11, 25)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-6.965, 5.505)
+texture = ExtResource("2_lgkdv")
+region_enabled = true
+region_rect = Rect2(15, 17, 5, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_mro3u")

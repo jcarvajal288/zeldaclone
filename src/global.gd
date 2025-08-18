@@ -3,6 +3,7 @@ extends Node
 var game_controller: GameController
 var level_manager: LevelManager
 var rng: RandomNumberGenerator
+var bonfire_registry: BonfireRegistry
 
 var MAP_TILE_SIZE = 8
 var MAP_CELL_SIZE = Vector2(MAP_TILE_SIZE * 21, MAP_TILE_SIZE * 16)

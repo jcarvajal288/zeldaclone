@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5g7lkcp1m67f"]
+
+[ext_resource type="Texture2D" uid="uid://br0v3pdkjaj3n" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsProps.png" id="1_y27nb"]
+[ext_resource type="Texture2D" uid="uid://ccg2r25ahqcm0" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsPropsShadows.png" id="2_sng4e"]
+
+[node name="RedFlower" type="Node2D"]
+z_index = 10
+
+[node name="Flower" type="Sprite2D" parent="."]
+texture = ExtResource("1_y27nb")
+region_enabled = true
+region_rect = Rect2(74, 73, 3, 6)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1, 2.5)
+texture = ExtResource("2_sng4e")
+region_enabled = true
+region_rect = Rect2(74, 78, 1, 1)

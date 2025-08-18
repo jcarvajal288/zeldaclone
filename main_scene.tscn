@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qnqmpk64ar2n" path="res://UI/HUD/hud.tscn" id="3_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://bgcnn7f2b0gif" path="res://Levels/Dungeon/test_area.tscn" id="6_66tet"]
 [ext_resource type="Script" uid="uid://bnrjmt5osw1jw" path="res://Levels/level_manager.gd" id="7_7ycvg"]
-[ext_resource type="PackedScene" uid="uid://fqnwk3i8rmjr" path="res://Levels/Grasslands/forgotten_plains.tscn" id="7_wr18j"]
+[ext_resource type="PackedScene" uid="uid://fqnwk3i8rmjr" path="res://Levels/ForgottenPlains/forgotten_plains.tscn" id="7_wr18j"]
 [ext_resource type="PackedScene" uid="uid://cknydywmvj1od" path="res://Levels/Dungeon/test_dungeon.tscn" id="8_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://b77rb75d6mr1s" path="res://Levels/Dungeon/Dungeon2.tscn" id="9_7ycvg"]
 

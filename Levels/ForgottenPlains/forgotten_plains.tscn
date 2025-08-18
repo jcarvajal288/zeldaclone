@@ -1,0 +1,33 @@
+[gd_scene load_steps=9 format=3 uid="uid://fqnwk3i8rmjr"]
+
+[ext_resource type="Script" uid="uid://d3qlemyfcgytn" path="res://Levels/ForgottenPlains/forgotten_plains.gd" id="1_sncxp"]
+[ext_resource type="PackedScene" uid="uid://c825isk4u4iye" path="res://Levels/ForgottenPlains/rooms/starting_room.tscn" id="1_ts3ks"]
+[ext_resource type="PackedScene" uid="uid://2sr5h8l78r40" path="res://Levels/ForgottenPlains/rooms/road_to_village.tscn" id="2_0y2iv"]
+[ext_resource type="PackedScene" uid="uid://cw1fsxoq6c0fc" path="res://Levels/ForgottenPlains/rooms/mountain_trail.tscn" id="4_jdmwr"]
+[ext_resource type="PackedScene" uid="uid://culsrn6rclik0" path="res://Levels/ForgottenPlains/rooms/west_of_start.tscn" id="5_48fc6"]
+[ext_resource type="PackedScene" uid="uid://bdhc341bpebls" path="res://Levels/ForgottenPlains/rooms/secret_room.tscn" id="6_sfnwc"]
+[ext_resource type="PackedScene" uid="uid://b2tkhgngid2r4" path="res://Levels/ForgottenPlains/rooms/dungeon_entrance.tscn" id="7_c5e88"]
+[ext_resource type="PackedScene" uid="uid://be2u82qmiqw4h" path="res://Levels/ForgottenPlains/rooms/east_of_start.tscn" id="8_sncxp"]
+
+[node name="ForgottenPlains" type="Node2D"]
+script = ExtResource("1_sncxp")
+
+[node name="StartingRoom" parent="." instance=ExtResource("1_ts3ks")]
+
+[node name="RoadToVillage" parent="." instance=ExtResource("2_0y2iv")]
+position = Vector2(-168, 128)
+
+[node name="MountainTrail" parent="." instance=ExtResource("4_jdmwr")]
+position = Vector2(-80, -384)
+
+[node name="WestOfStart" parent="." instance=ExtResource("5_48fc6")]
+position = Vector2(-168, 0)
+
+[node name="SecretRoom" parent="." instance=ExtResource("6_sfnwc")]
+position = Vector2(-248, -128)
+
+[node name="DungeonEntrance" parent="." instance=ExtResource("7_c5e88")]
+position = Vector2(248, -384)
+
+[node name="EastOfStart" parent="." instance=ExtResource("8_sncxp")]
+position = Vector2(168, 0)

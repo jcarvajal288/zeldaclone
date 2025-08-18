@@ -1,7 +1,5 @@
 class_name GameController extends Node
 
-var active_bonfire: Bonfire
-
 func _ready():
 	Global.game_controller = self
 	Global.rng = RandomNumberGenerator.new()
@@ -15,7 +13,9 @@ func move_player_to_position(position: Vector2):
 
 
 func respawn_at_active_bonfire() -> void:
-	$PlayerCharacter.global_position = Global.game_controller.active_bonfire.get_spawn_point()
+	var active_bonfire = Global.bonfire_registry.get_active_bonfire()
+	$PlayerCharacter.global_position = active_bonfire.spawn_point
+	Global.level_manager.change_level(active_bonfire.host_level)
 	Global.level_manager.transition_to_position($PlayerCharacter.global_position)
 	$PlayerCharacter/Health.reset()
 

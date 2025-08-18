@@ -40,7 +40,7 @@ func change_to_grasslands(location: String = "start"):
 		Global.transition_level.emit("UP")
 		transition_to_position(grasslands_dungeon_entrance)
 	else:
-		var entry_position = Global.game_controller.active_bonfire.get_spawn_point()
+		var entry_position = Global.bonfire_registry.get_active_bonfire().spawn_point
 		Global.game_controller.move_player_to_position(entry_position)
 		transition_to_position(entry_position)
 

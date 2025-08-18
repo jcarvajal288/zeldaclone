@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b35rabt2eu4g8"]
+
+[ext_resource type="Texture2D" uid="uid://br0v3pdkjaj3n" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsProps.png" id="1_q2ev7"]
+[ext_resource type="Texture2D" uid="uid://ccg2r25ahqcm0" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsPropsShadows.png" id="2_ewvj5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q2ev7"]
+radius = 4.0
+height = 12.0
+
+[node name="Tree" type="StaticBody2D"]
+z_index = 10
+
+[node name="Tree" type="Sprite2D" parent="."]
+texture = ExtResource("1_q2ev7")
+region_enabled = true
+region_rect = Rect2(154.819, 3, 21.1808, 25)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2.625, 8.565)
+texture = ExtResource("2_ewvj5")
+region_enabled = true
+region_rect = Rect2(149.81, 19, 26.729, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_q2ev7")
