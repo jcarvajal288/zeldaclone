@@ -7,7 +7,7 @@ func _ready() -> void:
 	var this_packed_scene = PackedScene.new()
 	this_packed_scene.pack(self)
 	Global.bonfire_registry.register_bonfire(
-		"Forgotten Plains Starting Room",
+		$StartingRoom/Bonfire.bonfire_name,
 		$StartingRoom/Bonfire/SpawnPoint.global_position,
 		this_packed_scene,
 	)

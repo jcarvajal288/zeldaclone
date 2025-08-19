@@ -66,6 +66,7 @@ shape = SubResource("RectangleShape2D_hlni6")
 
 [node name="Bonfire" parent="." instance=ExtResource("6_saqpr")]
 position = Vector2(83.735, 64.435)
+bonfire_name = "Forgotten Plains Starting Room"
 
 [node name="Props" type="Node2D" parent="."]
 

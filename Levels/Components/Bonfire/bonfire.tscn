@@ -1,9 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://ci84to5gpt108"]
+[gd_scene load_steps=43 format=3 uid="uid://ci84to5gpt108"]
 
 [ext_resource type="Texture2D" uid="uid://dudob3sgiplw1" path="res://Levels/Components/Bonfire/art/Base.png" id="1_lgp87"]
 [ext_resource type="Script" uid="uid://cw263dy5hqna5" path="res://Levels/Components/Bonfire/bonfire.gd" id="1_na0gi"]
 [ext_resource type="Texture2D" uid="uid://bgj7aoc7wmhdw" path="res://Levels/Components/Bonfire/art/Fire.png" id="2_vdkbx"]
 [ext_resource type="Texture2D" uid="uid://cowyv80fl767d" path="res://Levels/Components/Bonfire/art/Glow.png" id="3_na0gi"]
+[ext_resource type="Texture2D" uid="uid://dgaf5va6ijbyd" path="res://Levels/Components/Bonfire/art/LightBonfireLabel.png" id="5_1ptfh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d70l"]
 atlas = ExtResource("1_lgp87")
@@ -267,6 +268,9 @@ animations = [{
 radius = 3.0
 height = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ptfh"]
+radius = 14.0357
+
 [node name="Bonfire" type="StaticBody2D"]
 script = ExtResource("1_na0gi")
 
@@ -298,3 +302,17 @@ shape = SubResource("CapsuleShape2D_vdkbx")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-9, -7)
+
+[node name="ActionLabel" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(0, 6.065)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_1ptfh")
+
+[node name="LabelShowArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LabelShowArea"]
+shape = SubResource("CircleShape2D_1ptfh")
+debug_color = Color(0.900754, 0.000166532, 0.761651, 0.42)
