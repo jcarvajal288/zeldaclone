@@ -6,6 +6,7 @@ func _ready() -> void:
 	set_light()
 	$LabelShowArea.body_entered.connect(turn_label_on)
 	$LabelShowArea.body_exited.connect(turn_label_off)
+	Global.active_bonfire_changed.connect(set_light)
 	$ActionLabel.visible = false
 
 
@@ -16,7 +17,7 @@ func get_spawn_point() -> Vector2:
 func is_active_bonfire() -> bool:
 	if Global.bonfire_registry == null:
 		return true # this is the first bonfire
-	return bonfire_name == Global.bonfire_registry.get_active_bonfire().name
+	return bonfire_name == Global.bonfire_registry.active_bonfire
 
 
 func set_light() -> void:
@@ -37,4 +38,11 @@ func turn_label_on(body: Node2D) -> void:
 
 func turn_label_off(body: Node2D) -> void:
 	if body is Player:
+		$ActionLabel.visible = false
+
+
+func _input(event: InputEvent) -> void:
+	if $ActionLabel.visible and event.is_action_pressed("action_confirm"):
+		Global.bonfire_registry.active_bonfire = self.bonfire_name
+		Global.active_bonfire_changed.emit()
 		$ActionLabel.visible = false

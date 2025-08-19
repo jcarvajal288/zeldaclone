@@ -31,3 +31,4 @@ shape = SubResource("RectangleShape2D_vcmki")
 
 [node name="Bonfire" parent="." instance=ExtResource("4_l20a4")]
 position = Vector2(87.825, 64)
+bonfire_name = "Dungeon East Room"

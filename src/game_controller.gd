@@ -22,5 +22,3 @@ func respawn_at_active_bonfire() -> void:
 
 func camera() -> Camera2D:
 	return $Camera2D
-
-

@@ -47,3 +47,4 @@ signal fell_in_pit
 signal fall_finished
 signal transition_level
 signal stairs_used
+signal active_bonfire_changed

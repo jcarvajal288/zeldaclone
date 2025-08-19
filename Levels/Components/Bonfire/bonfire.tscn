@@ -304,12 +304,14 @@ shape = SubResource("CapsuleShape2D_vdkbx")
 position = Vector2(-9, -7)
 
 [node name="ActionLabel" type="Sprite2D" parent="."]
+visible = false
 z_index = 100
 position = Vector2(0, 6.065)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_1ptfh")
 
 [node name="LabelShowArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
