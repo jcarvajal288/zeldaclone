@@ -46,3 +46,4 @@ func _input(event: InputEvent) -> void:
 		Global.bonfire_registry.active_bonfire = self.bonfire_name
 		Global.active_bonfire_changed.emit()
 		$ActionLabel.visible = false
+		$LightBonfireSFX.play()

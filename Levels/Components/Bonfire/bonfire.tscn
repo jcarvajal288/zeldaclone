@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://ci84to5gpt108"]
+[gd_scene load_steps=44 format=3 uid="uid://ci84to5gpt108"]
 
 [ext_resource type="Texture2D" uid="uid://dudob3sgiplw1" path="res://Levels/Components/Bonfire/art/Base.png" id="1_lgp87"]
 [ext_resource type="Script" uid="uid://cw263dy5hqna5" path="res://Levels/Components/Bonfire/bonfire.gd" id="1_na0gi"]
 [ext_resource type="Texture2D" uid="uid://bgj7aoc7wmhdw" path="res://Levels/Components/Bonfire/art/Fire.png" id="2_vdkbx"]
 [ext_resource type="Texture2D" uid="uid://cowyv80fl767d" path="res://Levels/Components/Bonfire/art/Glow.png" id="3_na0gi"]
 [ext_resource type="Texture2D" uid="uid://dgaf5va6ijbyd" path="res://Levels/Components/Bonfire/art/LightBonfireLabel.png" id="5_1ptfh"]
+[ext_resource type="AudioStream" uid="uid://vt27ouuf4lnw" path="res://Levels/Components/Bonfire/sfx/06_Burning_Hit.wav" id="6_4blp5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d70l"]
 atlas = ExtResource("1_lgp87")
@@ -318,3 +319,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LabelShowArea"]
 shape = SubResource("CircleShape2D_1ptfh")
 debug_color = Color(0.900754, 0.000166532, 0.761651, 0.42)
+
+[node name="LightBonfireSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4blp5")
