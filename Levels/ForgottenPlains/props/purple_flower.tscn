@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://4nd66as8mf7m"]
+[gd_scene load_steps=4 format=3 uid="uid://4nd66as8mf7m"]
 
+[ext_resource type="Script" uid="uid://bsdlckswfsrmv" path="res://Levels/prop.gd" id="1_dujxk"]
 [ext_resource type="Texture2D" uid="uid://br0v3pdkjaj3n" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsProps.png" id="1_xxw53"]
 [ext_resource type="Texture2D" uid="uid://ccg2r25ahqcm0" path="res://Levels/ForgottenPlains/props/art/Minifantasy_ForgottenPlainsPropsShadows.png" id="2_7yhwv"]
 
 [node name="PurpleFlower" type="Node2D"]
 z_index = 10
+script = ExtResource("1_dujxk")
 
 [node name="Flower" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_xxw53")
 region_enabled = true
 region_rect = Rect2(81, 73, 7, 6)
