@@ -11,4 +11,5 @@ func _ready() -> void:
 		$StartingRoom/Bonfire/SpawnPoint.global_position,
 		this_packed_scene,
 	)
-	Global.bonfire_registry.active_bonfire = $StartingRoom/Bonfire.bonfire_name
+	if Global.bonfire_registry.active_bonfire == "":
+		Global.bonfire_registry.active_bonfire = $StartingRoom/Bonfire.bonfire_name
