@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dehxi7qud746g"]
+[gd_scene load_steps=34 format=3 uid="uid://dehxi7qud746g"]
 
 [ext_resource type="Texture2D" uid="uid://cc4mm6nkpewsm" path="res://Entities/Characters/Enemies/Otter/art/Otter_all.png" id="1_l8vkl"]
 
@@ -381,6 +381,150 @@ tracks/0/keys = {
 "values": [184, 185, 186, 187, 188, 189]
 }
 
+[sub_resource type="Animation" id="Animation_idp3j"]
+resource_name = "swimDownRight"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [190, 191, 192, 193, 194, 195]
+}
+
+[sub_resource type="Animation" id="Animation_qwlxw"]
+resource_name = "swimDownLeft"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [196, 197, 198, 199, 200, 201]
+}
+
+[sub_resource type="Animation" id="Animation_cgg7b"]
+resource_name = "swimUpRight"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [202, 203, 204, 205, 206, 207]
+}
+
+[sub_resource type="Animation" id="Animation_o37jd"]
+resource_name = "swimUpLeft"
+length = 1.20002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [208, 209, 210, 211, 212, 213]
+}
+
+[sub_resource type="Animation" id="Animation_4ruqg"]
+resource_name = "moveDownRight"
+length = 0.80002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [215, 216, 217, 214]
+}
+
+[sub_resource type="Animation" id="Animation_nm2l2"]
+resource_name = "moveDownLeft"
+length = 0.80002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [219, 220, 221, 218]
+}
+
+[sub_resource type="Animation" id="Animation_gnww4"]
+resource_name = "moveUpRight"
+length = 0.80002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [223, 224, 225, 222]
+}
+
+[sub_resource type="Animation" id="Animation_sve6i"]
+resource_name = "moveUpLeft"
+length = 0.80002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [227, 228, 229, 226]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cx1bt"]
 _data = {
 &"RESET": SubResource("Animation_l8vkl"),
@@ -397,6 +541,10 @@ _data = {
 &"idleDownRight": SubResource("Animation_ywkel"),
 &"idleUpLeft": SubResource("Animation_u2x7b"),
 &"idleUpRight": SubResource("Animation_cx1bt"),
+&"moveDownLeft": SubResource("Animation_nm2l2"),
+&"moveDownRight": SubResource("Animation_4ruqg"),
+&"moveUpLeft": SubResource("Animation_sve6i"),
+&"moveUpRight": SubResource("Animation_gnww4"),
 &"rangedDown": SubResource("Animation_5px2u"),
 &"rangedDownLeft": SubResource("Animation_sjkry"),
 &"rangedDownRight": SubResource("Animation_2bgbh"),
@@ -404,7 +552,11 @@ _data = {
 &"rangedRight": SubResource("Animation_prdgh"),
 &"rangedUp": SubResource("Animation_i18su"),
 &"rangedUpLeft": SubResource("Animation_hj8xc"),
-&"rangedUpRight": SubResource("Animation_3jqux")
+&"rangedUpRight": SubResource("Animation_3jqux"),
+&"swimDownLeft": SubResource("Animation_qwlxw"),
+&"swimDownRight": SubResource("Animation_idp3j"),
+&"swimUpLeft": SubResource("Animation_o37jd"),
+&"swimUpRight": SubResource("Animation_cgg7b")
 }
 
 [node name="Otter" type="CharacterBody2D"]
