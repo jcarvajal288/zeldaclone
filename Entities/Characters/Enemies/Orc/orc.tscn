@@ -878,9 +878,9 @@ libraries = {
 script = ExtResource("3_t4s6y")
 
 [node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("7_qm0o1")]
+attack_range_pixels = 12
 subject = NodePath("..")
 tile_distance_to_notice_player = 8
-attack_range_pixels = 12
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("director", "starting_state")]
 script = ExtResource("18_vsjwf")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8wr1endc5vxg"]
+
+[ext_resource type="Script" uid="uid://b0fqqm6wjc8y6" path="res://Entities/Characters/Enemies/AI/StandOffAndFire/stand_off_and_fire_director.gd" id="1_k6a73"]
+
+[node name="StandOffAndFireDirector" type="Node"]
+script = ExtResource("1_k6a73")

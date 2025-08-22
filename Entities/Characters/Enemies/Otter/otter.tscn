@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cc4mm6nkpewsm" path="res://Entities/Characters/Enemies/Otter/art/Otter_all.png" id="1_l8vkl"]
 [ext_resource type="Script" uid="uid://ceui7i14dq53s" path="res://Entities/Characters/Enemies/Otter/otter.gd" id="1_y0xgw"]
 [ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_ywkel"]
-[ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="4_2dsjw"]
 [ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Components/StateMachine/StateMachine.tscn" id="4_y0xgw"]
 [ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Components/StateMachine/States/Idle/Idle.tscn" id="5_2dsjw"]
 [ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Components/StateMachine/States/Move/Move.tscn" id="6_8fmsk"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Components/StateMachine/States/Hit/Hit.tscn" id="9_sjkry"]
 [ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="10_3jqux"]
 [ext_resource type="Script" uid="uid://b5ylh55j0x8hb" path="res://Entities/Characters/Components/Hurtbox/hurtbox.gd" id="11_hj8xc"]
+[ext_resource type="PackedScene" uid="uid://8wr1endc5vxg" path="res://Entities/Characters/Enemies/AI/StandOffAndFire/stand_off_and_fire_director.tscn" id="12_2dsjw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_joviy"]
 radius = 5.0
@@ -593,11 +593,15 @@ libraries = {
 }
 script = ExtResource("3_ywkel")
 
-[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("4_2dsjw")]
+[node name="StandOffAndFireDirector" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("12_2dsjw")]
+ranged_attack_range_pixels = 74
+melee_attack_range_pixels = 20
+run_away_range = 32
 subject = NodePath("..")
+tile_distance_to_notice_player = 15
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("director", "starting_state") instance=ExtResource("4_y0xgw")]
-director = NodePath("../ApproachAndAttack")
+director = NodePath("../StandOffAndFireDirector")
 starting_state = NodePath("Idle")
 
 [node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("5_2dsjw")]
