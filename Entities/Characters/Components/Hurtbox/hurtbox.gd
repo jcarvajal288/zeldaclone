@@ -14,7 +14,7 @@ func _on_area_entered(hitbox: Area2D) -> void:
 		return
 	if owning_character == null:
 		return
-	if hitbox.owning_character.alignment == owning_character.alignment:
+	if hitbox.owning_character == owning_character:
 		return
 	on_hit.emit(hitbox)
 

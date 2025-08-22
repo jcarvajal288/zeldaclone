@@ -1,9 +1,20 @@
-[gd_scene load_steps=34 format=3 uid="uid://dehxi7qud746g"]
+[gd_scene load_steps=46 format=3 uid="uid://dehxi7qud746g"]
 
 [ext_resource type="Texture2D" uid="uid://cc4mm6nkpewsm" path="res://Entities/Characters/Enemies/Otter/art/Otter_all.png" id="1_l8vkl"]
+[ext_resource type="Script" uid="uid://ceui7i14dq53s" path="res://Entities/Characters/Enemies/Otter/otter.gd" id="1_y0xgw"]
+[ext_resource type="Script" uid="uid://dsgtlyg1rb0en" path="res://Entities/Characters/character_animations.gd" id="3_ywkel"]
+[ext_resource type="PackedScene" uid="uid://dxi7h8axcujad" path="res://Entities/Characters/Enemies/AI/ApproachAndAttack/ApproachAndAttack.tscn" id="4_2dsjw"]
+[ext_resource type="PackedScene" uid="uid://cxc0acvg5ibmx" path="res://Entities/Characters/Components/StateMachine/StateMachine.tscn" id="4_y0xgw"]
+[ext_resource type="PackedScene" uid="uid://2t0721wxhyxe" path="res://Entities/Characters/Components/StateMachine/States/Idle/Idle.tscn" id="5_2dsjw"]
+[ext_resource type="PackedScene" uid="uid://lanxp1ahnsjh" path="res://Entities/Characters/Components/StateMachine/States/Move/Move.tscn" id="6_8fmsk"]
+[ext_resource type="PackedScene" uid="uid://b3khutoue2pl0" path="res://Entities/Characters/Components/StateMachine/States/Attack/Attack.tscn" id="7_slfrm"]
+[ext_resource type="PackedScene" uid="uid://mv23j4koy1sn" path="res://Entities/Characters/Components/StateMachine/States/Death/death.tscn" id="8_2bgbh"]
+[ext_resource type="PackedScene" uid="uid://y4bv0bvwgqtk" path="res://Entities/Characters/Components/StateMachine/States/Hit/Hit.tscn" id="9_sjkry"]
+[ext_resource type="PackedScene" uid="uid://dq4nqdtuu8dhr" path="res://Entities/Characters/Components/Health/Health.tscn" id="10_3jqux"]
+[ext_resource type="Script" uid="uid://b5ylh55j0x8hb" path="res://Entities/Characters/Components/Hurtbox/hurtbox.gd" id="11_hj8xc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_joviy"]
-radius = 6.0
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_l8vkl"]
 length = 0.001
@@ -559,7 +570,12 @@ _data = {
 &"swimUpRight": SubResource("Animation_cgg7b")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_prdgh"]
+radius = 3.0
+height = 14.0
+
 [node name="Otter" type="CharacterBody2D"]
+script = ExtResource("1_y0xgw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l8vkl")
@@ -567,9 +583,58 @@ hframes = 24
 vframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.8, 0)
+scale = Vector2(1.48, 0.715)
 shape = SubResource("CircleShape2D_joviy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_cx1bt")
 }
+script = ExtResource("3_ywkel")
+
+[node name="ApproachAndAttack" parent="." node_paths=PackedStringArray("subject") instance=ExtResource("4_2dsjw")]
+subject = NodePath("..")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("director", "starting_state") instance=ExtResource("4_y0xgw")]
+director = NodePath("../ApproachAndAttack")
+starting_state = NodePath("Idle")
+
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("move_state", "attack_state", "hit_state") instance=ExtResource("5_2dsjw")]
+move_state = NodePath("../Move")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Move" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "hit_state") instance=ExtResource("6_8fmsk")]
+idle_state = NodePath("../Idle")
+attack_state = NodePath("../Attack")
+hit_state = NodePath("../Hit")
+
+[node name="Attack" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state") instance=ExtResource("7_slfrm")]
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+animation_type = 1
+
+[node name="Death" parent="StateMachine" node_paths=PackedStringArray("idle_state", "subject_health") instance=ExtResource("8_2bgbh")]
+idle_state = NodePath("../Idle")
+subject_health = NodePath("../../Health")
+
+[node name="Hit" parent="StateMachine" node_paths=PackedStringArray("idle_state", "hurtbox", "sprite") instance=ExtResource("9_sjkry")]
+idle_state = NodePath("../Idle")
+hurtbox = NodePath("../../Hurtbox")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Health" parent="." instance=ExtResource("10_3jqux")]
+max_health = 2
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("owning_character")]
+script = ExtResource("11_hj8xc")
+owning_character = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_prdgh")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[connection signal="on_hit" from="Hurtbox" to="Health" method="_on_hit"]

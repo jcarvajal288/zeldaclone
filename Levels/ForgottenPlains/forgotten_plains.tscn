@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://fqnwk3i8rmjr"]
 
 [ext_resource type="Script" uid="uid://d3qlemyfcgytn" path="res://Levels/ForgottenPlains/forgotten_plains.gd" id="1_sncxp"]
-[ext_resource type="PackedScene" uid="uid://c825isk4u4iye" path="res://Levels/ForgottenPlains/rooms/starting_room.tscn" id="1_ts3ks"]
+[ext_resource type="PackedScene" uid="uid://c825isk4u4iye" path="res://Entities/Characters/Enemies/Otter/starting_room.tscn" id="1_ts3ks"]
 [ext_resource type="PackedScene" uid="uid://2sr5h8l78r40" path="res://Levels/ForgottenPlains/rooms/road_to_village.tscn" id="2_0y2iv"]
 [ext_resource type="PackedScene" uid="uid://cw1fsxoq6c0fc" path="res://Levels/ForgottenPlains/rooms/mountain_trail.tscn" id="4_jdmwr"]
 [ext_resource type="PackedScene" uid="uid://culsrn6rclik0" path="res://Levels/ForgottenPlains/rooms/west_of_start.tscn" id="5_48fc6"]
