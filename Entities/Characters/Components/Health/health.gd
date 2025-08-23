@@ -18,6 +18,7 @@ func reset() -> void:
 	Global.player_health_changed.emit(current_health, max_health)
 
 
+# this needs to be attached in the editor to a Hurtbox's on_hit signal
 func _on_hit(hitbox: Area2D):
 	if not hitbox is Hitbox:
 		return

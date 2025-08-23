@@ -2,6 +2,7 @@ extends State
 
 @export var idle_state: State
 @export var attack_state: State
+@export var ranged_attack_state: State
 @export var hit_state: State
 @export var fall_state: State
 
@@ -9,6 +10,8 @@ extends State
 func process_frame(_delta: float) -> State:
 	if director.action_attack:
 		return attack_state
+	if director.ranged_attack:
+		return ranged_attack_state
 	return null
 
 

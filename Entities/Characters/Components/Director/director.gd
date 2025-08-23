@@ -2,6 +2,7 @@ class_name Director extends Node
 
 var movement_vector = Vector2.ZERO
 var action_attack = false
+var ranged_attack = false
 
 @export var subject: Character
 @export var tile_distance_to_notice_player: int
@@ -9,6 +10,7 @@ var action_attack = false
 func reset() -> void:
 	movement_vector = Vector2.ZERO
 	action_attack = false
+	ranged_attack = false
 
 
 func move_towards_player():

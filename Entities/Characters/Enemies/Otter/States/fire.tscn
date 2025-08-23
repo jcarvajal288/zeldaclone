@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl4s615d8ycjj"]
+
+[ext_resource type="Script" uid="uid://w1aa6q7qt278" path="res://Entities/Characters/Enemies/Otter/States/fire.gd" id="1_w02k4"]
+
+[node name="Fire" type="Node"]
+script = ExtResource("1_w02k4")
+animation_name = "ranged"
+animation_type = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c825isk4u4iye"]
+[gd_scene load_steps=14 format=4 uid="uid://c825isk4u4iye"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_gx6p0"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/ForgottenPlains/tileset/test_grassland.tres" id="2_rwp0d"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://b5g7lkcp1m67f" path="res://Levels/ForgottenPlains/props/red_flower.tscn" id="7_sfpn7"]
 [ext_resource type="PackedScene" uid="uid://df5105ok8564u" path="res://Levels/ForgottenPlains/props/white_flower.tscn" id="8_rc6ny"]
 [ext_resource type="PackedScene" uid="uid://4nd66as8mf7m" path="res://Levels/ForgottenPlains/props/purple_flower.tscn" id="9_d1ciq"]
-[ext_resource type="PackedScene" uid="uid://dehxi7qud746g" path="res://Entities/Characters/Enemies/Otter/otter.tscn" id="10_w4ceh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0djk"]
 size = Vector2(21, 13)
@@ -102,6 +101,3 @@ position = Vector2(125, 110)
 position = Vector2(118, 96)
 rotation = 3.14159
 scale = Vector2(1, -1)
-
-[node name="Otter" parent="." instance=ExtResource("10_w4ceh")]
-position = Vector2(55, 38)

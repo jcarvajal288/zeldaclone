@@ -5,13 +5,6 @@ extends Director
 @export var melee_attack_range_pixels: int
 @export var run_away_range: int
 
-var ranged_attack = false
-
-
-func reset() -> void:
-	super()
-	ranged_attack = false
-
 
 func _process(_delta: float) -> void:
 	reset()
@@ -30,11 +23,11 @@ func _process(_delta: float) -> void:
 	else:
 		# print("attacking")
 		attack_player()
-		subject.velocity = Vector2.ZERO
 	subject.move_and_slide()
 
 
 func fire_ranged():
+	movement_vector = subject.global_position.direction_to(Global.PLAYER_POSITION)
 	ranged_attack = true
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://cw1fsxoq6c0fc"]
+[gd_scene load_steps=9 format=4 uid="uid://cw1fsxoq6c0fc"]
 
 [ext_resource type="Script" uid="uid://bowrj714foakx" path="res://Levels/room.gd" id="1_ucov8"]
 [ext_resource type="TileSet" uid="uid://s2mhhiwmekx4" path="res://Levels/ForgottenPlains/tileset/test_grassland.tres" id="2_gs7tp"]
 [ext_resource type="Script" uid="uid://dmxg04p8m0dk5" path="res://Levels/Components/room_entrance.gd" id="3_gibvt"]
+[ext_resource type="PackedScene" uid="uid://dehxi7qud746g" path="res://Entities/Characters/Enemies/Otter/otter.tscn" id="4_0ra0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0djk"]
 size = Vector2(21, 13)
@@ -58,3 +59,6 @@ script = ExtResource("3_gibvt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/ToDungeonEntrance"]
 position = Vector2(324, 83.5)
 shape = SubResource("RectangleShape2D_hlni6")
+
+[node name="Otter" parent="." instance=ExtResource("4_0ra0v")]
+position = Vector2(95, 341)
