@@ -5,4 +5,4 @@
 [node name="Fire" type="Node"]
 script = ExtResource("1_w02k4")
 animation_name = "ranged"
-animation_type = 2
+animation_type = 3

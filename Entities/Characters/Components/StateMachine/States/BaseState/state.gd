@@ -3,6 +3,7 @@ class_name State extends Node
 enum AnimationType {
 	REGULAR,
 	FACING,
+	SIX_WAY,
 	EIGHT_WAY,
 }
 
@@ -20,8 +21,10 @@ func enter() -> void:
 	subject.animation_player.advance(0)
 	if animation_type == AnimationType.FACING:
 		subject.animation_player.play_with_facing(animation_name)
+	elif animation_type == AnimationType.SIX_WAY: 
+		subject.animation_player.play_six_way(animation_name, director.movement_vector)
 	elif animation_type == AnimationType.EIGHT_WAY:
-		subject.animation_player.play_animation_with_input(animation_name, director.movement_vector)
+		subject.animation_player.play_eight_way(animation_name, director.movement_vector)
 	else:
 		subject.animation_player.play(animation_name)
 
