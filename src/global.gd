@@ -30,6 +30,7 @@ enum RenderOrder {
 	PROP = 1,
 	WALL = 2,
 	PLAYER = 5,
+	EFFECT = 10,
 	UI = 100
 }
 

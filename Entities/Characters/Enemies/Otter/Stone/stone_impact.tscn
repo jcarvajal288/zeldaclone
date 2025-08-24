@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmb76dj872tdc"]
+
+[ext_resource type="Texture2D" uid="uid://d2k2d516geb1u" path="res://Entities/Characters/Enemies/Otter/art/Stone_Impact.png" id="1_u4pr7"]
+[ext_resource type="Script" uid="uid://baqnghufioniy" path="res://Entities/Characters/Components/effect.gd" id="2_5ind4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4snu"]
+atlas = ExtResource("1_u4pr7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gljip"]
+atlas = ExtResource("1_u4pr7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6r1g"]
+atlas = ExtResource("1_u4pr7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbgan"]
+atlas = ExtResource("1_u4pr7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lo78y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4snu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gljip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6r1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbgan")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="StoneImpact" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_lo78y")
+autoplay = "default"
+frame_progress = 0.444454
+script = ExtResource("2_5ind4")
