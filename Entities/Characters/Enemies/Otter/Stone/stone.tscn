@@ -7,6 +7,8 @@
 radius = 1.0
 
 [node name="Stone" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_pdlw0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,5 +17,4 @@ region_enabled = true
 region_rect = Rect2(9, 0, 9, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("CircleShape2D_vjccq")
