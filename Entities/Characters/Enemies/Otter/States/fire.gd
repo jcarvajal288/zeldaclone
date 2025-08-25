@@ -33,6 +33,7 @@ func fire_projectile() -> void:
 	get_tree().root.add_child(projectile)
 	projectile.global_position = subject.global_position + get_projectile_spawn_location()
 	projectile.set_direction(director.movement_vector)
+	projectile.set_hitbox_owner(subject)
 
 
 func get_projectile_spawn_location() -> Vector2:

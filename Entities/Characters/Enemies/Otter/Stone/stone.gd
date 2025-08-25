@@ -16,6 +16,10 @@ func set_direction(direction: Vector2) -> void:
 	rotation = direction.angle() + PI / 2
 
 
+func set_hitbox_owner(owning_character: Character) -> void:
+	$Hitbox.owning_character = owning_character
+
+
 func on_body_entered(_body: Node2D) -> void:
 	var impact = stone_impact_scene.instantiate()
 	impact.global_position = global_position
