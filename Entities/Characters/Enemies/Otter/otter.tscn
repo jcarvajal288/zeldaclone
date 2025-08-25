@@ -635,6 +635,8 @@ sprite = NodePath("../../Sprite2D")
 [node name="Fire" parent="StateMachine" node_paths=PackedStringArray("idle_state") instance=ExtResource("11_8fmsk")]
 idle_state = NodePath("../Idle")
 projectile_scene = ExtResource("12_slfrm")
+projectile_spawn_x = 11.5
+projectile_spawn_y = 11.5
 
 [node name="Health" parent="." instance=ExtResource("10_3jqux")]
 max_health = 2
@@ -648,5 +650,10 @@ position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_prdgh")
 debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="ProjectileSpawnPoints" type="Node" parent="."]
+
+[node name="DownRight" type="Marker2D" parent="ProjectileSpawnPoints"]
+position = Vector2(11.5, 11.5)
 
 [connection signal="on_hit" from="Hurtbox" to="Health" method="_on_hit"]

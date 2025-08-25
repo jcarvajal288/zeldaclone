@@ -2,15 +2,16 @@ extends AnimationPlayer
 
 var facing = "DownRight"
 
-const down = PI / 2
-const down_left = 5 * PI / 8
-const down_right = 3 * PI / 8
-const up = -PI / 2
-const up_left = -5 * PI / 8
-const up_right = -3 * PI / 8
-const left = PI
-const negative_left = -PI
-const right = 0
+const DOWN_LEFT = 5 * PI / 8
+const DOWN_RIGHT = 3 * PI / 8
+const UP_LEFT = -5 * PI / 8
+const UP_RIGHT = -3 * PI / 8
+
+# const DOWN = PI / 2
+# const UP = -PI / 2
+# const LEFT = PI
+# const NEGATIVE_LEFT = -PI
+# const RIGHT = 0
 
 	
 func set_facing(direction: Vector2):
@@ -34,22 +35,17 @@ func play_with_facing(anim_name: String) -> void:
 
 func play_six_way(anim_name: String, direction: Vector2) -> void:
 	var angle = direction.angle()
-	if down_right < angle and angle <= down_left:
+	if DOWN_RIGHT < angle and angle <= DOWN_LEFT:
 		self.play(anim_name + "Down") 
-	elif up_left < angle and angle <= up_right:
+	elif UP_LEFT < angle and angle <= UP_RIGHT:
 		self.play(anim_name + "Up") 
 	else:
 		play_with_facing(anim_name)
 
 
 func play_eight_way(anim_name: String, direction: Vector2) -> void:
-	var angle = direction.angle()
-	if up_right < angle and angle <= down_right:
-		self.play(anim_name + "Right") 
-	elif down_left < angle or angle <= up_left:
-		self.play(anim_name + "Left") 
-	else:
-		play_six_way(anim_name, direction)
+	var dirString = Global.convert_to_8_way(direction)
+	self.play(anim_name + dirString)
 	
 	
 # func play_animation_with_input(anim_name: String, input_direction: Vector2):
@@ -79,19 +75,19 @@ func play_eight_way(anim_name: String, direction: Vector2) -> void:
 
 # func play_animation_with_direction(anim_name: String, direction: Vector2):
 # 	var angle = direction.angle()
-# 	if down_right < angle and angle <= down:
+# 	if DOWN_RIGHT < angle and angle <= DOWN:
 # 		self.play(anim_name + "DownSlashRight")
-# 	elif down < angle and angle <= down_left:
+# 	elif DOWN < angle and angle <= DOWN_LEFT:
 # 		self.play(anim_name + "DownSlashLeft")
-# 	elif up_left < angle and angle <= up:
+# 	elif UP_LEFT < angle and angle <= UP:
 # 		self.play(anim_name + "UpSlashLeft")
-# 	elif up < angle and angle <= up_right:
+# 	elif UP < angle and angle <= UP_RIGHT:
 # 		self.play(anim_name + "UpSlashRight")
-# 	elif right < angle and angle <= down:
+# 	elif RIGHT < angle and angle <= DOWN:
 # 		self.play(anim_name + "DownRight")
-# 	elif down < angle and angle <= left:
+# 	elif DOWN < angle and angle <= LEFT:
 # 		self.play(anim_name + "DownLeft")
-# 	elif negative_left <= angle and angle <= up:
+# 	elif NEGATIVE_LEFT <= angle and angle <= UP:
 # 		self.play(anim_name + "UpLeft")
 # 	else:
 # 		self.play(anim_name + "UpRight")
